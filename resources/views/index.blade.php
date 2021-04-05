@@ -19,7 +19,7 @@
             @foreach ($posts as $post)
                 <div class='post'>
                     <h2 class='name'><a href="/posts/{{ $post->id }}">{{ $post->name }}</a></h2>
-                    <p class='body'>{{ $post->body }}</p>
+                    <p class='body'>{{ $post->shop }}</p>
                     <p class="style">{{ $post->style }}</p>
                     <img src=""> 
                 </div>
