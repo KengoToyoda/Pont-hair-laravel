@@ -20,5 +20,26 @@ Route::get('/', function () {
 //ブログ一覧
 Route::get('/', 'PostController@index');
 
+//DB登録
+Route::post('/posts', 'PostController@store');
+
+//ブログ投稿作成
+Route::get('/posts/create', 'PostController@create');
+
+//ブログ投稿画面編集
+Route::get('/posts/{post}/edit', 'PostController@edit');
+
+//ブログ投稿削除
+Route::delete('/posts/{post}', 'PostController@delete');
+
+//ブログ投稿画面更新
+Route::put('/posts/{post}', 'PostController@update');
+
 //ブログ投稿詳細
 Route::get('/posts/{post}', 'PostController@show');
+
+
+
+
+
+

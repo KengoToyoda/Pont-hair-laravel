@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Post;
+// use Illuminate\Http\Request;
+use App\Http\Requests\PostRequest; 
 
 class PostController extends Controller
 {
@@ -25,11 +26,59 @@ class PostController extends Controller
      * @return Reposnse post view
      */
    public function show(Post $post)
-{
-    return view('show')->with(['post' => $post]);
-}
+    {
+        return view('show')->with(['post' => $post]);
+    }
     
+    /**
+     * 特定IDのpostを作成する
+     * 
+     */
+     public function create()
+     {
+        return view('create');
+     }
      
+    /**
+     * 新規作成した投稿をDBに反映
+     * 
+     * @param Request $request
+     * @return Response
+     */
+        public function store(Post $post, PostRequest $request)
+    {
+        $input = $request['post'];
+        $post->fill($input)->save();
+        return redirect('/posts/' . $post->id);
+    }
+    /**
+     * 特定IDのpostを編集
+     * 
+     */
+        public function edit(Post $post)
+    {
+        return view('edit')->with(['post' => $post]);
+    }
     
+    /**
+     * 特定IDのpostを更新
+     * 
+     */
+        public function update(PostRequest $request, Post $post)
+    {
+        $input_post = $request['post'];
+        $post->fill($input_post)->save();
+        return redirect('/posts/' . $post->id);
+    }
     
+    /**
+     * 特定IDのpostを削除
+     * 
+     */
+        public function delete(Post $post)
+    {
+        $post->delete();
+        return redirect('/');
+    }
+
 }
