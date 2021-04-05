@@ -14,5 +14,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
+
+//ブログ一覧
+Route::get('/', 'PostController@index');
+
+//ブログ投稿詳細
+Route::get('/posts/{post}', 'PostController@show');
