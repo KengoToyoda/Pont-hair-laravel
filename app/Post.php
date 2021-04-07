@@ -16,8 +16,12 @@ class Post extends Model
      */
     protected $fillable =[
         'name',
-        'body',
+        'age',
+        'shop',
+        'location',
         'style',
+        'comment',
+        'image'
     ];
     
     /**
