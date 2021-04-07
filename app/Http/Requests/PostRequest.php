@@ -25,8 +25,19 @@ class PostRequest extends FormRequest
     {
         return [
             'post.name' => 'required|string|max:100',
-            'post.body' => 'required|string|max:100',
+            'post.age' => 'required|integer',
+            'post.shop' => 'required|string|max:100',
+            'post.location' => 'required|string|max:100',
             'post.style' => 'required|string|max:100',
+            'post.comment' => 'required|string|max:200',
+            'post.image' => 'image'
+        ];
+    }
+    
+    public function messages()
+    {
+        return[
+            'post.image.image' => '画像ファイルを選択してください'    
         ];
     }
 }

@@ -12,18 +12,23 @@
         <header>
             <ul class="nav">
                 <li class="nav_list">[<a href="/posts/create" class="create">美容師登録</a>]</li>
+                <li class="nav_list">[<a href="/">Topページへ</a>]</li>
             </ul>
         </header>
-        
-        <h1 class="name">
+        <h1 class="title">
             {{ $post->name }}
         </h1>
         <div class="content">
             <div class="content__post">
-                <h3>美容師詳細</h3>
-                <p>{{ $post->body }}</p>   
-                <p>{{ $post->style }}</p>
-                <img>
+                <h2 class="sub_title">美容師詳細</h2>
+                 <ul class="stylist_lsit">
+                    <li class="stylist_item">{{ $post->age }}</li>
+                    <li class="stylist_item">{{ $post->shop }}</li>
+                    <li class="stylist_item">{{ $post->location }}</li>
+                    <li class="stylist_item">{{ $post->style }}</li>
+                </ul>
+                <h2 class="sub_title">コメント</h2>
+                <p class="stylist_comment">{{ $post->comment }}</p>
             </div>
         </div>
         

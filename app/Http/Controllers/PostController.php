@@ -36,6 +36,13 @@ class PostController extends Controller
      */
      public function create()
      {
+        // if(isset($request->image)) {
+        //     $path = $request->file('image')->store('images', 'public');
+        //     $image = basename($path);
+        // }else {
+        //     $image = '';
+        // } 
+         
         return view('create');
      }
      
