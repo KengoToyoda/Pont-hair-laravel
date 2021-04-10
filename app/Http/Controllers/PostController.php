@@ -25,9 +25,9 @@ class PostController extends Controller
      * @params Object Post // 引数の$postはid=1のPostインスタンス
      * @return Reposnse post view
      */
-   public function show(Post $post)
+   public function show(Post $post, Menu $menu)
     {
-        return view('show')->with(['post' => $post]);
+        return view('show')->with(['post' => $post], ['menu' => $menu]);
     }
     
     /**
@@ -56,6 +56,11 @@ class PostController extends Controller
     {
         $input = $request['post'];
         $post->fill($input)->save();
+        
+        $path = $request->file('image')->store('public/stylist');
+        $post->image = basename($path);
+        $post->save();
+        
         return redirect('/posts/' . $post->id);
     }
     /**

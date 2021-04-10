@@ -1,20 +1,16 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace("_", "-", app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Pont</title>
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-        <link rel="stylesheet" href="/css/app.css">
-    </head>
-    <body>
-        <header>
-            <ul class="nav">
-                <li class="nav_list">[<a href="/posts/create" class="create">美容師登録</a>]</li>
-                <li class="nav_list">[<a href="/">Topページへ</a>]</li>
-            </ul>
-        </header>
+@extends('template')
+
+@section('title', 'pont')
+@section('keywords', '美容師', '美容師アシスタント')
+@section('description', '美容師アシスタント紹介サービスです')
+
+@section('indexCss')
+<link href="static/css/index.css" rel="stylesheet">
+@endsection
+    @include('header')
+    
+    @section('content')
+    <section>
         <h1 class="title">
             {{ $post->name }}
         </h1>
@@ -29,13 +25,15 @@
                 </ul>
                 <h2 class="sub_title">コメント</h2>
                 <p class="stylist_comment">{{ $post->comment }}</p>
+                <img src="{{ asset('storage/stylist/' . $post->image) }}"> 
             </div>
         </div>
-        
         <p class="edit">[<a href="/posts/{{ $post->id }}/edit">内容を編集する</a>]</p>
-        
-        <div class="footer">
-            <a href="/">戻る</a>
-        </div>
-    </body>
-</html>
+    </section>
+    <div class="footer">
+        <a href="/">戻る</a>
+    </div>
+
+    @endsection
+    
+    @include('footer')

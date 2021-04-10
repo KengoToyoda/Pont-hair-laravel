@@ -1,16 +1,15 @@
-<!DOCTYPE HTML>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <title>Pont</title>
-    </head>
-    <body>
-        <header>
-            <ul class="nav">
-                <li class="nav_list">[<a href="/posts/create" class="create">美容師登録</a>]</li>
-                <li class="nav_list">[<a href="/">Topページへ</a>]</li>
-            </ul>
-        </header>
+@extends('template')
+
+@section('title', 'pont')
+@section('keywords', '美容師', '美容師アシスタント')
+@section('description', '美容師アシスタント紹介サービスです')
+
+@section('indexCss')
+<link href="static/css/index.css" rel="stylesheet">
+@endsection
+    @include('header')
+    
+    @section('content')
         <h1>投稿編集画面</h1>
         <form action="/posts/{{ $post->id }}" method="POST">
             @csrf
@@ -40,9 +39,14 @@
                     <h2>コメント</h2>
                     <textarea name="post[comment]">{{ $post->comment }}</textarea>
                 </li>
+                <li class="edit_item">
+                    <h2>コメント</h2>
+                    <input type="file" name="post[image]">{{ $post->image }}</textarea>
+                </li>
             </ul>
             <input type="submit" value="保存"/>
         </form>
         <div class="back">[<a href="/posts/{{  $post->id }}">back</a>]</div>
-    </body>
-</html>
+    @endsection
+    
+    @include('footer')

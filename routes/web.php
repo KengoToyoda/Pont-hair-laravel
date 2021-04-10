@@ -17,6 +17,10 @@ Route::get('/', function () {
     return view('index');
 });
 
+/**
+ * Post　ルーティング
+ */
+ 
 //ブログ一覧
 Route::get('/', 'PostController@index');
 
@@ -38,6 +42,10 @@ Route::put('/posts/{post}', 'PostController@update');
 //ブログ投稿詳細
 Route::get('/posts/{post}', 'PostController@show');
 
+/**
+ * Menu　ルーティング
+ */
+Route::get('/menus', 'MenuController@index_menu');
 
 
 

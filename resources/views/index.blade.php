@@ -34,6 +34,9 @@
         <div class="pagnate">
             {{ $posts->links() }}
         </div>
+        <div class="To_menyu">
+            <a class="" href="/menus">メニュ一覧をみる</a>    
+        </div>
     @endsection
     
     @include('footer')
