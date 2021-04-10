@@ -21,7 +21,7 @@ class Post extends Model
         'location',
         'style',
         'comment',
-        'image'
+        'image',
     ];
     
     /**

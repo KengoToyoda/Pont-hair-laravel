@@ -1,20 +1,17 @@
-<!DOCTYPE HTML>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <title>Pont</title>
-        <link href="static/css/style.css" rel="stylesheet" type="text/css">
-        <script src="static/js/sample.js" type="text/javascript"></script>
-    </head>
-    <body>
-        <header>
-            <ul class="nav">
-                <li class="nav_list">[<a href="/posts/create" class="create">美容師登録</a>]</li>
-                <li class="nav_list">[<a href="/">Topページへ</a>]</li>
-            </ul>
-        </header>
+@extends('template')
+
+@section('title', 'pont')
+@section('keywords', '美容師', '美容師アシスタント')
+@section('description', '美容師アシスタント紹介サービスです')
+
+@section('indexCss')
+<link href="static/css/index.css" rel="stylesheet">
+@endsection
+    @include('header')
+    
+    @section('content')
         <h1>美容師登録ページ</h1>
-        <form action="/posts" method="POST">
+        <form action="/posts" method="POST" enctype='multipart/form-data'>
             @csrf
             <ul class="form_list">
                 <li class="form_item">
@@ -55,6 +52,8 @@
             </ul>
             <input type="submit" value="登録"/>
         </form>
+    
         <div class="back">[<a href="/">back</a>]</div>
-    </body>
-</html>
+    @endsection
+    
+    @include('footer')
