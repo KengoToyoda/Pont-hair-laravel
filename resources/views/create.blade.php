@@ -46,8 +46,8 @@
                 </li>
                 <li class="form_item">
                     <h2>写真</h2>
-                    <input name="post[image]" type="file" value="{{ old('post.image') }}">
-                    <p class="body__error" style="color:red">{{ $errors->first('post.image') }}</p>
+                    <input name="image" type="file" value="{{ old('image') }}">
+                    <p class="body__error" style="color:red">{{ $errors->first('image') }}</p>
                 </li>
             </ul>
             <input type="submit" value="登録"/>

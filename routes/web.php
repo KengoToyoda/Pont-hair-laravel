@@ -21,8 +21,11 @@ Route::get('/', function () {
  * Post　ルーティング
  */
  
+ 
 //ブログ一覧
 Route::get('/', 'PostController@index');
+
+Route::post('/posts/{post}/store', 'MenuController@store_menu');
 
 //DB登録
 Route::post('/posts', 'PostController@store');
@@ -39,13 +42,19 @@ Route::delete('/posts/{post}', 'PostController@delete');
 //ブログ投稿画面更新
 Route::put('/posts/{post}', 'PostController@update');
 
+//メニュー個別ページ表示
+Route::get('/posts/{post}/{menu}', 'MenuController@show_menu');
+
 //ブログ投稿詳細
 Route::get('/posts/{post}', 'PostController@show');
 
-/**
- * Menu　ルーティング
- */
+//メニュー一覧表示
 Route::get('/menus', 'MenuController@index_menu');
+
+//メニュー新規作成
+Route::get('/create/{post}', 'MenuController@create_menu');
+
+
 
 
 

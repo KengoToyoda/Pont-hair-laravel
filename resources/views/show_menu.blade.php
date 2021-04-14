@@ -15,16 +15,14 @@
             メニュー
         </h1>
         <div class="content">
-            @foreach ($menus as $menu)
-                <div class="content__menu">
-                    <h2 class="menu_title"><a href="/posts/menus/{{ $menu->id }}">{{ $menu->course }}</a></h2>
-                     <ul class="menu_lsit">
-                        <li class="menu_item">{{ $menu->tag }}</li>
-                        <li class="menu_item">{{ $menu->price }}</li>
-                        <li class="menu_item">{{ $menu->description }}</li>
-                    </ul>
-                </div>
-            @endforeach
+            <div class="content__menu">
+                <h2 class="menu_title">{{ $menu->course }}</h2>
+                 <ul class="menu_lsit">
+                    <li class="menu_item">{{ $menu->tag }}</li>
+                    <li class="menu_item">{{ $menu->price }}</li>
+                    <li class="menu_item">{{ $menu->description }}</li>
+                </ul>
+            </div>
         </div>
         
         <form class="reserve">
