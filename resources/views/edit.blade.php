@@ -40,8 +40,8 @@
                     <textarea name="post[comment]">{{ $post->comment }}</textarea>
                 </li>
                 <li class="edit_item">
-                    <h2>コメント</h2>
-                    <input type="file" name="post[image]">{{ $post->image }}</textarea>
+                    <h2>画像</h2>
+                    <input type="file" name="image">{{ $post->image }}</textarea>
                 </li>
             </ul>
             <input type="submit" value="保存"/>

@@ -29,15 +29,18 @@ class PostRequest extends FormRequest
             'post.shop' => 'required|string|max:100',
             'post.location' => 'required|string|max:100',
             'post.style' => 'required|string|max:100',
-            'post.comment' => 'required|string|max:200',
-            'post.image' => 'image'
+            'post.comment' => '|required|string|max:200',
+            'image' => 'required|image|mimes:jpeg,bmp,png,jpg',
         ];
     }
     
     public function messages()
     {
         return[
-            'post.image.image' => '画像ファイルを選択してください'    
+            // 'post.image.image' => '画像ファイルを選択してください' ,
+            // 'post.image.required' => '画像ファイルを選択してください' ,
+            // 'post.image.mimes' => '指定された拡張子（PNG/JPG/JPEG/GIF）ではありません。' ,
+            
         ];
     }
 }

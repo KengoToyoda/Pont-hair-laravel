@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use App\Menu;
 // use Illuminate\Http\Request;
 use App\Http\Requests\PostRequest; 
+use Illuminate\Support\Facades\Storage;//画像操作
 
 class PostController extends Controller
 {
@@ -27,7 +29,10 @@ class PostController extends Controller
      */
    public function show(Post $post, Menu $menu)
     {
-        return view('show')->with(['post' => $post], ['menu' => $menu]);
+        return view('show')->with([
+            'post' => $post,
+            'menu' => $menu
+            ]);
     }
     
     /**
@@ -36,12 +41,7 @@ class PostController extends Controller
      */
      public function create()
      {
-        // if(isset($request->image)) {
-        //     $path = $request->file('image')->store('images', 'public');
-        //     $image = basename($path);
-        // }else {
-        //     $image = '';
-        // } 
+
          
         return view('create');
      }
@@ -54,12 +54,16 @@ class PostController extends Controller
      */
         public function store(Post $post, PostRequest $request)
     {
+        // dd('a');
+        //formのnameが'post[**]'の入力を$articleに格納
         $input = $request['post'];
+        //画像ファイルは$request-+>fileで受け取る
+        $photo = $request->file('image');
+        $photo_name = $photo->getClientOriginalName();
+        //保存するディレクトリ(storage/app/public以下)、ファイル、ファイル名の順
+        Storage::disk('public')->putFileAs('stylist',$photo,$photo_name);
+        $input['image'] = $photo_name;
         $post->fill($input)->save();
-        
-        $path = $request->file('image')->store('public/stylist');
-        $post->image = basename($path);
-        $post->save();
         
         return redirect('/posts/' . $post->id);
     }
@@ -78,9 +82,22 @@ class PostController extends Controller
      */
         public function update(PostRequest $request, Post $post)
     {
+        dd($request);
         $input_post = $request['post'];
-        $post->fill($input_post)->save();
+        $post->fill($input_post);
+
+        
+        // if($request->hasFile('image')) {
+        //     Storage::delete('public/stylist/' . $post->image); //元の画像を削除☆
+        //     $path = $request->file('image')->store('public/stylist');
+        //     $post->image = basename($path);
+        //     // $post->save();
+        // }
+
+        $post->save(); 
+        
         return redirect('/posts/' . $post->id);
+        ;
     }
     
     /**

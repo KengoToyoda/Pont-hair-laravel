@@ -22,7 +22,7 @@
                         <li class="stylist_item">{{ $post->style }}</li>
                     </ul>
                     <p class="stylist_comment">{{ $post->comment }}</p>
-                    <img src="/storage/images/{{ $post->image }}" alt="images" width="300" height="300">
+                    <img src="/storage/stylist/{{ $post->image }}" alt="images" width="300" height="300">
                 </div>
                 <form action="/posts/{{ $post->id }}" id="form_{{ $post->id }}" method="post" style="display:inline">
                     @csrf

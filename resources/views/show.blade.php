@@ -10,7 +10,7 @@
     @include('header')
     
     @section('content')
-    <section>
+    <section class="">
         <h1 class="title">
             {{ $post->name }}
         </h1>
@@ -30,9 +30,25 @@
         </div>
         <p class="edit">[<a href="/posts/{{ $post->id }}/edit">内容を編集する</a>]</p>
     </section>
-    <div class="footer">
-        <a href="/">戻る</a>
+
+    <section class="">
+        <h1>コース一覧</h1>
+        {{ $post->menus }}
+        <u class="menu_lsit">
+            <li class="menu_item">メニュー1</li>
+            <li class="menu_item">メニュー2</li>
+            <li class="menu_item">メニュー3</li>
+        </u>
+    </section>
+    
+    <div class="To_menus">
+        <a href="/create/{{ $post->id }}">メニューを登録する</a>
     </div>
+    
+    
+    <footer>
+        <a href="/">戻る</a>
+    </footer>
 
     @endsection
     

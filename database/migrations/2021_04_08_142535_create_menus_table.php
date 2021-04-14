@@ -22,6 +22,7 @@ class CreateMenusTable extends Migration
             $table->timestampsTz(0);
             $table->softDeletesTz('deleted_at', 0);
         });
+        });
     }
 
     /**
