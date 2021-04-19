@@ -34,8 +34,8 @@
                 </li>
                 <li class="form_item">
                     <h2>詳細</h2>
-                    <textarea name="menu[description]" placeholder="ブリーチは別料金となります" value="{{ old('menu.course') }}"></textarea>
-                    <p class="title__error" style="color:red">{{ $errors->first('menu.course') }}</p>
+                    <textarea name="menu[description]" placeholder="ブリーチは別料金となります" value="{{ old('menu.description') }}"></textarea>
+                    <p class="title__error" style="color:red">{{ $errors->first('menu.description') }}</p>
                 </li>
             </ul>
             <input type="submit" value="登録"/>

@@ -24,7 +24,7 @@ class MenuController extends Controller
      */
     public function create_menu(Post $post)
     {
-        return view('create_menu')->with(['post' => $post]);
+        return view('menu/CreateMenu')->with(['post' => $post]);
 
     }
     
@@ -41,12 +41,47 @@ class MenuController extends Controller
     }
     
      /**
-     * 個別ページに飛ぶ
+     * 特定IDのmenuにに飛ぶ
      */
     public function show_menu(Post $post, Menu $menu)
     {
-        return view('show_menu')->with(['menu' => $menu]);
+        return view('menu/ShowMenu')->with([
+                'menu' => $menu,
+                ]);
     }
+    
+     /**
+     * 特定IDのmenuに飛ぶ
+     */
+    public function edit_menu(Post $post, Menu $menu)
+    {
+        return view('menu/EditMenu')->with([
+                'menu' => $menu,
+                ]);
+    }
+    
+     /**
+     * 特定IDのmenuを更新する
+     */
+    public function update_menu(Request $request, Post $post, Menu $menu)
+    {
+        $input_menu_update = $request['menu'];
+        $input_menu_update['post_id']=$post->id;
+        $menu->fill($input_menu_update)->save();
+        return redirect('/posts/' . $post->id . '/' . $menu->id);
+    }
+    
+    /**
+     * 特定IDのmenuを削除
+     * 
+     */
+        public function delete_menu(Post $post, Menu $menu)
+    {
+        $menu->delete();
+        return redirect('/posts/' . $post->id);
+    }
+    
+    
     
     
 }

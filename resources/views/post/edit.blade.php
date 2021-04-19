@@ -11,7 +11,7 @@
     
     @section('content')
         <h1>投稿編集画面</h1>
-        <form action="/posts/{{ $post->id }}" method="POST">
+        <form action="/posts/{{ $post->id }}" method="POST" enctype='multipart/form-data'>
             @csrf
             @method('PUT')
             <ul class="edit_list">
@@ -41,12 +41,12 @@
                 </li>
                 <li class="edit_item">
                     <h2>画像</h2>
-                    <input type="file" name="image">{{ $post->image }}</textarea>
+                    <input type="file" name="image" value="{{ $post->image }}">
                 </li>
             </ul>
             <input type="submit" value="保存"/>
         </form>
-        <div class="back">[<a href="/posts/{{  $post->id }}">back</a>]</div>
+        <div class="back">[<a href="/posts/{{ $post->id }}">back</a>]</div>
     @endsection
     
-    @include('footer')
+@include('footer')

@@ -16,7 +16,7 @@
         </h1>
         <div class="content">
             <div class="content__post">
-                <h2 class="sub_title">美容師詳細</h2>
+                <h2 class="sub_title">マイページ</h2>
                  <ul class="stylist_lsit">
                     <li class="stylist_item">{{ $post->age }}</li>
                     <li class="stylist_item">{{ $post->shop }}</li>
@@ -30,15 +30,17 @@
         </div>
         <p class="edit">[<a href="/posts/{{ $post->id }}/edit">内容を編集する</a>]</p>
     </section>
-
+    
     <section class="">
         <h1>コース一覧</h1>
-        {{ $post->menus }}
-        <u class="menu_lsit">
-            <li class="menu_item">メニュー1</li>
-            <li class="menu_item">メニュー2</li>
-            <li class="menu_item">メニュー3</li>
-        </u>
+        @foreach($menus as $menu)
+            <ul class="menu_lsit">
+                <li class="menu_item"><a href="/posts/{{ $post->id }}/{{ $menu->id }}">{{ $menu->course }}</a></li>
+                <li class="menu_item">{{ $menu->tag }}</li>
+                <li class="menu_item">¥{{ $menu->price }}</li>
+                <li class="menu_item">¥{{ $menu->description }}</li>
+            </ul>
+        @endforeach
     </section>
     
     <div class="To_menus">
