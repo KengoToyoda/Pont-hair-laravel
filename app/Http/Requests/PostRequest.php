@@ -30,7 +30,7 @@ class PostRequest extends FormRequest
             'post.location' => 'required|string|max:100',
             'post.style' => 'required|string|max:100',
             'post.comment' => '|required|string|max:200',
-            'image' => 'required|image|mimes:jpeg,bmp,png,jpg',
+            'image' => 'image|mimes:jpeg,bmp,png,jpg',
         ];
     }
     

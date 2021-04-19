@@ -25,14 +25,13 @@ class Post extends Model
     ];
     
     /**
-     * 以下ページネーション追加
+     * 以下ページネーション追加ー
      */
      public function getPaginateByLimit(int $limit_count = 4)
     {
         // updated_atで降順に並べたあと、limitで件数制限をかける
         return $this->orderBy('updated_at', 'ASC')->paginate($limit_count);
     }
-    
     
     /**
      * Eloquent：リレーション
@@ -42,6 +41,4 @@ class Post extends Model
     {
         return $this->hasMany('App\Menu');
     }
-     
-     
 }

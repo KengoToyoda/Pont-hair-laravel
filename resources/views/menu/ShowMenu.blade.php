@@ -12,7 +12,7 @@
     @section('content')
     <section>
         <h1 class="title">
-            メニュー
+            新規作成メニュー
         </h1>
         <div class="content">
             <div class="content__menu">
@@ -24,10 +24,16 @@
                 </ul>
             </div>
         </div>
-        
-        <form class="reserve">
-            <button>予約する</button>
+         <p class="edit">[<a href="/posts/{{ $menu->post_id }}/{{ $menu->id }}/edit">内容を編集する</a>]</p>
+        </div>
+        <form action="/posts/{{ $menu->post_id }}/{{ $menu->id }}" method="post" style="display:inline">
+            @csrf
+            @method('DELETE')
+            <button type="submit" onclick="alertFunction()" class="btn">メニューを削除する</button> 
         </form>
+        <div class="Back">
+            <a href="/posts/{{ $menu->post_id }}">マイページに戻る</a>
+        </div>
     </section>
 @endsection
     
