@@ -10,8 +10,8 @@
     @include('header')
     
     @section('content')
-        <h1>投稿編集画面</h1>
-        <form action="/posts/{{ $post->id }}" method="POST" enctype='multipart/form-data'>
+        <h1>美容師情報編集画面</h1>
+        <form action="/account/{{ $post->id }}" method="POST" enctype='multipart/form-data'>
             @csrf
             @method('PUT')
             <ul class="edit_list">
@@ -43,10 +43,18 @@
                     <h2>画像</h2>
                     <input type="file" name="image" value="{{ $post->image }}">
                 </li>
+                <li class="edit_item">
+                    <h2>ショップ</h2>
+                    <input type="text" name="post[email]"  value="{{ $post->email }}" />
+                </li>
+                <li class="edit_item">
+                    <h2>ショップ</h2>
+                    <input type="text" name="post[tel]"  value="{{ $post->tel }}" />
+                </li>
             </ul>
             <input type="submit" value="保存"/>
         </form>
-        <div class="back">[<a href="/posts/{{ $post->id }}">back</a>]</div>
+        <div class="back">[<a href="/account/{{ $post->id }}">back</a>]</div>
     @endsection
     
 @include('footer')

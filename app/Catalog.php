@@ -4,30 +4,26 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Menu extends Model
+class Catalog extends Model
 {
     /**
      * fill関数が扱い可能なプロパティーを指定
      * 
      */
      protected $fillable =[
-        'course',
-        'tag',
-        'price',
-        'description',
+        'catalogImg',
+        'catalogCmt',
         'post_id',
     ];
     
-     /**
+    /**
      * Eloquent：逆リレーション
      * 多対一
-     * PostモデルとMenuモデル
+     * PostモデルとCatalogモデル
      */
     
-    public function post()
+    public function catalog()
     {
         return $this->belongTo('App\Post');
     }
-    
-    
 }

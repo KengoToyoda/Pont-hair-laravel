@@ -5,9 +5,8 @@
         <title>@yield('title')</title>
         <meta name="description" content="@yield('description')">
         <meta name="keywords" content="@yield('keywords')">
-        <link href="static/css/layout.css" rel="stylesheet" type="text/css">
-        @yield('indexCss')
-        <script src="static/js/sample.js" type="text/javascript"></script>
+        <link href="{{ asset('css/layout.css') }}" rel="stylesheet" type="text/css">
+        <script src="{{ asset('js/sample.js') }}" type="text/javascript"></script>
     </head>
     <body>
         @yield('header')

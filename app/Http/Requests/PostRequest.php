@@ -31,6 +31,8 @@ class PostRequest extends FormRequest
             'post.style' => 'required|string|max:100',
             'post.comment' => '|required|string|max:200',
             'image' => 'image|mimes:jpeg,bmp,png,jpg',
+            'email' => 'string|max:100',
+            'tel' => 'integer|max:100',
         ];
     }
     
