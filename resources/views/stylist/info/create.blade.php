@@ -4,14 +4,11 @@
 @section('keywords', '美容師', '美容師アシスタント')
 @section('description', '美容師アシスタント紹介サービスです')
 
-@section('indexCss')
-<link href="static/css/index.css" rel="stylesheet">
-@endsection
     @include('header')
     
     @section('content')
         <h1>美容師登録ページ</h1>
-        <form action="/posts" method="POST" enctype='multipart/form-data'>
+        <form action="/account" method="POST" enctype='multipart/form-data'>
             @csrf
             <ul class="form_list">
                 <li class="form_item">
@@ -48,6 +45,16 @@
                     <h2>写真</h2>
                     <input name="image" type="file" value="{{ old('image') }}">
                     <p class="body__error" style="color:red">{{ $errors->first('image') }}</p>
+                </li>
+                <li class="form_item">
+                    <h2>メールアドレス</h2>
+                    <input type="text" name="post[email]" placeholder="xxxxxxxx@gmail.com" value="{{ old('post.email') }}" />
+                    <p class="title__error" style="color:red">{{ $errors->first('post.email') }}</p>
+                </li>
+                <li class="form_item">
+                    <h2>電話番号</h2>
+                    <input type="text" name="post[tel]" placeholder="080xxxxxxxx" value="{{ old('post.tel') }}" />
+                    <p class="title__error" style="color:red">{{ $errors->first('post.tel') }}</p>
                 </li>
             </ul>
             <input type="submit" value="登録"/>

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMenusTable extends Migration
+class CreateCommentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,13 @@ class CreateMenusTable extends Migration
      */
     public function up()
     {
-        Schema::create('menus', function (Blueprint $table) {
+        Schema::create('comments', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('tag')->nullable();
-            $table->text('course')->nullable();
-            $table->string('price')->nullable();
-            $table->text('description')->nullable();
-            $table->timestampsTz(0);
+            $table->string('clt')->nullable();
+            $table->string('gender')->nullable();
+            $table->bigInteger('ageClt')->nullable();
+            $table->text('commnetClt')->nullable();
+            $table->timestamps();
             $table->softDeletesTz('deleted_at', 0);
         });
     }
@@ -31,6 +31,6 @@ class CreateMenusTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('menus');
+        Schema::dropIfExists('comments');
     }
 }

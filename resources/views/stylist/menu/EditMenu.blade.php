@@ -11,7 +11,7 @@
     
     @section('content')
         <h1>投稿編集画面</h1>
-        <form action="/posts/{{ $menu->post_id }}/{{ $menu->id }}" method="POST">
+        <form action="/account/{{ $menu->post_id }}/{{ $menu->id }}" method="POST">
             @csrf
             @method('PUT')
             <ul class="edit_list">

@@ -4,9 +4,6 @@
 @section('keywords', '美容師', '美容師アシスタント')
 @section('description', '美容師アシスタント紹介サービスです')
 
-@section('indexCss')
-<link href="static/css/index.css" rel="stylesheet">
-@endsection
     @include('header')
     
     @section('content')

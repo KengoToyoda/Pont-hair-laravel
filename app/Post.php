@@ -22,6 +22,8 @@ class Post extends Model
         'style',
         'comment',
         'image',
+        'email',
+        'tel',
     ];
     
     /**
@@ -33,12 +35,25 @@ class Post extends Model
         return $this->orderBy('updated_at', 'ASC')->paginate($limit_count);
     }
     
+    
+        /**
+     * Eloquent：リレーション
+     * PostモデルとCatalogモデル
+     */
+     public function catalogs()
+    {
+        return $this->hasMany('App\Catalog');
+    }
+    
     /**
      * Eloquent：リレーション
+     * 一対多
      * PostモデルとMenuモデル
      */
      public function menus()
     {
         return $this->hasMany('App\Menu');
     }
+    
+
 }
