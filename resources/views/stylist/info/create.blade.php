@@ -12,34 +12,29 @@
             @csrf
             <ul class="form_list">
                 <li class="form_item">
-                    <h2>名前</h2>
-                    <input type="text" name="post[name]" placeholder="名前" value="{{ old('post.name') }}" />
-                    <p class="title__error" style="color:red">{{ $errors->first('post.name') }}</p>
-                </li>
-                <li class="form_item">
                     <h2>年齢</h2>
-                    <input type="text" name="post[age]" placeholder="22" value="{{ old('post.age') }}" />
-                    <p class="title__error" style="color:red">{{ $errors->first('post.age') }}</p>
+                    <input type="text" name="user[age]" placeholder="22" value="{{ old('user.age') }}" />
+                    <p class="title__error" style="color:red">{{ $errors->first('user.age') }}</p>
                 </li>
                 <li class="form_item">
                     <h2>ショップ</h2>
-                    <input type="text" name="post[shop]" placeholder="OCEAN TOKYO HARAJUKU" value="{{ old('post.shop') }}" />
-                    <p class="title__error" style="color:red">{{ $errors->first('post.shop') }}</p>
+                    <input type="text" name="user[shop]" placeholder="OCEAN TOKYO HARAJUKU" value="{{ old('user.shop') }}" />
+                    <p class="title__error" style="color:red">{{ $errors->first('user.shop') }}</p>
                 </li>
                 <li class="form_item">
                     <h2>アクセス</h2>
-                    <input type="text" name="post[location]" placeholder="原宿駅徒歩5分" value="{{ old('post.location') }}" />
-                    <p class="title__error" style="color:red">{{ $errors->first('post.location') }}</p>
+                    <input type="text" name="user[location]" placeholder="原宿駅徒歩5分" value="{{ old('user.location') }}" />
+                    <p class="title__error" style="color:red">{{ $errors->first('user.location') }}</p>
                 </li>
                 <li class="form_item">
                     <h2>得意な施術</h2>
-                    <textarea name="post[style]" placeholder="韓国カラー">{{ old('post.style') }}</textarea>
-                    <p class="body__error" style="color:red">{{ $errors->first('post.style') }}</p>
+                    <textarea name="user[style]" placeholder="韓国カラー">{{ old('user.style') }}</textarea>
+                    <p class="body__error" style="color:red">{{ $errors->first('user.style') }}</p>
                 </li>
                 <li class="form_item">
                     <h2>コメント</h2>
-                    <textarea name="post[comment]" placeholder="カラー・トリートメントモデル募集しています。夜21時以降可能です。">{{ old('post.comment') }}</textarea>
-                    <p class="body__error" style="color:red">{{ $errors->first('post.comment') }}</p>
+                    <textarea name="user[comment]" placeholder="カラー・トリートメントモデル募集しています。夜21時以降可能です。">{{ old('user.comment') }}</textarea>
+                    <p class="body__error" style="color:red">{{ $errors->first('user.comment') }}</p>
                 </li>
                 <li class="form_item">
                     <h2>写真</h2>
@@ -47,14 +42,9 @@
                     <p class="body__error" style="color:red">{{ $errors->first('image') }}</p>
                 </li>
                 <li class="form_item">
-                    <h2>メールアドレス</h2>
-                    <input type="text" name="post[email]" placeholder="xxxxxxxx@gmail.com" value="{{ old('post.email') }}" />
-                    <p class="title__error" style="color:red">{{ $errors->first('post.email') }}</p>
-                </li>
-                <li class="form_item">
                     <h2>電話番号</h2>
-                    <input type="text" name="post[tel]" placeholder="080xxxxxxxx" value="{{ old('post.tel') }}" />
-                    <p class="title__error" style="color:red">{{ $errors->first('post.tel') }}</p>
+                    <input type="text" name="user[tel]" placeholder="080xxxxxxxx" value="{{ old('user.tel') }}" />
+                    <p class="title__error" style="color:red">{{ $errors->first('user.tel') }}</p>
                 </li>
             </ul>
             <input type="submit" value="登録"/>

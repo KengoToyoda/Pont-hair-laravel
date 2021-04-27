@@ -11,50 +11,50 @@
     
     @section('content')
         <h1>美容師情報編集画面</h1>
-        <form action="/account/{{ $post->id }}" method="POST" enctype='multipart/form-data'>
+        <form action="/account/{{ $user->id }}" method="POST" enctype='multipart/form-data'>
             @csrf
             @method('PUT')
             <ul class="edit_list">
                 <li class="edit_item">
                     <h2>名前</h2>
-                    <input type="text" name="post[name]"  value="{{ $post->name }}" />
+                    <input type="text" name="user[name]"  value="{{ $user->name }}" />
                 </li>
                 <li class="edit_item">
                     <h2>年齢</h2>
-                    <input type="text" name="post[age]"  value="{{ $post->age }}" />
+                    <input type="text" name="user[age]"  value="{{ $user->age }}" />
                 </li>
                 <li class="edit_item">
                     <h2>ショップ</h2>
-                    <input type="text" name="post[shop]"  value="{{ $post->shop }}" />
+                    <input type="text" name="user[shop]"  value="{{ $user->shop }}" />
                 </li>
                 <li class="edit_item">
                     <h2>アクセス</h2>
-                    <input type="text" name="post[location]"  value="{{ $post->location }}" />
+                    <input type="text" name="user[location]"  value="{{ $user->location }}" />
                 </li>
                 <li class="edit_item">
                     <h2>得意な施術</h2>
-                    <textarea name="post[style]">{{ $post->style }}</textarea>
+                    <textarea name="user[style]">{{ $user->style }}</textarea>
                 </li>
                 <li class="edit_item">
                     <h2>コメント</h2>
-                    <textarea name="post[comment]">{{ $post->comment }}</textarea>
+                    <textarea name="user[comment]">{{ $user->comment }}</textarea>
                 </li>
                 <li class="edit_item">
                     <h2>画像</h2>
-                    <input type="file" name="image" value="{{ $post->image }}">
+                    <input type="file" name="image" value="{{ $user->image }}">
                 </li>
                 <li class="edit_item">
-                    <h2>ショップ</h2>
-                    <input type="text" name="post[email]"  value="{{ $post->email }}" />
+                    <h2>Email</h2>
+                    <input type="text" name="user[email]"  value="{{ $user->email }}" />
                 </li>
                 <li class="edit_item">
-                    <h2>ショップ</h2>
-                    <input type="text" name="post[tel]"  value="{{ $post->tel }}" />
+                    <h2>電話番号</h2>
+                    <input type="text" name="user[tel]"  value="{{ $user->tel }}" />
                 </li>
             </ul>
             <input type="submit" value="保存"/>
         </form>
-        <div class="back">[<a href="/account/{{ $post->id }}">back</a>]</div>
+        <div class="back">[<a href="/account/{{ $user->id }}">back</a>]</div>
     @endsection
     
 @include('footer')

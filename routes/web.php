@@ -20,71 +20,79 @@ use Illuminate\Support\Facades\Route;
 
 
 /**
- * Post　ルーティング
+ * user　ルーティング
  */
  
  
+
+
+Auth::routes();
+
+//美容師登録トップページ
+Route::get('/account', 'HomeController@index');
+
 //ブログ一覧
-Route::get('/', 'PostController@index');
+Route::get('/', 'UserController@index');
 
-Route::get('/account', 'StylistController@transStylistPage');
+//メニュー情報更新
+Route::put('/account/{user}/menu={menu}','StylistController@updateMenu');
 
-//メニュー投稿画面更新
-Route::put('/account/{post}/{menu}','StylistController@updateMenu');
+//カタログ情報更新
+Route::put('/account/{user}/catalog={catalog}','StylistController@updateCatalog');
 
 //メニューDB登録
-Route::post('/account/{post}/storeMenu', 'StylistController@storeMenu')->where('post', '[0-9]+');
+Route::post('/account/{user}/storeMenu', 'StylistController@storeMenu')->where('user', '[0-9]+');
 
 //カタログ情報DB登録
-Route::post('/account/{post}/storeCatalog', 'StylistController@storeCatalog')->where('post', '[0-9]+');
+Route::post('/account/{user}/storeCatalog', 'StylistController@storeCatalog')->where('user', '[0-9]+');
 
 //美容師情報更新
-Route::put('/account/{post}', 'StylistController@update')->where('post', '[0-9]+');
+Route::put('/account/{user}', 'StylistController@update')->where('user', '[0-9]+');
 
 //美容師情報新規登録
 Route::get('/account/create', 'StylistController@create');
 
 //メニュー新規登録
-Route::get('/account/{post}/menu', 'StylistController@createMenu');
+Route::get('/account/{user}/menu', 'StylistController@createMenu');
 
 //カタログ新規登録
-Route::get('/account/{post}/catalog', 'StylistController@createCatelog');
+Route::get('/account/{user}/catalog', 'StylistController@createCatelog');
 
 //メニュー個別ページ表示
-Route::get('/account/{post}/menu={menu}', 'StylistController@showMenu')->where('post', '[0-9]+');
+Route::get('/account/{user}/menu={menu}', 'StylistController@showMenu')->where('user', '[0-9]+');
 
 //カタログ個別ページ表示
-Route::get('/account/{post}/catalog={catalog}', 'StylistController@showCatalog')->where('post', '[0-9]+');
+Route::get('/account/{user}/catalog={catalog}', 'StylistController@showCatalog')->where('user', '[0-9]+');
 
 //美容師マイページ表示
-Route::get('/account/{post}', 'StylistController@showAccount');
+Route::get('/account/{user}', 'StylistController@showAccount');
 
 //美容師情報DB登録
 Route::post('/account', 'StylistController@store');
 
 //美容師情報編集
-Route::get('/account/{post}/edit', 'StylistController@edit')->where('post', '[0-9]+');
+Route::get('/account/{user}/edit', 'StylistController@edit')->where('user', '[0-9]+');
 
-//メニュー投稿画面編集
-Route::get('/account/{post}/{menu}/edit','StylistController@editMenu');
+//カタログ情報編集
+Route::get('/account/{user}/catalog={catalog}/edit', 'StylistController@editCatalog');
+
+//メニュー情報編集
+Route::get('/account/{user}/menu={menu}/edit','StylistController@editMenu');
+
+//カタログ情報削除
+Route::delete('/account/{user}/catalog={catalog}', 'StylistController@deleteCatalog')->where('user', '[0-9]+');
 
 //メニュー投稿削除
-Route::delete('/account/{post}/{menu}', 'StylistController@deleteMenu')->where('post', '[0-9]+');
+Route::delete('/account/{user}/menu={menu}', 'StylistController@deleteMenu')->where('user', '[0-9]+');
 
 //ブログ投稿削除
-Route::delete('/account/{post}', 'StylistController@delete')->where('post', '[0-9]+');
+Route::delete('/account/{user}', 'StylistController@delete')->where('user', '[0-9]+');
 
 //ブログ投稿詳細
-Route::get('/posts/{post}', 'PostController@show')->where('post', '[0-9]+');
+Route::get('/users/{user}', 'UserController@show')->where('user', '[0-9]+');
 
 //メニュー一覧表示
 Route::get('/menus', 'MenuController@index_menu');
-
-
-
-
-
-
 
 
 

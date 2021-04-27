@@ -17,15 +17,15 @@
                 <p class="catalog_item">{{ $catalog->catalogCmt  }}</p>
             </div>
         </div>
-         <p class="edit">[<a href="/account/{{ $catalog->post_id }}/{{ $catalog->id }}/edit">内容を編集する</a>]</p>
+         <p class="edit">[<a href="/account/{{ $catalog->user_id }}/catalog={{ $catalog->id }}/edit">内容を編集する</a>]</p>
         </div>
-        <form action="/account/{{ $catalog->post_id }}/{{ $catalog->id }}" method="post" style="display:inline">
+        <form action="/account/{{ $catalog->user_id }}/catalog={{ $catalog->id }}" method="post" style="display:inline">
             @csrf
             @method('DELETE')
             <button type="submit" onclick="alertFunction()" class="btn">メニューを削除する</button> 
         </form>
         <div class="Back">
-            <a href="/account/{{ $catalog->post_id }}">マイページに戻る</a>
+            <a href="/account/{{ $catalog->user_id }}">マイページに戻る</a>
         </div>
     </section>
 @endsection

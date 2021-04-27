@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class PostRequest extends FormRequest
+class userRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,12 +24,12 @@ class PostRequest extends FormRequest
     public function rules()
     {
         return [
-            'post.name' => 'required|string|max:100',
-            'post.age' => 'required|integer',
-            'post.shop' => 'required|string|max:100',
-            'post.location' => 'required|string|max:100',
-            'post.style' => 'required|string|max:100',
-            'post.comment' => '|required|string|max:200',
+            'user.name' => 'required|string|max:100',
+            'user.age' => 'required|integer',
+            'user.shop' => 'required|string|max:100',
+            'user.location' => 'required|string|max:100',
+            'user.style' => 'required|string|max:100',
+            'user.comment' => '|required|string|max:200',
             'image' => 'image|mimes:jpeg,bmp,png,jpg',
             'email' => 'string|max:100',
             'tel' => 'integer|max:100',
@@ -39,9 +39,9 @@ class PostRequest extends FormRequest
     public function messages()
     {
         return[
-            // 'post.image.image' => '画像ファイルを選択してください' ,
-            // 'post.image.required' => '画像ファイルを選択してください' ,
-            // 'post.image.mimes' => '指定された拡張子（PNG/JPG/JPEG/GIF）ではありません。' ,
+            // 'user.image.image' => '画像ファイルを選択してください' ,
+            // 'user.image.required' => '画像ファイルを選択してください' ,
+            // 'user.image.mimes' => '指定された拡張子（PNG/JPG/JPEG/GIF）ではありません。' ,
             
         ];
     }
