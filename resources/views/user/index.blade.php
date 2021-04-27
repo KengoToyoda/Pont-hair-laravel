@@ -8,20 +8,20 @@
     
     @section('content')
         <h1>Dresser Lists</h1>
-        <div class='posts'>
-            @foreach ($posts as $post)
-                <div class='post'>
-                    <h2 class='name'><a href="/posts/{{ $post->id }}">{{ $post->name }}</a></h2>
+        <div class='users'>
+            @foreach ($users as $user)
+                <div class='user'>
+                    <h2 class='name'><a href="/users/{{ $user->id }}">{{ $user->name }}</a></h2>
                     <ul class="stylist_info">
-                        <li class="stylist_item">{{ $post->age }}</li>
-                        <li class="stylist_item">{{ $post->shop }}</li>
-                        <li class="stylist_item">{{ $post->location }}</li>
-                        <li class="stylist_item">{{ $post->style }}</li>
+                        <li class="stylist_item">{{ $user->age }}</li>
+                        <li class="stylist_item">{{ $user->shop }}</li>
+                        <li class="stylist_item">{{ $user->location }}</li>
+                        <li class="stylist_item">{{ $user->style }}</li>
                     </ul>
-                    <p class="stylist_comment">{{ $post->comment }}</p>
-                    <img src="/storage/stylist/{{ $post->image }}" alt="images" width="300" height="300">
+                    <p class="stylist_comment">{{ $user->comment }}</p>
+                    <img src="/storage/stylist/{{ $user->image }}" alt="images" width="300" height="300">
                 </div>
-                <form action="/posts/{{ $post->id }}" id="form_{{ $post->id }}" method="post" style="display:inline">
+                <form action="/users/{{ $user->id }}" id="form_{{ $user->id }}" method="POST" style="display:inline">
                     @csrf
                     @method('DELETE')
                     <button type="submit" onclick="alertFunction()" class="btn">[DELETE]</button> 
@@ -29,7 +29,7 @@
             @endforeach
         </div>
         <div class="pagnate">
-            {{ $posts->links() }}
+            {{ $users->links() }}
         </div>
         <div class="To_menyu">
             <a class="" href="/menus">メニュ一覧をみる</a>    

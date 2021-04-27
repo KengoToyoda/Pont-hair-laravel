@@ -15,7 +15,7 @@ class Menu extends Model
         'tag',
         'price',
         'description',
-        'post_id',
+        'user_id',
     ];
     
      /**
@@ -24,9 +24,9 @@ class Menu extends Model
      * PostモデルとMenuモデル
      */
     
-    public function post()
+    public function menu()
     {
-        return $this->belongTo('App\Post');
+        return $this->belongTo('App\User');
     }
     
     

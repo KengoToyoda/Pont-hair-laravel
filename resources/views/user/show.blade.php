@@ -12,37 +12,37 @@
     @section('content')
     <section class="">
         <h1 class="title">
-            {{ $post->name }}
+            {{ $user->name }}
         </h1>
         <div class="content">
-            <div class="content__post">
+            <div class="content__user">
                 <h2 class="sub_title">マイページ</h2>
                  <ul class="stylist_lsit">
-                    <li class="stylist_item">{{ $post->age }}</li>
-                    <li class="stylist_item">{{ $post->shop }}</li>
-                    <li class="stylist_item">{{ $post->location }}</li>
-                    <li class="stylist_item">{{ $post->style }}</li>
+                    <li class="stylist_item">{{ $user->age }}</li>
+                    <li class="stylist_item">{{ $user->shop }}</li>
+                    <li class="stylist_item">{{ $user->location }}</li>
+                    <li class="stylist_item">{{ $user->style }}</li>
                 </ul>
                 <h2 class="sub_title">コメント</h2>
-                <p class="stylist_comment">{{ $post->comment }}</p>
-                <img src="{{ asset('storage/stylist/' . $post->image) }}"> 
+                <p class="stylist_comment">{{ $user->comment }}</p>
+                <img src="{{ asset('storage/stylist/' . $user->image) }}"> 
             </div>
         </div>
-        <p class="edit">[<a href="/posts/{{ $post->id }}/edit">内容を編集する</a>]</p>
+        <p class="edit">[<a href="/users/{{ $user->id }}/edit">内容を編集する</a>]</p>
     </section>
     
     <section class="">
         <h1>コース一覧</h1>
         @foreach($menus as $menu)
             <ul class="menu_lsit">
-                <li class="menu_item"><a href="/posts/{{ $post->id }}/{{ $menu->id }}">{{ $menu->course }}</a></li>
+                <li class="menu_item"><a href="/users/{{ $user->id }}/{{ $menu->id }}">{{ $menu->course }}</a></li>
                 <li class="menu_item">{{ $menu->tag }}</li>
                 <li class="menu_item">¥{{ $menu->price }}</li>
                 <li class="menu_item">¥{{ $menu->description }}</li>
             </ul>
         @endforeach
         <div class="To_menus">
-            <a href="/create/{{ $post->id }}">コースを登録する</a>
+            <a href="/create/{{ $user->id }}">コースを登録する</a>
         </div>
     </section>
     <section class="">

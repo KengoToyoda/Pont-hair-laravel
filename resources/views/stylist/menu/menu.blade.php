@@ -17,7 +17,7 @@
         <div class="content">
             @foreach ($menus as $menu)
                 <div class="content__menu">
-                    <h2 class="menu_title"><a href="/posts/menus/{{ $menu->id }}">{{ $menu->course }}</a></h2>
+                    <h2 class="menu_title"><a href="/users/menus/{{ $menu->id }}">{{ $menu->course }}</a></h2>
                      <ul class="menu_lsit">
                         <li class="menu_item">{{ $menu->tag }}</li>
                         <li class="menu_item">{{ $menu->price }}</li>

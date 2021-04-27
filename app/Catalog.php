@@ -13,17 +13,17 @@ class Catalog extends Model
      protected $fillable =[
         'catalogImg',
         'catalogCmt',
-        'post_id',
+        'user_id',
     ];
     
     /**
      * Eloquent：逆リレーション
      * 多対一
-     * PostモデルとCatalogモデル
+     * userモデルとCatalogモデル
      */
     
     public function catalog()
     {
-        return $this->belongTo('App\Post');
+        return $this->belongTo('App\User');
     }
 }

@@ -21,15 +21,15 @@
                 </ul>
             </div>
         </div>
-         <p class="edit">[<a href="/account/{{ $menu->post_id }}/{{ $menu->id }}/edit">内容を編集する</a>]</p>
+         <p class="edit">[<a href="/account/{{ $menu->user_id }}/menu={{ $menu->id }}/edit">内容を編集する</a>]</p>
         </div>
-        <form action="/account/{{ $menu->post_id }}/{{ $menu->id }}" method="post" style="display:inline">
+        <form action="/account/{{ $menu->user_id }}/{{ $menu->id }}" method="post" style="display:inline">
             @csrf
             @method('DELETE')
             <button type="submit" onclick="alertFunction()" class="btn">メニューを削除する</button> 
         </form>
         <div class="Back">
-            <a href="/account/{{ $menu->post_id }}">マイページに戻る</a>
+            <a href="/account/{{ $menu->user_id }}">マイページに戻る</a>
         </div>
     </section>
 @endsection
