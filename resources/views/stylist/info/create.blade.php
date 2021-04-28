@@ -12,6 +12,11 @@
             @csrf
             <ul class="form_list">
                 <li class="form_item">
+                    <h2>名前</h2>
+                    <input type="text" name="user[name]" value="{{ Auth::user()->name }}" />
+                    <p class="title__error" style="color:red">{{ $errors->first('user.name') }}</p>
+                </li>
+                <li class="form_item">
                     <h2>年齢</h2>
                     <input type="text" name="user[age]" placeholder="22" value="{{ old('user.age') }}" />
                     <p class="title__error" style="color:red">{{ $errors->first('user.age') }}</p>
@@ -45,6 +50,11 @@
                     <h2>電話番号</h2>
                     <input type="text" name="user[tel]" placeholder="080xxxxxxxx" value="{{ old('user.tel') }}" />
                     <p class="title__error" style="color:red">{{ $errors->first('user.tel') }}</p>
+                </li>
+                <li class="form_item">
+                    <h2>メールアドレス</h2>
+                    <input type="text" name="user[emal]" value="{{ Auth::user()->email }}" />
+                    <p class="title__error" style="color:red">{{ $errors->first('user.emal') }}</p>
                 </li>
             </ul>
             <input type="submit" value="登録"/>
