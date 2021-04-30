@@ -6,6 +6,7 @@
             <li class="nav_list">[<a href="/mypage">マイページはこちら</a>]</li>
             <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
+                        <li class="nav_list">[<a href="/account">美容師の方はこちら</a>]</li>
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">

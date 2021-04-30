@@ -55,7 +55,7 @@ class User extends Authenticatable
         return $this->orderBy('updated_at', 'ASC')->paginate($limit_count);
     }
     
-            /**
+    /**
      * Eloquent：リレーション
      * PostモデルとCatalogモデル
      */

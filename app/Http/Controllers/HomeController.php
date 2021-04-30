@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Menu;
 use App\User;
+use App\Catalog;
+use Illuminate\Http\Request;
+use App\Http\Requests\UserRequest;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -24,8 +28,18 @@ class HomeController extends Controller
      */
     public function index(User $user)
     {
-        return view('home')->with([
+        //ユーザー情報取得
+        $user = Auth::user();
+        //メニュー情報取得
+        $menus=$user->menus()->get();
+        //カタログ情報取得
+        $catalogs=$user->catalogs()->get();
+
+        
+        return view('stylist/home')->with([
             'user' => $user,
+            'menus' => $menus,
+            'catalogs' => $catalogs,
             ]);
     }
 }
