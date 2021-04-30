@@ -14,7 +14,7 @@
         <h1 class=title>
             カタログ登録ページ
         </h1>
-        <form action="/account/{{ $user->id }}/storeCatalog" method="POST" enctype='multipart/form-data'>
+        <form action="{{ route('user.catalog.store') }}" method="POST" enctype='multipart/form-data'>
             @csrf
             <ul class="form_list">
                 <li class="form_item">

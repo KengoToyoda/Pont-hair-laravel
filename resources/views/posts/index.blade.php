@@ -11,7 +11,7 @@
         <div class='users'>
             @foreach ($users as $user)
                 <div class='user'>
-                    <h2 class='name'><a href="/users/{{ $user->id }}">{{ $user->name }}</a></h2>
+                    <h2 class='name'><a href="/stylists/{{ $user->id }}">{{ $user->name }}</a></h2>
                     <ul class="stylist_info">
                         <li class="stylist_item">{{ $user->age }}</li>
                         <li class="stylist_item">{{ $user->shop }}</li>
@@ -21,16 +21,12 @@
                     <p class="stylist_comment">{{ $user->comment }}</p>
                     <img src="/storage/stylist/{{ $user->image }}" alt="images" width="300" height="300">
                 </div>
-                <form action="/users/{{ $user->id }}" id="form_{{ $user->id }}" method="POST" style="display:inline">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" onclick="alertFunction()" class="btn">[DELETE]</button> 
-                </form>
             @endforeach
         </div>
         <div class="pagnate">
             {{ $users->links() }}
         </div>
+        
         <div class="To_menyu">
             <a class="" href="/menus">メニュ一覧をみる</a>    
         </div>

@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest; 
 use Illuminate\Support\Facades\Storage;//画像操作
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class StylistController extends Controller
 {
@@ -29,50 +30,55 @@ class StylistController extends Controller
      * 美容師情報を新規登録
      * 
      */
-     public function create(User $user)
-     {
-        $user = Auth::user();
-        return view('stylist/info/create')->with(['user' => $user]);
+    //  public function create(User $user)
+    //  {
+    //     $user = Auth::user();
+    //     return view('stylist/info/create')->with(['user' => $user]);
         
-     }
+    //  }
      
     /**
      * 新規作成した投稿をDBに反映
      * @param Request $request
      * @return Response
      */
-        public function store(User $user, userRequest $request)
-    {
-        //formのnameが'user[**]'の入力を$articleに格納
-        $input = $request['user'];
-        //画像ファイルは$request-+>fileで受け取る
-        $photo = $request->file('image');
-        $photo_name = $photo->getClientOriginalName();
-        //保存するディレクトリ(storage/app/public以下)、ファイル、ファイル名の順
-        Storage::disk('public')->putFileAs('stylist',$photo,$photo_name);
-        $input['image'] = $photo_name;
-        $user->fill($input)->save();
+    //     public function store(User $user, UserRequest $request)
+    // {
+    //     //formのnameが'user[**]'の入力を$articleに格納
+    //     $input = $request['user'];
+    //     //formにpasswordを挿入
+    //     $input['password'] = Hash::make($request['password']);
         
-        return redirect('/account/' . $user->id);
-    }
+    //     //画像ファイルは$request-+>fileで受け取る
+    //     $photo = $request->file('image');
+    //     $photo_name = $photo->getClientOriginalName();
+    //     //保存するディレクトリ(storage/app/public以下)、ファイル、ファイル名の順
+    //     Storage::disk('public')->putFileAs('stylist',$photo,$photo_name);
+    //     $input['image'] = $photo_name;
+    //     $user->fill($input)->save();
+        
+    //     return redirect('/account/' . $user->id);
+    // }
     
     /**
      * 美容師情報を表示
      */
     
-      public function showAccount(User $user, Menu $menu, Catalog $catalog)
-    {
-        //メニュー情報取得
-        $menus=$user->menus()->get();
-        //カタログ情報取得
-        $catalogs=$user->find(1)->catalogs()->get();
+    //   public function showAccount(User $user, Menu $menu, Catalog $catalog)
+    // {
+    //     //メニュー情報取得
+    //     $menus=$user->menus()->get();
+    //     //カタログ情報取得
+    //     $catalogs=$user->catalogs()->get();
+    //     //ユーザー情報取得
+    //     $user = Auth::user();
         
-        return view('stylist/showAccount')->with([
-            'user' => $user,
-            'menus' => $menus,
-            'catalogs' => $catalogs,
-            ]);
-    }
+    //     return view('stylist/showAccount')->with([
+    //         'user' => $user,
+    //         'menus' => $menus,
+    //         'catalogs' => $catalogs,
+    //         ]);
+    // }
     
     /**
      * 美容師情報を編集
@@ -80,6 +86,7 @@ class StylistController extends Controller
      */
         public function edit(User $user)
     {
+        $user = Auth::user();
         return view('stylist/info/edit')->with(['user' => $user]);
     }
     
@@ -101,10 +108,10 @@ class StylistController extends Controller
             Storage::disk('public')->putFileAs('stylist',$photo,$photo_name);
             $input_user['image'] = $photo_name;
             $user->fill($input_user)->save();
+        }else{
+             //画像ファイルを変更しない時
+            $user->fill($input_user)->save(); //image以外を保存☆☆
         }
-        
-        //画像ファイルを変更しない時
-        $user->fill($input_user)->save(); //image以外を保存☆☆
         
         return redirect('/account/' . $user->id);
     }
@@ -137,10 +144,11 @@ class StylistController extends Controller
      */
     public function storeMenu(Menu $menu, Request $request, User $user)
     {
+        $user = Auth::user();
         $input_menu = $request['menu'];
         $input_menu['user_id']=$user->id;
         $menu->fill($input_menu)->save();
-        return redirect('/account/' . $user->id . '/' . 'menu=' . $menu->id);
+        return redirect('/account/' . 'menu=' . $menu->id);
         
     }
     
@@ -149,6 +157,7 @@ class StylistController extends Controller
      */
     public function showMenu(User $user, Menu $menu)
     {
+        
         return view('stylist/menu/ShowMenu')->with([
                 'menu' => $menu,
                 ]);
@@ -170,10 +179,11 @@ class StylistController extends Controller
      */
     public function updateMenu(Request $request, User $user, Menu $menu)
     {
+        $user = Auth::user();
         $input_menu_update = $request['menu'];
         $input_menu_update['user_id']=$user->id;
         $menu->fill($input_menu_update)->save();
-        return redirect('/account/' . $user->id . '/' . 'menu=' . $menu->id);
+        return redirect('/account/' . 'menu=' . $menu->id);
     }
     
     /**
@@ -182,8 +192,9 @@ class StylistController extends Controller
      */
         public function deleteMenu(User $user, Menu $menu)
     {
+        $user = Auth::user();
         $menu->delete();
-        return redirect('/account/' . $user->id);
+        return redirect('/account/');
     }
     
     
@@ -204,6 +215,7 @@ class StylistController extends Controller
      */
     public function storeCatalog(User $user, Request $request, Catalog $catalog)
     {
+        $user = Auth::user();
         //formのnameが'user[**]'の入力を$articleに格納
         $input = $request['catalog'];
         //親テーブルのidを取得
@@ -217,7 +229,7 @@ class StylistController extends Controller
         
         $catalog->fill($input)->save();
         
-        return redirect('/account/' . $user->id . '/' . 'catalog=' . $catalog->id);
+        return redirect('/account/' . 'catalog=' . $catalog->id);
     }
     
     /**
@@ -245,6 +257,7 @@ class StylistController extends Controller
      */
     public function updateCatalog(Request $request, User $user, Catalog $catalog)
     {
+        $user = Auth::user();
         //formのnameが'user[**]'の入力を$inputに格納
         $input = $request['catalog'];
         //親テーブルのidを取得
@@ -260,12 +273,15 @@ class StylistController extends Controller
             $input['catalogImg'] = $photo_name;
             
             $catalog->fill($input)->save();
+        }else{
+            
+            //画像ファイルを変更しない時
+            $catalog->fill($input)->save(); //image以外を保存☆☆
         }
         
-        //画像ファイルを変更しない時
-        $catalog->fill($input)->save(); //image以外を保存☆☆
+      
         
-        return redirect('/account/' . $user->id . '/catalog=' . $catalog->id);
+        return redirect('/account/' . 'catalog=' . $catalog->id);
         
     }
     
@@ -276,7 +292,7 @@ class StylistController extends Controller
         public function deleteCatalog(User $user, Catalog $catalog)
     {
         $catalog->delete();
-        return redirect('/account/' . $user->id);
+        return redirect('/account/');
     }
     
 }

@@ -11,7 +11,7 @@
     
     @section('content')
         <h1>メニューを編集</h1>
-        <form action="/account/{{ $menu->user_id }}/menu={{ $menu->id }}" method="POST">
+        <form action="{{ route('user.menu.update', $menu->id) }}" method="POST">
             @csrf
             @method('PUT')
             <ul class="edit_list">
@@ -34,7 +34,7 @@
             </ul>
             <input type="submit" value="保存"/>
         </form>
-        <div class="back">[<a href="/account/{{ $menu->user_id }}/menu={{ $menu->id }}">back</a>]</div>
+        <div class="back">[<a href="/account/menu={{ $menu->id }}">back</a>]</div>
     @endsection
     
 @include('footer')

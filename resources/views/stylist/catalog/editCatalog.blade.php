@@ -10,8 +10,8 @@
     @include('header')
     
     @section('content')
-        <h1>投稿編集画面</h1>
-        <form action="/account/{{ $catalog->user_id }}/catalog={{ $catalog->id }}" method="POST" enctype='multipart/form-data'>
+        <h1>カタログ編集画面</h1>
+        <form action="{{ route('user.catalog.update', $catalog->id) }}" method="POST" enctype='multipart/form-data'>
             @csrf
             @method('PUT')
             <ul class="form_list">
@@ -26,7 +26,7 @@
             </ul>
             <input type="submit" value="保存"/>
         </form>
-        <div class="back">[<a href="/account/{{ $catalog->user_id }}/catalog={{ $catalog->id }}">back</a>]</div>
+        <div class="back">[<a href="/account/catalog={{ $catalog->id }}">back</a>]</div>
     @endsection
     
 @include('footer')

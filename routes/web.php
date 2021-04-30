@@ -13,86 +13,95 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('index');
-// });
-
-
-
 /**
- * user　ルーティング
+ * ルーティング１
+ * 
+ * 美容師向け機能
+ * /account/〇〇
+ * 
  */
  
- 
+//カタログ情報編集
+Route::get('/account/edit/catalog={catalog}', 'StylistController@editCatalog')->name('user.catalog.edit');
 
+//メニュー情報編集
+Route::get('/account/edit/menu={menu}','StylistController@editMenu')->name('user.menu.edit');
 
-Auth::routes();
+ //美容師情報編集
+Route::get('/account/edit/{user}', 'StylistController@edit')->where('user', '[0-9]+')->name('user.edit');
+
+//メニュー個別ページ表示
+Route::get('/account/menu={menu}', 'StylistController@showMenu')->where('user', '[0-9]+')->name('user.menu.show');
+
+//カタログ個別ページ表示
+Route::get('/account/catalog={catalog}', 'StylistController@showCatalog')->where('user', '[0-9]+')->name('user.catalog.show');
+
+//メニュー新規登録
+Route::get('/account/menu', 'StylistController@createMenu')->name("user.menu.create");
+
+//カタログ新規登録
+Route::get('/account/catalog', 'StylistController@createCatelog')->name('user.catalog.create');
 
 //美容師登録トップページ
 Route::get('/account', 'HomeController@index');
 
-//ブログ一覧
-Route::get('/', 'UserController@index');
 
 //メニュー情報更新
-Route::put('/account/{user}/menu={menu}','StylistController@updateMenu');
+Route::put('/account/menu={menu}','StylistController@updateMenu')->name('user.menu.update');
 
 //カタログ情報更新
-Route::put('/account/{user}/catalog={catalog}','StylistController@updateCatalog');
-
-//メニューDB登録
-Route::post('/account/{user}/storeMenu', 'StylistController@storeMenu')->where('user', '[0-9]+');
-
-//カタログ情報DB登録
-Route::post('/account/{user}/storeCatalog', 'StylistController@storeCatalog')->where('user', '[0-9]+');
+Route::put('/account/catalog={catalog}','StylistController@updateCatalog')->name('user.catalog.update');
 
 //美容師情報更新
-Route::put('/account/{user}', 'StylistController@update')->where('user', '[0-9]+');
+Route::put('/account/{user}', 'StylistController@update')->where('user', '[0-9]+')->name("user.update");
 
-//美容師情報新規登録
-Route::get('/account/create', 'StylistController@create');
 
-//メニュー新規登録
-Route::get('/account/{user}/menu', 'StylistController@createMenu');
+//メニューDB登録
+Route::post('/account/menu/storeMenu', 'StylistController@storeMenu')->where('user', '[0-9]+')->name('user.menu.store');
 
-//カタログ新規登録
-Route::get('/account/{user}/catalog', 'StylistController@createCatelog');
+//カタログ情報DB登録
+Route::post('/account/catalog/storeCatalog', 'StylistController@storeCatalog')->where('user', '[0-9]+')->name('user.catalog.store');
 
-//メニュー個別ページ表示
-Route::get('/account/{user}/menu={menu}', 'StylistController@showMenu')->where('user', '[0-9]+');
-
-//カタログ個別ページ表示
-Route::get('/account/{user}/catalog={catalog}', 'StylistController@showCatalog')->where('user', '[0-9]+');
-
-//美容師マイページ表示
-Route::get('/account/{user}', 'StylistController@showAccount');
-
-//美容師情報DB登録
-Route::post('/account', 'StylistController@store');
-
-//美容師情報編集
-Route::get('/account/{user}/edit', 'StylistController@edit')->where('user', '[0-9]+');
-
-//カタログ情報編集
-Route::get('/account/{user}/catalog={catalog}/edit', 'StylistController@editCatalog');
-
-//メニュー情報編集
-Route::get('/account/{user}/menu={menu}/edit','StylistController@editMenu');
 
 //カタログ情報削除
-Route::delete('/account/{user}/catalog={catalog}', 'StylistController@deleteCatalog')->where('user', '[0-9]+');
+Route::delete('/account/catalog={catalog}', 'StylistController@deleteCatalog')->where('user', '[0-9]+')->name('user.catalog.delete');
 
 //メニュー投稿削除
-Route::delete('/account/{user}/menu={menu}', 'StylistController@deleteMenu')->where('user', '[0-9]+');
+Route::delete('/account/menu={menu}', 'StylistController@deleteMenu')->where('user', '[0-9]+')->name('user.menu.delete');
 
 //ブログ投稿削除
-Route::delete('/account/{user}', 'StylistController@delete')->where('user', '[0-9]+');
+Route::delete('/account', 'StylistController@delete')->where('user', '[0-9]+')->name('user.delete');
 
-//ブログ投稿詳細
-Route::get('/users/{user}', 'UserController@show')->where('user', '[0-9]+');
+/**
+ * ルーティング２
+ * 
+ * お客様向け機能
+ * /stylists/〇〇
+ * 
+ */
+ 
+//スタイリスト一覧
+Route::get('/', 'UserController@index');
 
-//メニュー一覧表示
+//スタイリスト情報詳細表示
+Route::get('/stylists/{user}', 'UserController@show')->where('user', '[0-9]+');
+
+//スタイリストメニュー詳細表示
+Route::get('/stylists/{user}/menu={menu}', 'UserController@showMenuToCust');
+
+//スタイリストカタログ詳細表示
+Route::get('/stylists/{user}/catalog={catalog}', 'UserController@showCatalogToCust');
+
+//メニュ一覧表示
 Route::get('/menus', 'MenuController@index_menu');
+
+
+
+/**
+ * Authメソッド ルーティング
+ */ 
+ 
+ Auth::routes();
 
 
 

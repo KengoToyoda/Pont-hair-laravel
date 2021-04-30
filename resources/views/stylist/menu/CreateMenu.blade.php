@@ -14,7 +14,7 @@
         <h1 class=title>
             メニュー登録ページ
         </h1>
-        <form action="/account/{{ $user->id }}/storeMenu" method="POST" enctype='multipart/form-data'>
+        <form action="{{ route('user.menu.store') }}" method="POST" enctype='multipart/form-data'>
             @csrf
             <ul class="form_list">
                 <li class="form_item">
