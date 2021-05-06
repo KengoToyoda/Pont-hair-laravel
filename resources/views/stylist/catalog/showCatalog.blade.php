@@ -22,7 +22,7 @@
         <form action="{{ route('user.catalog.delete', $catalog->id) }}" method="post" style="display:inline">
             @csrf
             @method('DELETE')
-            <button type="submit" name="delete" onClick="alertFunction(event);return false;" class="btn">メニューを削除する</button>
+            <button type="submit" name="delete" onClick="alertFunction(event);return false;" class="btn">カタログを削除する</button>
         </form>
         <div class="Back">
             <a href="/account">マイページに戻る</a>

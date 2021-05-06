@@ -11,7 +11,7 @@
     
     @section('content')
         <h1>美容師情報編集画面</h1>
-        <form action="/account/{{ $user->id }}" method="POST" enctype='multipart/form-data'>
+        <form action="{{ route('user.update', $user->id) }}" method="POST" enctype='multipart/form-data'>
             @csrf
             @method('PUT')
             <ul class="edit_list">

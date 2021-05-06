@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito);@charset "UTF-8";
+@import url(https://fonts.googleapis.com/css?family=Nunito);
 
 /*!
  * Bootstrap v4.6.0 (https://getbootstrap.com/)
@@ -85,20 +85,7 @@ hr {
   overflow: visible;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  margin-top: 0;
-  margin-bottom: 0.5rem;
-}
 
-p {
-  margin-top: 0;
-  margin-bottom: 1rem;
-}
 
 abbr[title],
 abbr[data-original-title] {
@@ -121,7 +108,7 @@ ol,
 ul,
 dl {
   margin-top: 0;
-  margin-bottom: 1rem;
+  /*margin-bottom: 1rem;*/
 }
 
 ol ol,
@@ -170,7 +157,7 @@ sup {
 }
 
 a {
-  color: #3490dc;
+  /*color: #3490dc;*/
   text-decoration: none;
   background-color: transparent;
 }
@@ -210,7 +197,7 @@ figure {
 }
 
 img {
-  vertical-align: middle;
+  /*vertical-align: middle;*/
   border-style: none;
 }
 
@@ -368,82 +355,6 @@ template {
 
 [hidden] {
   display: none !important;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-.h1,
-.h2,
-.h3,
-.h4,
-.h5,
-.h6 {
-  margin-bottom: 0.5rem;
-  font-weight: 500;
-  line-height: 1.2;
-}
-
-h1,
-.h1 {
-  font-size: 2.25rem;
-}
-
-h2,
-.h2 {
-  font-size: 1.8rem;
-}
-
-h3,
-.h3 {
-  font-size: 1.575rem;
-}
-
-h4,
-.h4 {
-  font-size: 1.35rem;
-}
-
-h5,
-.h5 {
-  font-size: 1.125rem;
-}
-
-h6,
-.h6 {
-  font-size: 0.9rem;
-}
-
-.lead {
-  font-size: 1.125rem;
-  font-weight: 300;
-}
-
-.display-1 {
-  font-size: 6rem;
-  font-weight: 300;
-  line-height: 1.2;
-}
-
-.display-2 {
-  font-size: 5.5rem;
-  font-weight: 300;
-  line-height: 1.2;
-}
-
-.display-3 {
-  font-size: 4.5rem;
-  font-weight: 300;
-  line-height: 1.2;
-}
-
-.display-4 {
-  font-size: 3.5rem;
-  font-weight: 300;
-  line-height: 1.2;
 }
 
 hr {
@@ -4552,10 +4463,6 @@ input[type=button].btn-block {
   list-style: none;
 }
 
-.navbar-nav .nav-link {
-  padding-right: 0;
-  padding-left: 0;
-}
 
 .navbar-nav .dropdown-menu {
   position: static;
