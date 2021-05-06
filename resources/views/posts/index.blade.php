@@ -7,28 +7,60 @@
     @include('header')
     
     @section('content')
-        <h1>Dresser Lists</h1>
-        <div class='users'>
-            @foreach ($users as $user)
-                <div class='user'>
-                    <h2 class='name'><a href="/stylists/{{ $user->id }}">{{ $user->name }}</a></h2>
-                    <ul class="stylist_info">
-                        <li class="stylist_item">{{ $user->age }}</li>
-                        <li class="stylist_item">{{ $user->shop }}</li>
-                        <li class="stylist_item">{{ $user->location }}</li>
-                        <li class="stylist_item">{{ $user->style }}</li>
-                    </ul>
-                    <p class="stylist_comment">{{ $user->comment }}</p>
-                    <img src="/storage/stylist/{{ $user->image }}" alt="images" width="300" height="300">
-                </div>
-            @endforeach
+        <!-- pc left lock start-->
+        <div class="top_title_bg">
+           <h1><a href="/" class="top_title fm">Pont hair</a></h1>
         </div>
-        <div class="pagnate">
-            {{ $users->links() }}
-        </div>
+        <div class="pc_flex">
+            <div class="pc_left_block">
+                <!--検索フォーム -->
+                <section class="service_wrap">
+                  <div class="top_model_reserve pont">
+                    <div class="top_model_reserve_inner">
+                      <h2 class="hg title">施術別で美容師を探す</h2>
+                      <form method="get" action="/" class="search_container">
+                        <input type="text" name="s" value=""  placeholder="キーワード検索">
+                        <i type="submit" class="fas fa-search search_icon"></i>
+                      </form>
+                      <ul class="fg">
+                        <li class="cut"><a href="">カット</a></li>
+                        <li class="color"><a href="">カラー</a></li>
+                        <li class="treatment"><a href="">トリートメント</a></li>
+                        <li class="hairarenge"><a href="<">ヘアアレンジ</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </section>
+                <section class="container">
+                    <h2 class="hg title">Dresser Lists</h2>
+                    <div class='slider'>
+                        @foreach ($users as $user)
+                            <div class=slider_item>
+                                <a href="/stylists/{{ $user->id }}" class="stylist_info1" style="background:url('/storage/stylist/{{ $user->image }}') center no-repeat; height:300px; display:block; background-size:cover;">
+                                    <h2 class='stylist_name'>{{ $user->name }}</h2>
+                                </a>
+                                <ul class="stylist_info2">
+                                    <li class="stylist_item">{{ $user->age }}</li>
+                                    <li class="stylist_item">{{ $user->shop }}</li>
+                                    <li class="stylist_item">{{ $user->location }}</li>
+                                    <li class="stylist_item">{{ $user->style }}</li>
+                                    <li><p class="stylist_comment">{{ $user->comment }}</p></li>
+                                </ul>
+                            </div>
+                        @endforeach
+                    </div>
+                </section>
+                
+            </div>
         
-        <div class="To_menyu">
-            <a class="" href="/menus">メニュ一覧をみる</a>    
+            <!-- pc right lock start-->
+            <div class="pc_right_block">
+                <p>
+                    ああああああああああああああああああああああああああああああああ
+                    <br>
+                    ああああああああああああああああああああああああああああああああ
+                </p>
+            </div>
         </div>
     @endsection
     

@@ -17,16 +17,14 @@
 
     </head>
     <body>
-        @yield('header')
-        
-        <section class="contents">
-            <!-- コンテンツ -->
-            <div class="wrap">
+        <div class="wrap">
+            @yield('header')
+            <section class="contents">
+                    <!-- コンテンツ -->
                     @yield('content')
-            </div>
-        </section>
-        
-        @yield('footer')
+            </section>
+            @yield('footer')
+        </div>
     </body>
     
 

@@ -28,7 +28,7 @@ Route::get('/account/edit/catalog={catalog}', 'StylistController@editCatalog')->
 Route::get('/account/edit/menu={menu}','StylistController@editMenu')->name('user.menu.edit');
 
  //美容師情報編集
-Route::get('/account/edit/{user}', 'StylistController@edit')->where('user', '[0-9]+')->name('user.edit');
+Route::get('/account/edit/{user}', 'UserController@edit')->where('user', '[0-9]+')->name('user.edit');
 
 //メニュー個別ページ表示
 Route::get('/account/menu={menu}', 'StylistController@showMenu')->where('user', '[0-9]+')->name('user.menu.show');
@@ -46,6 +46,7 @@ Route::get('/account/catalog', 'StylistController@createCatelog')->name('user.ca
 Route::get('/account', 'HomeController@index');
 
 
+
 //メニュー情報更新
 Route::put('/account/menu={menu}','StylistController@updateMenu')->name('user.menu.update');
 
@@ -53,7 +54,7 @@ Route::put('/account/menu={menu}','StylistController@updateMenu')->name('user.me
 Route::put('/account/catalog={catalog}','StylistController@updateCatalog')->name('user.catalog.update');
 
 //美容師情報更新
-Route::put('/account/{user}', 'StylistController@update')->where('user', '[0-9]+')->name("user.update");
+Route::put('/account/{user}', 'UserController@update')->where('user', '[0-9]+')->name("user.update");
 
 
 //メニューDB登録
@@ -69,8 +70,8 @@ Route::delete('/account/catalog={catalog}', 'StylistController@deleteCatalog')->
 //メニュー投稿削除
 Route::delete('/account/menu={menu}', 'StylistController@deleteMenu')->where('user', '[0-9]+')->name('user.menu.delete');
 
-//ブログ投稿削除
-Route::delete('/account', 'StylistController@delete')->where('user', '[0-9]+')->name('user.delete');
+//美容師情報削除
+Route::delete('/account', 'UserController@delete')->where('user', '[0-9]+')->name('user.delete');
 
 /**
  * ルーティング２

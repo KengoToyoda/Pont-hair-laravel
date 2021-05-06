@@ -28,22 +28,411 @@ body {
   /*background-color:#000;*/
 }
 
+ol, ul {
+  list-style: none;
+}
+
+.fm{
+  font-family: "游明朝", YuMincho, "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN", "メイリオ", Meiryo, 'Noto Serif JP', serif !important;
+}
+
+.fg{
+  font-family: "游ゴシック", YuGothic, "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, Verdana, sans-serif !important;
+}
+
+.hg {
+    font-family: 'ヒラギノ丸ゴ ProN','Hiragino Maru Gothic ProN',sans-serif;
+}
+
+.wrap{
+  width: 100%;
+  margin: 0 auto;
+  max-width: 1500px;
+  background: #f2f2f2;
+}
+
 .btn:hover{
     opacity: .4;
     transition: all ease .8s;
 }
 
+.title{
+    font-size: 30px;
+    font-weight: bold;
+    color: #009357;
+}
+
+.bold {
+    font-weight: 600;
+}
+
+/*
+ * ヘッダー
+ *
+ */
+ 
 header{
-  padding:40px 0;
+  padding:20px 0;
   text-align: center;
   font-size: 20px;
+  background-color: #ffffff
 }
 
 header .heaer_nav{
   display: flex;
   justify-content:space-around;
-}
-
-header .heaer_nav .nav_list{
   list-style: none;
 }
+.nav-link{
+  color: #444;
+}
+
+/*.nav_item a:before, .circleBehind a:after {*/
+/*    position: absolute;*/
+/*    top: 22px;*/
+/*    left: 50%;*/
+/*    width: 50px;*/
+/*    height: 50px;*/
+/*    border: 4px solid #269d66;*/
+/*    transform: translateX(-50%) translateY(-50%) scale(0.8);*/
+/*    border-radius: 50%;*/
+/*    background: transparent;*/
+/*    content: "";*/
+/*    opacity: 0;*/
+/*    transition: all 0.3s;*/
+/*    z-index: -1;*/
+/*}*/
+
+/*.nav_item a:hover:before {*/
+/*    opacity: 1;*/
+/*    transform: translateX(-50%) translateY(-50%) scale(1);*/
+/*}*/
+
+/*.nav_item a:hover:after {*/
+/*    opacity: 1;*/
+/*    transform: translateX(-50%) translateY(-50%) scale(1.3);*/
+/*}*/
+
+/*
+ *index.blade.php
+ *top eyecatch design
+ */
+.top_title_bg{
+  background-image: url('/storage/images/eye_catch/eye_catch3.JPG');
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+  padding:200px 0;
+  opacity: 0.8;
+  background-attachment: fixed;
+}
+
+.top_title{
+  color: #ffffff;
+  opacity: .8;
+  font-size: 60px;
+}
+
+.pc_flex {
+    display: flex;
+    padding-top: 20px;
+}
+
+.pc_flex .pc_left_block {
+    margin-right: 20px;
+    width: 70%;
+}
+
+.pc_flex .pc_right_block {
+    margin-left: 20px;
+    max-width: 30%;
+}
+
+
+
+
+
+
+/*
+ * 施術別で美容師検索
+ * search form
+ */
+ 
+.search_container{
+  position: relative;
+  /*box-sizing: border-box;*/
+}
+.search_container input[type="text"]{
+  border: none;
+  height: 2em;
+  width: 100%;
+  padding: 0 15px;
+}
+.search_container input[type="text"]:focus {
+  outline: 0;
+}
+.search_container{
+  border: 1px solid #009357;
+  padding: 3px 5px;
+  border-radius: 5px;
+  height: 40px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+.search_container .search_icon{
+  text-align: center;
+  color: #fff;
+  background: #009357;
+  line-height: 3;
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  right:0px;
+  top: -5px;
+  cursor: pointer;
+}
+.search_container ::-webkit-input-placeholder {
+  color: #444;
+}
+
+.service_wrap{
+  max-width: 100%;
+  height: auto;
+  padding: 20px 10px;
+  margin-bottom: 15px;
+  background: linear-gradient(-135deg, #a5c4e5, #bfedb2) fixed;
+}
+.top_model_reserve{
+  width: 100%;
+  height: 100%;
+  min-width: 100%;
+  background: #fff;
+  border-radius: 10px;
+}
+.top_model_reserve .top_model_reserve_inner{
+  padding: 20px 10px;
+  top: 0;
+  left: 0;
+}
+.top_model_reserve .top_model_reserve_inner h2{
+  font-size: 23px;
+  font-weight: bold;
+  padding-bottom: 10px;
+}
+
+.top_model_reserve .top_model_reserve_inner ul{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.top_model_reserve ul li {
+  width: 48%;
+  height: 40px;
+  margin-bottom: 20px;
+  border:1px solid  #009357;
+  border-radius: 5px;
+  font-size: 14px;
+  line-height: 3;
+  font-weight: bold;
+}
+
+.top_model_reserve ul .cut a{
+  background: url(/storage/images/icon/cut_icon.png) center no-repeat;
+  background-position: 7px center;
+  background-size: 23px 23px;
+}
+.top_model_reserve ul .color a{
+  background: url(/storage/images/icon/color_icon.png) center no-repeat;
+  background-position: 7px center;
+  background-size: 23px 23px;
+}
+.top_model_reserve ul .treatment a{
+  background: url(/storage/images/icon/treatment_icon.png) center no-repeat;
+  background-position: 7px center;
+  background-size: 23px 23px;
+}
+.top_model_reserve ul .hairarenge a{
+  background: url(/storage/images/icon/hairarenge_icon.png) center no-repeat;
+  background-position: 7px center;
+  background-size: 23px 23px;
+}
+.top_model_reserve ul li a{
+  color: #444;
+  padding-left: 35px;
+  height: 40px;
+  display: block;
+}
+.top_model_reserve ul li a:hover{
+  background-color: #009357;
+  color: #fff;
+  text-decoration: none;
+}
+
+
+/*
+ *スライダー実装
+ *スクローススナップ
+ *top 新規掲載美容師
+ *
+ */
+ 
+ 
+
+.slider{
+  overflow: auto;
+  scroll-snap-type: x;
+  display: flex;
+}
+
+.slider_item{
+  scroll-snap-align: center;
+  /*height: 100vh;*/
+  width:  40%;
+  flex: none;
+  overflow: hidden;
+  margin: 10px;
+  padding: 20px 10px;
+  box-shadow: 0 0 5px #ccc;
+  border: 5px solid #fff;
+  border-radius: 7px;
+  text-align: center
+}
+.stylist_info{
+  width: 80%;
+}
+
+.stylist_info1{
+    position: relative;
+    align-items: baseline;
+}
+.stylist_info2{
+  color: #444;
+  text-align: left;
+  font-size: 20px
+}
+
+
+.stylist_name{
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: rgba(80, 80, 80, 0.75);
+  padding: 5px 20px;
+  box-sizing: border-box;
+  border-radius: 0 0 5px 5px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #fff;
+  text-align: left;
+}
+
+
+/* 
+ *fotter
+ *CSS
+ */
+ 
+footer{
+  text-align: left;
+}
+footer .footer_content{
+  background: #000;
+  padding: 60px 40px 10px;
+  color: #fff;
+}
+.footer_content .footer_inner{
+  padding-bottom:10px;
+  display: flex;
+}
+.footer_content .footer_inner .footer_block{
+  padding-bottom: 15px;
+}
+.footer_content .footer_inner .footer_block h2{
+  padding-bottom: 5px;
+  font-size: 20px;
+}
+.footer_content .footer_inner .footer_block ul li{
+  display: inline-block;
+}
+.footer_content .footer_inner .footer_block ul li a{
+  font-size: 12px;
+  padding: 0 10px;
+  color: #fff;
+  border-right: #fff solid 1px;
+  position: relative;
+}
+
+.footer_content .footer_inner .footer_block ul li a::after{
+  position: absolute;
+  bottom: -4px;
+  right: -10px;
+  left: 0;
+  content: '';
+  width: 100%;
+  height: 2px;
+  background: #fff;
+  transform: scale(0, 1);
+  transform-origin: right top;
+  transition: transform .3s;
+}
+.footer_content .footer_inner .footer_block ul li a:hover::after{
+  transform-origin: left top;
+  transform: scale(1, 1);
+}
+
+.footer_content .copyright{
+  font-size:12px;
+  text-align: center;
+}
+
+
+/**
+ *マイページのCSS
+ *
+ */
+ 
+ 
+.sidebar{
+  margin-right:20px;
+  width: 30%;
+}
+
+.mypage_content{
+  margin-left:20px;
+  width: 70%;
+}
+
+.mp_intro{
+  width: 100%;
+  height: 200px;
+  position: relative;
+  background-image: url('/storage/images/eye_catch/eye_catch1.jpg');
+  background-size: cover;
+  background-position: center;
+  text-align: center
+}
+
+.mp-user-info{
+  position: absolute;
+  display: block;
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform:translate(0, -50%);
+  
+}
+
+.mp_stylist_img{
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  margin:0 auto;
+}
+
+.mp-user-name{
+  color: #333;
+}
+
