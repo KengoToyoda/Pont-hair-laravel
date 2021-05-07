@@ -26,6 +26,8 @@ body {
   padding: 0;
   /*text-align: center;*/
   /*background-color:#000;*/
+  position: relative;
+  height: 100%;
 }
 
 ol, ul {
@@ -336,6 +338,7 @@ header .heaer_nav{
  
 footer{
   text-align: left;
+
 }
 footer .footer_content{
   background: #000;
@@ -351,7 +354,7 @@ footer .footer_content{
 }
 .footer_content .footer_inner .footer_block h2{
   padding-bottom: 5px;
-  font-size: 20px;
+  font-size: 15px;
 }
 .footer_content .footer_inner .footer_block ul li{
   display: inline-block;
@@ -392,7 +395,9 @@ footer .footer_content{
  *マイページのCSS
  *
  */
- 
+ .mypage_flex{
+   padding-top:50px !important;
+ }
  
 .sidebar{
   margin-right:20px;
@@ -436,3 +441,54 @@ footer .footer_content{
   color: #333;
 }
 
+.profile{
+  background:#fff;
+  width: 100%;
+  padding:20px; 
+}
+
+ .sidebar_item{
+    background: #fff;
+    font-size: 14px;
+    color: #444;
+    padding: 16px;
+    min-height: 50px;
+    display: block;
+ }
+ 
+ .sidebar_list li{
+   border-top: 1px solid #eee;
+ }
+ 
+ .sidebar_list li:first-child{
+   border: 0;
+ }
+ 
+ /*
+  *ランキングCSS
+  *
+  */
+  .ranking{
+    background-color: #fff;
+    padding: 0 10px; 
+  }
+  
+  .ranking-ttl{
+    background:#269d66;
+    color: #fff;
+    text-align: center;
+    padding: 5px;
+    margin-bottom: 20px;
+    font-size: 40px;
+    line-height: 1.1;
+  }
+  .ranking_content{
+    margin-bottom: 20px;
+    border-bottom: 2px solid #ddd;
+  }
+  
+  .ranking_content:last-child{
+    border:0;
+  }
+  
+  

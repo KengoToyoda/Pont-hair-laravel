@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\DB;
 
 class User extends Authenticatable
 {
@@ -90,5 +91,16 @@ class User extends Authenticatable
         $id = ($id) ? $id : $this->id;
         return $id == config('admin_id');
     }
+    
+    public function getArticleRanking(Array $results)
+    {
+        $user_ids = array_keys($results);
+        $ids_order = implode(',', $user_ids);
+        $user_ranking = $this->whereIn('id', $user_ids)
+                                ->orderByRaw(DB::raw("FIELD(id, $ids_order)"))
+                                ->paginate(10);
+        return $user_ranking;
+    }
+    
     
 }

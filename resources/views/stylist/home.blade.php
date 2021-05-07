@@ -8,18 +8,26 @@
 @section('content')
 
 <div class="container">
-    <div class="pc_flex">
+    <div class="pc_flex mypage_flex">
         <div class="sidebar">
             <ul class="sidebar_list">
-                <li><a href="" class="sidebar_item">ああああああああああああああああ</a></li>
-                <li><a href="" class="sidebar_item">ああああああああああああああああ</a></li>
-                <li><a href="" class="sidebar_item">ああああああああああああああああ</a></li>
-                <li><a href="" class="sidebar_item">ああああああああああああ</a></li>
-                <li><a href="" class="sidebar_item">ああああああああああああああああ</a></li>
-                <li><a href="" class="sidebar_item">ああああああああああああああ</a></li>
-                <li><a href="" class="sidebar_item">あああああああああああああああ</a></li>
-                <li><a href="" class="sidebar_item">ああああああああああああああああ</a></li>
-                <li><a href="" class="sidebar_item">ああああああああああああああ</a></li>
+                <li><a href="{{ route('user.edit', auth()->user()->id)}}" class="sidebar_item">
+                    @auth
+                        @can('edit', $user)
+                            アカウント情報を編集する
+                         @endcan
+                    @endauth
+                </a></li>
+                <li><a href="{{ route('user.menu.create')}}" class="sidebar_item">コースを作成する</a></li>
+                <li><a href="{{ route('user.catalog.create')}}" class="sidebar_item">カタログを作成する</a></li>
+                <li>
+                    <a href="{{ route('logout') }}" class="sidebar_item" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                ログアウト
+                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+                </li>
             </ul>
         </div>
         <div class="mypage_content">
@@ -33,34 +41,17 @@
             </section>
 
             <section class="profile">
-                
                 <ul class="stylist_lsit">
-                    <li class="stylist_item">{{ $user->age }}</li>
-                    <li class="stylist_item">{{ $user->shop }}</li>
-                    <li class="stylist_item">{{ $user->location }}</li>
-                    <li class="stylist_item">{{ $user->style }}</li>
-                    <li class="stylist_item">{{ $user->email }}</li>
-                    <li class="stylist_item">{{ $user->tel }}</li>
+                    <li class="stylist_item">年齢：{{ $user->age }}</li>
+                    <li class="stylist_item">メールアドレス：{{ $user->email }}</li>
+                    <li class="stylist_item">電話番号：{{ $user->tel }}</li>
+                    <li class="stylist_item">所属店舗：{{ $user->shop }}</li>
+                    <li class="stylist_item">所属店舗の最寄り駅：{{ $user->location }}</li>
+                    <li class="stylist_item">得意な施術{{ $user->style }}</li>
                 </ul>
                 <p class="sub_title">コメント</p>
                 <p class="stylist_comment">{{ $user->comment }}</p>
-                @auth
-                    @can('edit', $user)
-                        <p class="edit">[<a href="{{ route('user.edit', auth()->user()->id)}}">内容を編集する</a>]</p>
-                        
-                        <!--<form action="{{ route('user.delete') }}}" method="post" style="display:inline">-->
-                        <!--    @csrf-->
-                        <!--    @method('DELETE')-->
-                        <!--    <button type="submit" name="delete" onClick="alertFunction(event);return false;" class="btn">美容師情報を削除する</button>-->
-                        <!--</form>-->
-                     @endcan
-                @endauth
-                        
                 <div class="">
-                    <div class="To_menus">
-                        <div><a href="{{ route('user.menu.create')}}">コース情報登録</a></div>
-                    </div>
-                    
                     <h1>コース一覧</h1>
                     @foreach($menus as $menu)
                         <ul class="menu_lsit">
@@ -73,9 +64,6 @@
             
                 </div>
                 <div class="">
-                    <div class="To_catalog">
-                        <div><a href="{{ route('user.catalog.create')}}">カタログ情報登録</a></div>
-                    </div>
                     <h1>カタログ一覧</h1>
                     @foreach($catalogs as $catalog)
                         <ul class="catalog_lsit">
