@@ -8,9 +8,13 @@ use App\Catalog;
 use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest; 
 use Illuminate\Support\Facades\Storage;//画像操作
+use App\Libraries\RankingService;//ランキング機能
 
 class UserController extends Controller
 {
+    
+    
+
     /**
      * stylist一覧を表示する
      * 
@@ -19,8 +23,15 @@ class UserController extends Controller
      */
     public function index(User $user, Menu  $menu, Catalog $catalog)
     {
+        $ranking = new RankingService;
+        $results = $ranking->getRankingAll();
+        // $user_ranking = $user->getArticleRanking($results);
+        
+        
         return view('posts/index')->with([
             'users' => $user->get(),
+            // 'user_ranking' => $user_ranking,
+            'results' => $results,
             ]);
     }
     
@@ -32,6 +43,10 @@ class UserController extends Controller
      */
    public function show(User $user, Menu $menu, Catalog $catalog)
     {
+        
+        $ranking = new RankingService;
+        $ranking->incrementViewRanking($user->id);  //インクリメント
+
         $menus = $user->menus()->get();
         $catalogs =  $user->catalogs()->get();
         return view('posts/info/show')->with([
@@ -66,61 +81,6 @@ class UserController extends Controller
        /**
      * ------------------------美容師情報関連------------------------
      */
-    
-    
-   /**
-     * 美容師情報を新規登録
-     * 
-     */
-    //  public function create(User $user)
-    //  {
-    //     $user = Auth::user();
-    //     return view('stylist/info/create')->with(['user' => $user]);
-        
-    //  }
-     
-    /**
-     * 新規作成した投稿をDBに反映
-     * @param Request $request
-     * @return Response
-     */
-    //     public function store(User $user, UserRequest $request)
-    // {
-    //     //formのnameが'user[**]'の入力を$articleに格納
-    //     $input = $request['user'];
-    //     //formにpasswordを挿入
-    //     $input['password'] = Hash::make($request['password']);
-        
-    //     //画像ファイルは$request-+>fileで受け取る
-    //     $photo = $request->file('image');
-    //     $photo_name = $photo->getClientOriginalName();
-    //     //保存するディレクトリ(storage/app/public以下)、ファイル、ファイル名の順
-    //     Storage::disk('public')->putFileAs('stylist',$photo,$photo_name);
-    //     $input['image'] = $photo_name;
-    //     $user->fill($input)->save();
-        
-    //     return redirect('/account/' . $user->id);
-    // }
-    
-    /**
-     * 美容師情報を表示
-     */
-    
-    //   public function showAccount(User $user, Menu $menu, Catalog $catalog)
-    // {
-    //     //メニュー情報取得
-    //     $menus=$user->menus()->get();
-    //     //カタログ情報取得
-    //     $catalogs=$user->catalogs()->get();
-    //     //ユーザー情報取得
-    //     $user = Auth::user();
-        
-    //     return view('stylist/showAccount')->with([
-    //         'user' => $user,
-    //         'menus' => $menus,
-    //         'catalogs' => $catalogs,
-    //         ]);
-    // }
     
     /**
      * 美容師情報を編集

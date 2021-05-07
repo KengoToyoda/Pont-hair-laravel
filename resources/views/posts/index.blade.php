@@ -55,11 +55,21 @@
         
             <!-- pc right lock start-->
             <div class="pc_right_block">
-                <p>
-                    ああああああああああああああああああああああああああああああああ
-                    <br>
-                    ああああああああああああああああああああああああああああああああ
-                </p>
+                <div class="ranking">
+                    <h2 class="title ranking-ttl">Dresser Ranking</h2>
+                    @foreach ($results as $key => $result)
+                        <div class="ranking_content">
+                            <a href="/stylists/{{ $users[array_search($key, array_column(($users->toArray()),'id'))]->id }}" class="stylist_info1 ranking_item" 
+                            style="background:url(/storage/stylist/{{ $users[array_search($key, array_column(($users->toArray()),'id'))]->image }}) center no-repeat; 
+                                    height:250px;
+                                    display:block;
+                                background-size:cover;">
+                                <h2 class='stylist_name'>{{ $user->name }}</h2>
+                            </a>
+                            <p class="count_number">閲覧数：{{ $result }}</p>
+                        </div>
+                    @endforeach
+                </di>
             </div>
         </div>
     @endsection
