@@ -76,6 +76,17 @@
                 </div>
                 
                 <div class="">
+                    <h1>スタイル</h1>
+                    @foreach($categories as $category)
+                        <ul class="catalog_lsit">
+                                <li class="catalog_item">{{ $category->category }}</li>
+                        </ul>
+                    @endforeach
+                </div>
+                
+                
+                
+                <div class="">
                     <h1>口コミ一覧</h1>
                     <ul class="comments_list">
                         <li class="comments_item"><a href="">口コミ</a></li>

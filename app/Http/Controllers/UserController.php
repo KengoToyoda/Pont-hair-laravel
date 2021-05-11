@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Menu;
 use App\Catalog;
+use App\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\UserRequest; 
 use Illuminate\Support\Facades\Storage;//画像操作
 use App\Libraries\RankingService;//ランキング機能
@@ -91,8 +93,14 @@ class UserController extends Controller
         // update, destroyでも同様に
         $this->authorize('edit', $user);
         
-        // $user = Auth::user();
-        return view('stylist/info/edit')->with(['user' => $user]);
+        $user = Auth::user();
+        // $user = User::find($id);
+        $categories = Category::all();
+        
+        return view('stylist/info/edit')->with([
+            'user' => $user,
+            'categories' => $categories,
+            ]);
     }
     
     /**
@@ -103,9 +111,19 @@ class UserController extends Controller
     {
         // update, destroyでも同様に
         $this->authorize('edit', $user);
+    
         
-       //formのnameが'user[**]'の入力を$inputに格納
+        //リレーション処理
+        $user->category()->attach($request['caetgory']);
+        
+        
+        
+        //ユーザー処理
+        //formのnameが'user[**]'の入力を$inputに格納
         $input_user = $request['user'];
+
+
+
         
         //画像ファイルを変更するとき
         if($request->hasFile('image')) {

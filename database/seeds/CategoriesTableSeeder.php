@@ -1,10 +1,8 @@
 <?php
 
-namespace Database\Seeders;
-
 use Illuminate\Database\Seeder;
 
-class CategoriesTable_Seeder extends Seeder
+class CategoriesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -45,6 +43,5 @@ class CategoriesTable_Seeder extends Seeder
             'id' => 8,
             'category' => 'ヘッドスパ',
         ]);
-
     }
 }

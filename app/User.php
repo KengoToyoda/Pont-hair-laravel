@@ -27,6 +27,7 @@ class User extends Authenticatable
         'comment',
         'image',
         'tel',
+        'category'
     ];
 
     /**
@@ -73,6 +74,16 @@ class User extends Authenticatable
      public function menus()
     {
         return $this->hasMany('App\Menu');
+    }
+    
+    /**
+     * Eloquent：リレーション
+     * 多対多
+     * UserモデルとCategoryモデル
+     */
+     public function category()
+    {
+        return $this->belongsToMany('App\Category');
     }
     
     /**

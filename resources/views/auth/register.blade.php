@@ -88,63 +88,84 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="form-group row">
-                            <label for="shop" class="col-md-4 col-form-label text-md-right">{{ __('Shop') }}</label>
+                        <!--<div class="form-group row">-->
+                        <!--    <label for="shop" class="col-md-4 col-form-label text-md-right">{{ __('Shop') }}</label>-->
 
-                            <div class="col-md-6">
-                                <input id="shop" type="shop" class="form-control @error('shop') is-invalid @enderror" name="shop" value="{{ old('shop') }}" required autocomplete="shop">
+                        <!--    <div class="col-md-6">-->
+                        <!--        <input id="shop" type="shop" class="form-control @error('shop') is-invalid @enderror" name="shop" value="{{ old('shop') }}" required autocomplete="shop">-->
 
-                                @error('shop')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
+                        <!--        @error('shop')-->
+                        <!--            <span class="invalid-feedback" role="alert">-->
+                        <!--                <strong>{{ $message }}</strong>-->
+                        <!--            </span>-->
+                        <!--        @enderror-->
+                        <!--    </div>-->
+                        <!--</div>-->
                         
-                        <div class="form-group row">
-                            <label for="location" class="col-md-4 col-form-label text-md-right">{{ __('Access') }}</label>
+                        <!--<div class="form-group row">-->
+                        <!--    <label for="location" class="col-md-4 col-form-label text-md-right">{{ __('Access') }}</label>-->
 
-                            <div class="col-md-6">
-                                <input id="location" type="location" class="form-control @error('location') is-invalid @enderror" name="location" value="{{ old('location') }}" required autocomplete="location">
+                        <!--    <div class="col-md-6">-->
+                        <!--        <input id="location" type="location" class="form-control @error('location') is-invalid @enderror" name="location" value="{{ old('location') }}" required autocomplete="location">-->
 
-                                @error('location')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
+                        <!--        @error('location')-->
+                        <!--            <span class="invalid-feedback" role="alert">-->
+                        <!--                <strong>{{ $message }}</strong>-->
+                        <!--            </span>-->
+                        <!--        @enderror-->
+                        <!--    </div>-->
+                        <!--</div>-->
                         
                         
-                        <div class="form-group row">
-                            <label for="style" class="col-md-4 col-form-label text-md-right">{{ __('Favorite Style') }}</label>
+                        <!--<div class="form-group row">-->
+                        <!--    <label for="style" class="col-md-4 col-form-label text-md-right">{{ __('Favorite Style') }}</label>-->
 
-                            <div class="col-md-6">
-                                <textarea id="style" class="form-control @error('style') is-invalid @enderror" name="style" value="{{ old('style') }}" required autocomplete="style"></textarea>
+                        <!--    <div class="col-md-6">-->
+                        <!--        <textarea id="style" class="form-control @error('style') is-invalid @enderror" name="style" value="{{ old('style') }}" required autocomplete="style"></textarea>-->
 
-                                @error('style')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>                       
+                        <!--        @error('style')-->
+                        <!--            <span class="invalid-feedback" role="alert">-->
+                        <!--                <strong>{{ $message }}</strong>-->
+                        <!--            </span>-->
+                        <!--        @enderror-->
+                        <!--    </div>-->
+                        <!--</div>                       -->
                         
-                        <div class="form-group row">
-                            <label for="comment" class="col-md-4 col-form-label text-md-right">{{ __('Comment') }}</label>
+                        <!--<div class="form-group row">-->
+                        <!--    <label for="comment" class="col-md-4 col-form-label text-md-right">{{ __('Comment') }}</label>-->
 
-                            <div class="col-md-6">
-                                <textarea id="comment" class="form-control @error('comment') is-invalid @enderror" name="comment" value="{{ old('comment') }}" required autocomplete="comment"></textarea>
+                        <!--    <div class="col-md-6">-->
+                        <!--        <textarea id="comment" class="form-control @error('comment') is-invalid @enderror" name="comment" value="{{ old('comment') }}" required autocomplete="comment"></textarea>-->
 
-                                @error('comment')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>                       
+                        <!--        @error('comment')-->
+                        <!--            <span class="invalid-feedback" role="alert">-->
+                        <!--                <strong>{{ $message }}</strong>-->
+                        <!--            </span>-->
+                        <!--        @enderror-->
+                        <!--    </div>-->
+                        <!--</div>    -->
                         
+                        <!--<div class="form-group row">-->
+                        <!--    <label for="comment" class="col-md-4 col-form-label text-md-right">{{ __('Favorite_Style') }}</label>-->
+
+                        <!--    <div class="col-md-6">-->
+                        <!--       <input type="checkbox" name="category"  value="{{ old('category') }}"/>ヘアカラー-->
+                        <!--       <input type="checkbox" name="category"  value="{{ old('category') }}"/>トリートメント-->
+                        <!--       <input type="checkbox" name="category"  value="{{ old('category') }}"/>カット-->
+                        <!--       <input type="checkbox" name="category"  value="{{ old('category') }}"/>ブリーチ-->
+                        <!--       <input type="checkbox" name="category"  value="{{ old('category') }}"/>パーマ-->
+                        <!--       <input type="checkbox" name="category"  value="{{ old('category') }}"/>縮毛矯正-->
+                        <!--       <input type="checkbox" name="category"  value="{{ old('category') }}"/>ヘアセット-->
+                        <!--       <input type="checkbox" name="category"  value="{{ old('category') }}"/>ヘッドスパ-->
+
+                        <!--        @error('category')-->
+                        <!--            <span class="invalid-feedback" role="alert">-->
+                        <!--                <strong>{{ $message }}</strong>-->
+                        <!--            </span>-->
+                        <!--        @enderror-->
+                        <!--    </div>-->
+                        <!--</div>    -->
+
                         
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">

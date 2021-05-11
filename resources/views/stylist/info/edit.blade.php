@@ -51,6 +51,15 @@
                     <h2>電話番号</h2>
                     <input type="text" name="user[tel]"  value="{{ $user->tel }}" />
                 </li>
+                <li class="edit_item">
+                    <h2>得意なスタイル</h2>
+                    <input type="checkbox" name="category[]" value=""checked />変更しない
+                    <!--ラジオボタンで変更するorしないの前処理が必要-->
+                    <!--する→jsで選択肢表示-->
+                    @foreach($categories as $category)
+                        <input type="checkbox" name="category[]"  value="{{ $category->id }}"/>{{ $category->category }}
+                    @endforeach
+                </li>
             </ul>
             <input type="submit" value="保存"/>
         </form>

@@ -34,12 +34,16 @@ class HomeController extends Controller
         $menus=$user->menus()->get();
         //カタログ情報取得
         $catalogs=$user->catalogs()->get();
+        
+        $categories = $user->category()->get();
 
+        // dd($categories);
         
         return view('stylist/home')->with([
             'user' => $user,
             'menus' => $menus,
             'catalogs' => $catalogs,
+            'categories' => $categories,
             ]);
     }
 }

@@ -52,13 +52,13 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'style' => ['required', 'string', 'max:255'],
-            'location' => ['required', 'string', 'max:255'],
-            'shop' => ['required', 'string', 'max:255'],
-            'comment' => ['required', 'string', 'max:255'],
             'tel' => ['required', 'string', 'max:255'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
             'age' => ['required', 'integer', 'max:255'],
+            // 'style' => ['required', 'string', 'max:255'],
+            // 'location' => ['required', 'string', 'max:255'],
+            // 'shop' => ['required', 'string', 'max:255'],
+            // 'comment' => ['required', 'string', 'max:255'],
         ]);
     }
 
@@ -73,13 +73,14 @@ class RegisterController extends Controller
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
-            'style' => $data['style'],
-            'location' => $data['location'],
-            'shop' => $data['shop'],
             'tel' => $data['tel'],
             'age' => $data['age'],
-            'comment' => $data['comment'],
             'password' => Hash::make($data['password']),
+            // 'shop' => $data['shop'],
+            // 'location' => $data['location'],
+            // 'style' => $data['style'],
+            // 'comment' => $data['comment'],
+            // 'category' =>$data['category']
         ]);
     }
 }
