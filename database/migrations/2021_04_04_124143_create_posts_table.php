@@ -23,7 +23,7 @@ class CreatePostsTable extends Migration
             $table->string('location')->nullable();//追加
             $table->text('comment')->nullable();//追加
             $table->bigInteger('age')->nullable();//追加
-            $table->string('image')->index('index_image')->nullable(); 
+            $table->string('image')->nullable(); 
             $table->timestampsTz(0);
             $table->softDeletesTz('deleted_at', 0);
         });
