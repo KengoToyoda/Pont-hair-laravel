@@ -2,8 +2,6 @@
 
 use Illuminate\Support\Str;
 
-return [
-    
     if (getenv('REDIS_URL')) {
         $url = parse_url(getenv('REDIS_URL'));
     
@@ -11,6 +9,10 @@ return [
         putenv('REDIS_PORT='.$url['port']);
         putenv('REDIS_PASSWORD='.$url['pass']);
     }
+
+return [
+    
+
 
     /*
     |--------------------------------------------------------------------------
