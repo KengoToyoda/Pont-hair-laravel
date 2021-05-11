@@ -53,7 +53,7 @@
                 </li>
                 <li class="edit_item">
                     <h2>得意なスタイル</h2>
-                    <input type="checkbox" name="category[]" value=""checked />変更しない
+                    <input type="checkbox" name="category[]" value="" />変更しない
                     <!--ラジオボタンで変更するorしないの前処理が必要-->
                     <!--する→jsで選択肢表示-->
                     @foreach($categories as $category)

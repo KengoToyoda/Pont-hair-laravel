@@ -112,18 +112,17 @@ class UserController extends Controller
         // update, destroyでも同様に
         $this->authorize('edit', $user);
     
-        
         //リレーション処理
-        $user->category()->attach($request['caetgory']);
-        
-        
+        //場合開け
+        if($request['category']){
+            $user->category()->sync($request['category']);
+        }
+       
+        // dd($user);
         
         //ユーザー処理
         //formのnameが'user[**]'の入力を$inputに格納
         $input_user = $request['user'];
-
-
-
         
         //画像ファイルを変更するとき
         if($request->hasFile('image')) {
