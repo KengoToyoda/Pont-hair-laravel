@@ -15,7 +15,7 @@ class CreateCatalogsTable extends Migration
     {
         Schema::create('catalogs', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('post_id')->nullable();
+            $table->integer('user_id')->unsigned();
             $table->string('catalogImg')->nullable();
             $table->text('catalogCmt')->nullable();
             $table->timestamps();
