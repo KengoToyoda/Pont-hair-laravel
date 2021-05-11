@@ -11,7 +11,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-         // 各テーブルへのデータの流し込みを呼び出す
-        $this->call('CategoriesTable_Seeder::class');
+        //  Model::unguard();
+
+        $this->call('CategoriesTableSeeder');
+        // $this->call(UserSeeder::class);
     }
 }

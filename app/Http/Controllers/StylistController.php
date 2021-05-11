@@ -71,6 +71,7 @@ class StylistController extends Controller
         
         return view('stylist/menu/EditMenu')->with([
                 'menu' => $menu,
+                
                 ]);
     }
     
