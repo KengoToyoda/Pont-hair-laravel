@@ -45,8 +45,8 @@ class UserController extends Controller
    public function show(User $user, Menu $menu, Catalog $catalog)
     {
         
-        $ranking = new RankingService;
-        $ranking->incrementViewRanking($user->id);  //インクリメント
+        // $ranking = new RankingService;
+        // $ranking->incrementViewRanking($user->id);  //インクリメント
 
         $menus = $user->menus()->get();
         $catalogs =  $user->catalogs()->get();
