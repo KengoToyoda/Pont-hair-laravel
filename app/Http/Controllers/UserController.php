@@ -25,15 +25,15 @@ class UserController extends Controller
      */
     public function index(User $user, Menu  $menu, Catalog $catalog)
     {
-        $ranking = new RankingService;
-        $results = $ranking->getRankingAll();
+        // $ranking = new RankingService;
+        // $results = $ranking->getRankingAll();
         // $user_ranking = $user->getArticleRanking($results);
         
         
         return view('posts/index')->with([
             'users' => $user->get(),
             // 'user_ranking' => $user_ranking,
-            'results' => $results,
+            // 'results' => $results,
             ]);
     }
     
