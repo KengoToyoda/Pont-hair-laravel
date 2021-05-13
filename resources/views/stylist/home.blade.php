@@ -68,7 +68,7 @@
                     @foreach($catalogs as $catalog)
                         <ul class="catalog_lsit">
                             <a href="/account/catalog={{ $catalog->id }}">
-                                <li class="catalog_item"><img src="/storage/catalog/{{ $catalog->catalogImg }}"></li>
+                                <li class="catalog_item"><img src="{{ asset('https://pont-storage.s3.us-east-2.amazonaws.com/catalog/' . $catalog->catalogImg) }}"></li>
                                 <li class="catalog_item">{{ $catalog->catalogCmt }}</li>
                             </a>
                         </ul>

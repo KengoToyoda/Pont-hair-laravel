@@ -29,7 +29,6 @@ class UserController extends Controller
         // $results = $ranking->getRankingAll();
         // $user_ranking = $user->getArticleRanking($results);
         
-        
         return view('posts/index')->with([
             'users' => $user->get(),
             // 'user_ranking' => $user_ranking,
@@ -109,9 +108,12 @@ class UserController extends Controller
      */
         public function update(UserRequest $request, User $user)
     {
+     
         // update, destroyでも同様に
         $this->authorize('edit', $user);
-    
+
+        $user = Auth::user();
+       
         //リレーション処理
         //場合開け
         if($request['category']){
@@ -126,11 +128,11 @@ class UserController extends Controller
         
         //画像ファイルを変更するとき
         if($request->hasFile('image')) {
-            Storage::delete('public/stylist/' . $user->image); //元の画像を削除☆
+            Storage::disk('s3')->delete('stylist/' . $user->image); //元の画像を削除☆
             $photo = $request->file('image');
             $photo_name = $photo->getClientOriginalName();
             //保存するディレクトリ(storage/app/public以下)、ファイル、ファイル名の順
-            Storage::disk('public')->putFileAs('stylist',$photo,$photo_name);
+            Storage::disk('s3')->putFileAs('stylist',$photo,$photo_name);
             $input_user['image'] = $photo_name;
             $user->fill($input_user)->save();
         }else{

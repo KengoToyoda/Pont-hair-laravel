@@ -59,7 +59,6 @@ class StylistController extends Controller
                 'menu' => $menu,
                 ]);
     }
-     
     
     /**
      * メニュー情報編集ページに飛ぶ
@@ -131,7 +130,7 @@ class StylistController extends Controller
         $photo = $request->file('catalogImg');
         $photo_name = $photo->getClientOriginalName();
         //保存するディレクトリ(storage/app/public以下)、ファイル、ファイル名の順
-        Storage::disk('public')->putFileAs('catalog',$photo,$photo_name);
+        Storage::disk('s3')->putFileAs('catalog',$photo,$photo_name);
         $input['catalogImg'] = $photo_name;
         
         $catalog->fill($input)->save();
@@ -172,11 +171,11 @@ class StylistController extends Controller
         
         //画像ファイルを変更するとき
         if($request->hasFile('catalogImg')) {
-            Storage::delete('public/catalog/' . $catalog->catalogImg); //元の画像を削除☆
+            Storage::disk('s3')->delete('catalog/' . $catalog->catalogImg); //元の画像を削除☆
             $photo = $request->file('catalogImg');
             $photo_name = $photo->getClientOriginalName();
             //保存するディレクトリ(storage/app/public以下)、ファイル、ファイル名の順
-            Storage::disk('public')->putFileAs('catalog',$photo,$photo_name);
+            Storage::disk('s3')->putFileAs('catalog',$photo,$photo_name);
             $input['catalogImg'] = $photo_name;
             
             $catalog->fill($input)->save();
