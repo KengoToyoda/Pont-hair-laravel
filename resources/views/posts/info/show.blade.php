@@ -25,7 +25,7 @@
                 </ul>
                 <h2 class="sub_title">コメント</h2>
                 <p class="stylist_comment">{{ $user->comment }}</p>
-                <img src="{{ asset('https://pont-storage.s3.us-east-2.amazonaws.com/stylist/' . $user->image) }}"> 
+                <img src="{{ asset('https://pont-storage-heroku.s3-ap-northeast-1.amazonaws.com/stylist/' . $user->image) }}"> 
             </div>
         </div>
     </section>
@@ -47,7 +47,7 @@
         @foreach($catalogs as $catalog)
             <ul class="menu_lsit">
                 <a href="/stylists/{{ $catalog->user_id }}/catalog={{ $catalog->id }}">
-                    <li class="catalog_item"><img src="{{ asset('https://pont-storage.s3.us-east-2.amazonaws.com/catalog/' . $catalog->catalogImg) }}"></li>
+                    <li class="catalog_item"><img src="{{ asset('https://pont-storage-heroku.s3-ap-northeast-1.amazonaws.com/catalog/' . $catalog->catalogImg) }}"></li>
                     <li class="catalog_item">{{ $catalog->catalogCmt }}</li>
                 </a>
             </ul>

@@ -13,9 +13,9 @@ class UsersTableSeeder extends Seeder
     {
          DB::table('users')->insert([
             'id' => 1,
-            'password' => ENV('USER_ORIGIN_PASS'),
-            'email' => ENV('USER_ORIGIN_EMAIL'),
-            'name' => ENV('USER_ORIGIN_NAME'),
+            'password' => '11111111',
+            'name' => 'OriginUser',
+            'email' => 'origin@gmail.com',
         ]);
         
     }

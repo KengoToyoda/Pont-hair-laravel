@@ -33,7 +33,7 @@
         <div class="mypage_content">
             <section class="mp_intro">
                 <div class="mp-user-info">
-                    <div class="mp_stylist_img"  style="background:url('https://pont-storage.s3.us-east-2.amazonaws.com/stylist/{{ $user->image }}') center no-repeat; display:block; background-size:cover;"></div>
+                    <div class="mp_stylist_img"  style="background:url('https://pont-storage-heroku.s3-ap-northeast-1.amazonaws.com/stylist/{{ $user->image }}') center no-repeat; display:block; background-size:cover;"></div>
                     <h1 class="mp-user-name bold">
                         {{ $user->name }}さん
                     </h1>
@@ -68,7 +68,7 @@
                     @foreach($catalogs as $catalog)
                         <ul class="catalog_lsit">
                             <a href="/account/catalog={{ $catalog->id }}">
-                                <li class="catalog_item"><img src="{{ asset('https://pont-storage.s3.us-east-2.amazonaws.com/catalog/' . $catalog->catalogImg) }}"></li>
+                                <li class="catalog_item"><img src="{{ asset('https://pont-storage-heroku.s3-ap-northeast-1.amazonaws.com/catalog/' . $catalog->catalogImg) }}"></li>
                                 <li class="catalog_item">{{ $catalog->catalogCmt }}</li>
                             </a>
                         </ul>

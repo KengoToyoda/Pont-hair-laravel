@@ -36,9 +36,9 @@
                     <div class='slider'>
                         @foreach ($users as $user)
                             <div class=slider_item>
-                                <a href="/stylists/{{ $user->id }}" class="stylist_info1" style="background:url('https://pont-storage.s3.us-east-2.amazonaws.com/stylist/{{ $user->image }}') center no-repeat; height:300px; display:block; background-size:cover;">
+                                <a href="/stylists/{{ $user->id }}" class="stylist_info1" style="background:url('https://pont-storage-heroku.s3-ap-northeast-1.amazonaws.com/stylist/{{ $user->image }}') center no-repeat; height:300px; display:block; background-size:cover;">
                                     <h2 class='stylist_name'>{{ $user->name }}</h2>
-                                </a>
+                                </a>z
                                 <ul class="stylist_info2">
                                     <li class="stylist_item">{{ $user->age }}</li>
                                     <li class="stylist_item">{{ $user->shop }}</li>

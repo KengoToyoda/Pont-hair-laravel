@@ -13,7 +13,7 @@
         </h1>
         <div class="content">
             <div class="content_catalog">
-                <img src="{{ asset('https://pont-storage.s3.us-east-2.amazonaws.com/catalog/' . $catalog->catalogImg) }}" class="catalog_item">
+                <img src="{{ asset('https://pont-storage-heroku.s3-ap-northeast-1.amazonaws.com/catalog/' . $catalog->catalogImg) }}" class="catalog_item">
                 <p class="catalog_item">{{ $catalog->catalogCmt  }}</p>
             </div>
         </div>
