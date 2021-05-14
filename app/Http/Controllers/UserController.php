@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\UserRequest; 
 use Illuminate\Support\Facades\Storage;//画像操作
 use App\Libraries\RankingService;//ランキング機能
+use Illuminate\Support\Facades\Cache;
 
 class UserController extends Controller
 {
@@ -25,14 +26,18 @@ class UserController extends Controller
      */
     public function index(User $user, Menu  $menu, Catalog $catalog)
     {
-        // $ranking = new RankingService;
-        // $results = $ranking->getRankingAll();
-        // $user_ranking = $user->getArticleRanking($results);
+        $ranking = new RankingService;
+        $results = $ranking->getRankingAll();
+        $user_ranking = $user->getArticleRanking($results);
+        
+        // Cache::forget('key');
+        // Cache::flush();
+
         
         return view('posts/index')->with([
             'users' => $user->get(),
-            // 'user_ranking' => $user_ranking,
-            // 'results' => $results,
+            'user_ranking' => $user_ranking,
+            'results' => $results,
             ]);
     }
     
@@ -45,8 +50,8 @@ class UserController extends Controller
    public function show(User $user, Menu $menu, Catalog $catalog)
     {
         
-        // $ranking = new RankingService;
-        // $ranking->incrementViewRanking($user->id);  //インクリメント
+        $ranking = new RankingService;
+        $ranking->incrementViewRanking($user->id);  //インクリメント
 
         $menus = $user->menus()->get();
         $catalogs =  $user->catalogs()->get();
