@@ -60,11 +60,11 @@
                     @foreach ($results as $key => $result)
                         <div class="ranking_content">
                             <a href="/stylists/{{ $users[array_search($key, array_column(($users->toArray()),'id'))]->id }}" class="stylist_info1 ranking_item" 
-                            style="background:url(/storage/stylist/{{ $users[array_search($key, array_column(($users->toArray()),'id'))]->image }}) center no-repeat; 
+                            style="background:url(https://pont-storage-heroku.s3-ap-northeast-1.amazonaws.com/stylist/{{ $users[array_search($key, array_column(($users->toArray()),'id'))]->image }}) center no-repeat; 
                                     height:250px;
                                     display:block;
                                 background-size:cover;">
-                                <h2 class='stylist_name'>{{ $user->name }}</h2>
+                                <h2 class='stylist_name'>{{ $users[array_search($key, array_column(($users->toArray()),'id'))]->name  }}</h2>
                             </a>
                             <p class="count_number">閲覧数：{{ $result }}</p>
                         </div>
