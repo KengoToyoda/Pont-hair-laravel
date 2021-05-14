@@ -108,8 +108,8 @@ class User extends Authenticatable
         $user_ids = array_keys($results);
         $ids_order = implode(',', $user_ids);
         $user_ranking = $this->whereIn('id', $user_ids)
-                                ->orderByRaw(DB::raw("FIELD(id, $ids_order)"))
-                                ->paginate(10);
+                                ->orderByRaw(DB::raw("FIELD(id, $ids_order)"));
+                                // ->paginate(10);
         return $user_ranking;
     }
     
