@@ -120,7 +120,7 @@ header .heaer_nav{
  *top eyecatch design
  */
 .top_title_bg{
-  background-image: url('https://pont-storage.s3.us-east-2.amazonaws.com/images/eye_catch/eye_catch3.JPG');
+  background-image: url('https://pont-storage-heroku.s3-ap-northeast-1.amazonaws.com/images/eye_catch/eye_catch3.JPG');
   background-size: cover;
   background-position: center;
   text-align: center;
@@ -239,22 +239,22 @@ header .heaer_nav{
 }
 
 .top_model_reserve ul .cut a{
-  background: url(https://pont-storage.s3.us-east-2.amazonaws.com/images/icon/cut_icon.png) center no-repeat;
+  background: url(https://pont-storage-heroku.s3-ap-northeast-1.amazonaws.com/images/icon/cut_icon.png) center no-repeat;
   background-position: 7px center;
   background-size: 23px 23px;
 }
 .top_model_reserve ul .color a{
-  background: url(https://pont-storage.s3.us-east-2.amazonaws.com/images/icon/color_icon.png) center no-repeat;
+  background: url(https://pont-storage-heroku.s3-ap-northeast-1.amazonaws.com/images/icon/color_icon.png) center no-repeat;
   background-position: 7px center;
   background-size: 23px 23px;
 }
 .top_model_reserve ul .treatment a{
-  background: url(https://pont-storage.s3.us-east-2.amazonaws.com/images/icon/treatment_icon.png) center no-repeat;
+  background: url(https://pont-storage-heroku.s3-ap-northeast-1.amazonaws.com/images/icon/treatment_icon.png) center no-repeat;
   background-position: 7px center;
   background-size: 23px 23px;
 }
 .top_model_reserve ul .hairarenge a{
-  background: url(https://pont-storage.s3.us-east-2.amazonaws.com/images/icon/hairarenge_icon.png) center no-repeat;
+  background: url(https://pont-storage-heroku.s3-ap-northeast-1.amazonaws.com/images/icon/hairarenge_icon.png) center no-repeat;
   background-position: 7px center;
   background-size: 23px 23px;
 }
@@ -413,7 +413,7 @@ footer .footer_content{
   width: 100%;
   height: 200px;
   position: relative;
-  background-image: url('https://pont-storage.s3.us-east-2.amazonaws.com/images/eye_catch/eye_catch1.jpg');
+  background-image: url('https://pont-storage-heroku.s3-ap-northeast-1.amazonaws.com/images/eye_catch/eye_catch1.jpg');
   background-size: cover;
   background-position: center;
   text-align: center
