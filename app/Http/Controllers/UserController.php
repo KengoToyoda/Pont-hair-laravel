@@ -66,18 +66,22 @@ class UserController extends Controller
      * 特定IDのmenuを表示する
      * 
      */
-     public function showMenuToCust(User $user, Menu $menu, Catalog $catalog)
+     public function showMenuToCust(User $user, Menu $menu)
     {
         return view('posts/menu/showMenuToCust')->with([
                 'menu' => $menu,
+                'user' => $user,
                 ]);
     }
+    
+    
+    
     
     /**
      * 特定IDのcatalogを表示する
      * 
      */
-     public function showCatalogToCust(User $user, Menu $menu, Catalog $catalog)
+     public function showCatalogToCust(User $user, Catalog $catalog)
     {
         return view('posts/catalog/showCatalogToCust')->with([
                 'catalog' => $catalog,

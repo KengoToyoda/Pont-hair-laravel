@@ -1,4 +1,4 @@
-@extends('template')
+@extends('layouts.template')
 
 @section('title', 'pont')
 @section('keywords', '美容師', '美容師アシスタント')
@@ -7,7 +7,7 @@
 @section('indexCss')
 <link href="static/css/index.css" rel="stylesheet">
 @endsection
-    @include('header')
+    @include('layouts.header')
     
     @section('content')
         <h1>メニューを編集</h1>
@@ -37,4 +37,4 @@
         <div class="back">[<a href="/account/menu={{ $menu->id }}">back</a>]</div>
     @endsection
     
-@include('footer')
+@include('layouts.footer')

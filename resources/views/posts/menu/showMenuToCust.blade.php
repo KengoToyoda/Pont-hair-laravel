@@ -1,10 +1,10 @@
-@extends('template')
+@extends('layouts.template')
 
 @section('title', 'pont')
 @section('keywords', '美容師', '美容師アシスタント')
 @section('description', '美容師アシスタント紹介サービスです')
 
-    @include('header')
+    @include('layouts.header')
     
     @section('content')
     <section>
@@ -21,13 +21,16 @@
                 </ul>
             </div>
         </div>
+        <div class="reserve">
+            <a href="/reserve/stylists/{{ $user->id }}/menu={{ $menu->id }}">このメニューを予約する</a>
+        </div>
         <div class="Back">
             <a href="/stylists/{{ $menu->user_id }}">戻る</a>
         </div>
     </section>
 @endsection
     
-@include('footer')
+@include('layouts.footer')
     
 
         

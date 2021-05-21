@@ -3,7 +3,7 @@
         <ul class="heaer_nav circleBehind">
             <!-- Left Side Of Navbar --->
             <li class="nav_item"><a href="/" class="nav-link">Topページへ</a></li>
-            <li class="nav_item"><a href="" class="nav-link">美容師一覧</a></li>
+            <li class="nav_item"><a href="/reserve" class="nav-link">予約</a></li>
             <!-- Right Side Of Navbar -->
             <li class="navbar-nav nav_item">
                 <!-- Authentication Links -->

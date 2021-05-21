@@ -16,7 +16,7 @@
         <script src="{{ asset('js/sample.js') }}" type="text/javascript"></script>
 
     </head>
-    <body>
+    <bodyss
         <div class="wrap">
             @yield('header')
             <section class="contents">

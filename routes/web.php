@@ -93,8 +93,28 @@ Route::get('/stylists/{user}/menu={menu}', 'UserController@showMenuToCust');
 //スタイリストカタログ詳細表示
 Route::get('/stylists/{user}/catalog={catalog}', 'UserController@showCatalogToCust');
 
-//メニュ一覧表示
-Route::get('/menus', 'MenuController@index_menu');
+
+
+/**
+ * ルーティング３
+ * 
+ * フォーム送信機能
+ * /reserve/〇〇
+ * 
+ */
+ 
+  //予約フォーム確認
+ Route::post('reserve/confirm/stylists/{user}/menu={menu}', 'ReserveController@confirm');
+ // ->name('reserve.confrim');
+ 
+ //予約フォーム送信
+ Route::post('reserve/thanks/stylists/{user}/menu={menu}', 'ReserveController@send');
+ // ->name('reserve.send');
+ 
+ //予約フォーム表示
+ Route::get('reserve/stylists/{user}/menu={menu}', 'ReserveController@showReserve');
+ // ->name('reserve.form');
+
 
 
 

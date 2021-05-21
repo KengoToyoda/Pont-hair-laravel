@@ -1,10 +1,10 @@
-@extends('template')
+@extends('layouts.template')
 
 @section('title', 'pont')
 @section('keywords', '美容師', '美容師アシスタント')
 @section('description', '美容師アシスタント紹介サービスです')
 
-    @include('header')
+    @include('layouts.header')
     
     @section('content')
         <h1>美容師登録ページ</h1>
@@ -63,4 +63,4 @@
         <div class="back">[<a href="/">back</a>]</div>
     @endsection
     
-    @include('footer')
+    @include('layouts.footer')

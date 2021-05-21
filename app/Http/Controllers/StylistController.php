@@ -46,7 +46,6 @@ class StylistController extends Controller
         $input_menu['user_id']=$user->id;
         $menu->fill($input_menu)->save();
         return redirect('/account/' . 'menu=' . $menu->id);
-        
     }
     
     /**
@@ -54,7 +53,6 @@ class StylistController extends Controller
      */
     public function showMenu(User $user, Menu $menu)
     {
-        
         return view('stylist/menu/ShowMenu')->with([
                 'menu' => $menu,
                 ]);
@@ -70,7 +68,6 @@ class StylistController extends Controller
         
         return view('stylist/menu/EditMenu')->with([
                 'menu' => $menu,
-                
                 ]);
     }
     
@@ -104,7 +101,7 @@ class StylistController extends Controller
     }
     
     
-     /**
+    /**
      * ------------------------カタログ情報関連(catalogs)------------------------
      */
     
