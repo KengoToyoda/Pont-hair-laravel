@@ -50,6 +50,7 @@
                         @endforeach
                     </div>
                 </section>
+                <div id="map"></div>
                 
             </div>
         
@@ -74,6 +75,10 @@
 
             
         </div>
+        
+
+
+        
     @endsection
     
     @include('layouts.footer')

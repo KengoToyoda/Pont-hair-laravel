@@ -59,6 +59,7 @@ class User extends Authenticatable
     
     /**
      * Eloquent：リレーション
+     * 一対多
      * PostモデルとCatalogモデル
      */
      public function catalogs()
@@ -78,6 +79,16 @@ class User extends Authenticatable
     
     /**
      * Eloquent：リレーション
+     * 一対多
+     * UserモデルとReserveモデル
+     */
+     public function reserves()
+    {
+        return $this->hasMany('App\Reserve');
+    }
+    
+    /**
+     * Eloquent：リレーション
      * 多対多
      * UserモデルとCategoryモデル
      */
@@ -85,6 +96,7 @@ class User extends Authenticatable
     {
         return $this->belongsToMany('App\Category');
     }
+    
     
     /**
      * 現在のユーザー、または引数で渡されたIDが管理者かどうかを返す
