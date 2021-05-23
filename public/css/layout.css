@@ -499,8 +499,9 @@ footer .footer_content{
    * element that contains the map
    */
    
-  #map {
-    height: 700px;
+  #gmap {
+    height: 500px;
+    width:700px;
   }
   
   

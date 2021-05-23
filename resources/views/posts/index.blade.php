@@ -50,8 +50,6 @@
                         @endforeach
                     </div>
                 </section>
-                <div id="map"></div>
-                
             </div>
         
             <!-- pc right lock start-->

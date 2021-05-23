@@ -16,7 +16,6 @@
         <script src="{{ asset('js/sample.js') }}" type="text/javascript"></script>
         <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCgJa1MRBSDZT4VGZuGyDqywoHMR1-OlAE&callback=initMap">
         </script>
-        <script src="https://polyfill.io/v3/polyfill.min.js?features=default">
         </script>
     </head>
     <bodyss
@@ -40,4 +39,6 @@
             });
           }
         </script> 
+            
+        
 </html>

@@ -45,8 +45,9 @@
                     <li class="stylist_item">年齢：{{ $user->age }}</li>
                     <li class="stylist_item">メールアドレス：{{ $user->email }}</li>
                     <li class="stylist_item">電話番号：{{ $user->tel }}</li>
-                    <li class="stylist_item">所属店舗：{{ $user->shop }}</li>
-                    <li class="stylist_item">所属店舗の最寄り駅：{{ $user->location }}</li>
+                    <li class="stylist_item">ショップ：{{ $user->shop }}</li>
+                    <li class="stylist_item">ショップ郵便番号：{{ $user->postal_code }}</li>
+                    <li class="stylist_item">ショップ住所：{{ $user->address }}</li>
                     <li class="stylist_item">得意な施術{{ $user->style }}</li>
                 </ul>
                 <p class="sub_title">コメント</p>

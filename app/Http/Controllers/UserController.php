@@ -49,7 +49,7 @@ class UserController extends Controller
      */
    public function show(User $user, Menu $menu, Catalog $catalog)
     {
-        
+        // dd($user);
         $ranking = new RankingService;
         $ranking->incrementViewRanking($user->id);  //インクリメント
 
@@ -117,7 +117,7 @@ class UserController extends Controller
      */
         public function update(UserRequest $request, User $user)
     {
-     
+        // dd($request);
         // update, destroyでも同様に
         $this->authorize('edit', $user);
 

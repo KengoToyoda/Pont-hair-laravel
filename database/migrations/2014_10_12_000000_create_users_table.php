@@ -21,7 +21,8 @@ class CreateUsersTable extends Migration
             $table->string('password');
              $table->text('style')->nullable();
             $table->string('shop')->nullable();//追加
-            $table->string('location')->nullable();//追加
+            $table->integer('postal_code')->nullable();//追加
+            $table->string('address')->nullable();//追加
             $table->text('comment')->nullable();//追加
             $table->bigInteger('age')->nullable();//追加
             $table->string('image')->index('index_image')->nullable();

@@ -27,15 +27,20 @@
                     <p class="title__error" style="color:red">{{ $errors->first('user.shop') }}</p>
                 </li>
                 <li class="form_item">
-                    <h2>アクセス</h2>
-                    <input type="text" name="user[location]" placeholder="原宿駅徒歩5分" value="{{ old('user.location') }}" />
-                    <p class="title__error" style="color:red">{{ $errors->first('user.location') }}</p>
+                    <h2>ショップ郵便番号</h2>
+                    <input type="text" name="user[postal_code]" placeholder="2520000" value="{{ old('user.postal_code') }}" />
+                    <p class="title__error" style="color:red">{{ $errors->first('user.postal_code') }}</p>
                 </li>
                 <li class="form_item">
-                    <h2>得意な施術</h2>
-                    <textarea name="user[style]" placeholder="韓国カラー">{{ old('user.style') }}</textarea>
-                    <p class="body__error" style="color:red">{{ $errors->first('user.style') }}</p>
+                    <h2>ショップ住所</h2>
+                    <input type="text" name="user[address]" placeholder="原宿3-2-1" value="{{ old('user.address') }}" />
+                    <p class="title__error" style="color:red">{{ $errors->first('user.address') }}</p>
                 </li>
+                <!--<li class="form_item">-->
+                <!--    <h2>得意な施術</h2>-->
+                <!--    <textarea name="user[style]" placeholder="韓国カラー">{{ old('user.style') }}</textarea>-->
+                <!--    <p class="body__error" style="color:red">{{ $errors->first('user.style') }}</p>-->
+                <!--</li>-->
                 <li class="form_item">
                     <h2>コメント</h2>
                     <textarea name="user[comment]" placeholder="カラー・トリートメントモデル募集しています。夜21時以降可能です。">{{ old('user.comment') }}</textarea>

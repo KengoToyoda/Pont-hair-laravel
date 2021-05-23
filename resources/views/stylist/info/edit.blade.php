@@ -28,13 +28,17 @@
                     <input type="text" name="user[shop]"  value="{{ $user->shop }}" />
                 </li>
                 <li class="edit_item">
-                    <h2>アクセス</h2>
-                    <input type="text" name="user[location]"  value="{{ $user->location }}" />
+                    <h2>ショップ郵便番号</h2>
+                    <input type="text" name="user[postal_code]"  value="{{ $user->postal_code }}" />
                 </li>
                 <li class="edit_item">
-                    <h2>得意な施術</h2>
-                    <textarea name="user[style]">{{ $user->style }}</textarea>
+                    <h2>ショップ住所</h2>
+                    <input type="text" name="user[address]"  value="{{ $user->address }}" />
                 </li>
+                <!--<li class="edit_item">-->
+                <!--    <h2>得意な施術</h2>-->
+                <!--    <textarea name="user[style]">{{ $user->style }}</textarea>-->
+                <!--</li>-->
                 <li class="edit_item">
                     <h2>コメント</h2>
                     <textarea name="user[comment]">{{ $user->comment }}</textarea>
