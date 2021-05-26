@@ -16,7 +16,6 @@
         <script src="{{ asset('js/sample.js') }}" type="text/javascript"></script>
         <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCgJa1MRBSDZT4VGZuGyDqywoHMR1-OlAE&callback=initMap">
         </script>
-        </script>
     </head>
     <bodyss
         <div class="wrap">
@@ -30,15 +29,15 @@
     </body>
     
 
-        <script>
-          var map;
-          function initMap() {
-            map = new google.maps.Map(document.getElementById('map'), {
-              center: {lat: -34.397, lng: 150.644},
-              zoom: 8
-            });
-          }
-        </script> 
+        // <script>
+        //   var map;
+        //   function initMap() {
+        //     map = new google.maps.Map(document.getElementById('map'), {
+        //       center: {lat: -34.397, lng: 150.644},
+        //       zoom: 8
+        //     });
+        //   }
+        // </script> 
             
         
 </html>

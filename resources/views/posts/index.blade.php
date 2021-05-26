@@ -18,16 +18,26 @@
                   <div class="top_model_reserve pont">
                     <div class="top_model_reserve_inner">
                       <h2 class="hg title">施術別で美容師を探す</h2>
-                      <form method="get" action="/" class="search_container">
-                        <input type="text" name="s" value=""  placeholder="キーワード検索">
-                        <i type="submit" class="fas fa-search search_icon"></i>
+                      <form method="get" action="{{ route('searchproduct') }}" >
+                            <div class="search_container">
+                                <input type="text" name="searchWord" value="{{ $searchWord }}"  placeholder="キーワード検索">
+                            </div>
+                            <ul>
+                                <li>カテゴリ</li>
+                                <li>
+                                    <select name="categoryId" class="form-control" value="{{ $categoryId }}" >
+                                        <option value="">未選択</option>
+                                      
+                                        @foreach($categories as $category)
+                                            <option value="{{ $category->id }}"> 
+                                                {{ $category->category }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </li>
+                            </ul>
+                            <button type="submit" class="fas fa-search search_icon" >検索</button>
                       </form>
-                      <ul class="fg">
-                        <li class="cut"><a href="">カット</a></li>
-                        <li class="color"><a href="">カラー</a></li>
-                        <li class="treatment"><a href="">トリートメント</a></li>
-                        <li class="hairarenge"><a href="<">ヘアアレンジ</a></li>
-                      </ul>
                     </div>
                   </div>
                 </section>

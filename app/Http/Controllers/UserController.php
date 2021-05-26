@@ -15,8 +15,6 @@ use Illuminate\Support\Facades\Cache;
 
 class UserController extends Controller
 {
-    
-    
 
     /**
      * stylist一覧を表示する
@@ -24,20 +22,26 @@ class UserController extends Controller
      * @param user userモデル
      * @return array userモデルリスト
      */
-    public function index(User $user, Menu  $menu, Catalog $catalog)
+    public function index(User $user, Menu  $menu, Catalog $catalog, Request $request)
     {
         $ranking = new RankingService;
         $results = $ranking->getRankingAll();
         $user_ranking = $user->getArticleRanking($results);
         
-        // Cache::forget('key');
-        // Cache::flush();
+        $categories = Category::all();
+        
+        //フォームを機能させるために各情報を取得し、viewに返す
+        $searchWord = $request->input('searchWord');
+        $categoryId = $request->input('categoryId');
 
         
         return view('posts/index')->with([
             'users' => $user->get(),
             'user_ranking' => $user_ranking,
             'results' => $results,
+            'categories' =>$categories,
+            'searchWord' => $searchWord,
+            'categoryId' => $categoryId
             ]);
     }
     
@@ -52,9 +56,10 @@ class UserController extends Controller
         // dd($user);
         $ranking = new RankingService;
         $ranking->incrementViewRanking($user->id);  //インクリメント
-
+    
         $menus = $user->menus()->get();
         $catalogs =  $user->catalogs()->get();
+        
         return view('posts/info/show')->with([
             'user' => $user,
             'menus' => $menus,
@@ -73,9 +78,6 @@ class UserController extends Controller
                 'user' => $user,
                 ]);
     }
-    
-    
-    
     
     /**
      * 特定IDのcatalogを表示する
@@ -163,6 +165,19 @@ class UserController extends Controller
         
         $user->delete();
         return redirect('/account');
+    }
+    
+    
+    /*==================================
+    検索メソッド
+    ==================================*/
+    
+    public function search(Request $request, User $user)
+    {
+        //入力される値nameの中身を定義する
+        $searchWord = $request->input('searchWord'); //商品名の値
+        $categoryId = $request->input('categoryId'); //カテゴリの値
+        
     }
     
 

@@ -123,6 +123,12 @@ Route::get('/stylists/{user}/catalog={catalog}', 'UserController@showCatalogToCu
  */ 
  
  Auth::routes();
+ 
+ 
+ /**
+  * 検索機能 ルーティング
+  */
+ Route::get('searchproduct', 'UserController@search')->name('searchproduct');
 
 
 
