@@ -211,8 +211,8 @@ class UserController extends Controller
 
          
         $ranking = new RankingService;
-        $ranking->incrementViewRanking($user->id);  //インクリメント]
-        // $user_ranking = $user->getArticleRanking($results);
+        $results = $ranking->getRankingAll();
+        $user_ranking = $user->getArticleRanking($results);
     
         $menus = $user->menus()->get();
         $catalogs =  $user->catalogs()->get();
@@ -220,14 +220,14 @@ class UserController extends Controller
         
         return view('posts/search/results')->with([
             'searchedUsers' => $searchedUsers,
-            'user' => $user,
+            'users' => $user->get(),
             'menus' => $menus,
             'catalogs' => $catalogs,
             'categories' =>$categories,
             'searchWord' => $searchWord,
             'categoryId' => $categoryId,
-            // 'user_ranking' => $user_ranking,
-            // 'results' => $results,
+            'user_ranking' => $user_ranking,
+            'results' => $results,
             ]);
     }
     

@@ -14,7 +14,7 @@
         <div class="pc_flex">
             <div class="pc_left_block">
                 <!--検索フォーム -->
-                <section class="service_wrap">
+                 <section class="service_wrap">
                   <div class="top_model_reserve pont">
                     <div class="top_model_reserve_inner">
                       <h2 class="hg title">施術別で美容師を探す</h2>

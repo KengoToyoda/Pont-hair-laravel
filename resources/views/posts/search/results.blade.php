@@ -22,20 +22,15 @@
                             <div class="search_container">
                                 <input type="text" name="searchWord" value="{{ $searchWord }}"  placeholder="キーワード検索">
                             </div>
-                            <ul>
-                                <li>カテゴリ</li>
-                                <li>
-                                    <select name="categoryId" class="form-control" value="{{ $categoryId }}" >
-                                        <option value="">未選択</option>
-                                      
-                                        @foreach($categories as $category)
-                                            <option value="{{ $category->id }}"> 
-                                                {{ $category->category }}
-                                            </option>
-                                        @endforeach
-                                    </select>
-                                </li>
-                            </ul>
+                            <select name="categoryId" class="search_container" value="{{ $categoryId }}" >
+                                <option value="">カテゴリを選ぶ</option>
+                              
+                                @foreach($categories as $category)
+                                    <option value="{{ $category->id }}"> 
+                                        {{ $category->category }}
+                                    </option>
+                                @endforeach
+                            </select>
                             <button type="submit" class="fas fa-search search_icon" >検索</button>
                       </form>
                     </div>
@@ -51,7 +46,7 @@
                                     <h2 class='stylist_name'>{{ $searchedUser->name }}</h2>
                                 </a>
                                 <ul class="stylist_info2">
-                                    <li class="stylist_item">{{ $searchedUser->name }}</li>
+                                    <li class="stylist_item">{{ $searchedUser->age }}</li>
                                     <li class="stylist_item">{{ $searchedUser->shop }}</li>
                                     <li class="stylist_item">{{ $searchedUser->location }}</li>
                                     <li class="stylist_item">{{ $searchedUser->style }}</li>
@@ -65,7 +60,21 @@
         
             <!-- pc right lock start-->
             <!--<div class="pc_right_block">-->
-            <!--   
+             <div class="ranking">
+                    <h2 class="title ranking-ttl">Dresser Ranking</h2>
+                    @foreach ($results as $key => $result)
+                        <div class="ranking_content">
+                            <a href="/stylists/{{ $users[array_search($key, array_column(($users->toArray()),'id'))]->id }}" class="stylist_info1 ranking_item" 
+                            style="background:url(https://pont-storage-heroku.s3-ap-northeast-1.amazonaws.com/stylist/{{ $users[array_search($key, array_column(($users->toArray()),'id'))]->image }}) center no-repeat; 
+                                    height:250px;
+                                    display:block;
+                                background-size:cover;">
+                                <h2 class='stylist_name'>{{ $users[array_search($key, array_column(($users->toArray()),'id'))]->name  }}</h2>
+                            </a>
+                            <p class="count_number">閲覧数：{{ $result }}</p>
+                        </div>
+                    @endforeach
+                </di>
             <!--</div>-->
 
             
