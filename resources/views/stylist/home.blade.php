@@ -58,9 +58,8 @@
                     <li class="stylist_item">ショップ：{{ $user->shop }}</li>
                     <li class="stylist_item">ショップ郵便番号：{{ $user->postal_code }}</li>
                     <li class="stylist_item">ショップ住所：{{ $user->address }}</li>
-                    <li class="stylist_item">得意な施術{{ $user->style }}</li>
                 </ul>
-                <p class="sub_title">コメント</p>
+                <p class="sub_title bold">コメント</p>
                 <p class="stylist_comment">{{ $user->comment }}</p>
                 <div class="">
                     <h1 class="bold">コース一覧</h1>
