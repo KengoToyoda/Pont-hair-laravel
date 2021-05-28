@@ -36,6 +36,7 @@ class UserController extends Controller
         $searchWord = $request->input('searchWord');
         $categoryId = $request->input('categoryId');
 
+        Cache::flush();     
         
         return view('posts/index')->with([
             'users' => $user->get(),

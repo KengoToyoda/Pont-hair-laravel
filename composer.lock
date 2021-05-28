@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "15ef7042a1d5378b89fac83075472c4a",
+    "content-hash": "0d5fd4f5cb897be34f75058addf3b1d9",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -5200,6 +5200,59 @@
                 }
             ],
             "time": "2021-03-28T09:42:18+00:00"
+        },
+        {
+            "name": "tecpresso/laravel-allow-non-rfc-compliant-email-patch",
+            "version": "1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mikkame/laravel-allow-non-rfc-compliant-email-patch.git",
+                "reference": "81883bba869ec44403db7f61e9dea954cbf05ad2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mikkame/laravel-allow-non-rfc-compliant-email-patch/zipball/81883bba869ec44403db7f61e9dea954cbf05ad2",
+                "reference": "81883bba869ec44403db7f61e9dea954cbf05ad2",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": ">=5.5.0||6.0.0||7.0.0",
+                "php": ">=7.0",
+                "swiftmailer/swiftmailer": "~5.4|~6.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": ">=3.5 || >=4.0",
+                "phpunit/phpunit": ">=6.5 || >=7.1 || >=8.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Tecpresso\\AllowNonRfcComplaintEmailPatch\\AllowNonRfcComplaintEmailPatchServiceProvidor"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Tecpresso\\AllowNonRfcComplaintEmailPatch\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "mikkame",
+                    "email": "matchasoft.jp@gmail.com"
+                }
+            ],
+            "description": "Allow non-rfc compliant email (ex. example..@example.com)",
+            "support": {
+                "issues": "https://github.com/mikkame/laravel-allow-non-rfc-compliant-email-patch/issues",
+                "source": "https://github.com/mikkame/laravel-allow-non-rfc-compliant-email-patch/tree/1.2.0"
+            },
+            "time": "2020-05-02T04:39:37+00:00"
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",
