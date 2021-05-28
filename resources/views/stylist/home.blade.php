@@ -29,9 +29,6 @@
                     </form>
                 </li>
                 <li>
-                    <!--<a class="sidebar_item" href="" onclick="document.getElementById('delete-form').submit();">-->
-                    <!--    アカウントを削除する-->
-                    <!--</a>-->
                     <form action="{{ route('user.delete')}}" method="post" id="delete-form" class="sidebar_item">
                         @csrf
                         @method('DELETE')
@@ -66,7 +63,7 @@
                 <p class="sub_title">コメント</p>
                 <p class="stylist_comment">{{ $user->comment }}</p>
                 <div class="">
-                    <h1>コース一覧</h1>
+                    <h1 class="bold">コース一覧</h1>
                     @foreach($menus as $menu)
                         <ul class="menu_lsit">
                             <li class="menu_item"><a href="/account/menu={{ $menu->id }}">{{ $menu->course }}</a></li>
@@ -78,7 +75,7 @@
             
                 </div>
                 <div class="">
-                    <h1>カタログ一覧</h1>
+                    <h1 class="bold">カタログ一覧</h1>
                     @foreach($catalogs as $catalog)
                         <ul class="catalog_lsit">
                             <a href="/account/catalog={{ $catalog->id }}">
@@ -90,22 +87,12 @@
                 </div>
                 
                 <div class="">
-                    <h1>スタイル</h1>
+                    <h1 class="bold">スタイル</h1>
                     @foreach($categories as $category)
                         <ul class="catalog_lsit">
                                 <li class="catalog_item">{{ $category->category }}</li>
                         </ul>
                     @endforeach
-                </div>
-                
-                
-                
-                <div class="">
-                    <h1>口コミ一覧</h1>
-                    <ul class="comments_list">
-                        <li class="comments_item"><a href="">口コミ</a></li>
-                    </ul>
-                    
                 </div>
             </section>
             
