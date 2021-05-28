@@ -180,9 +180,24 @@ class UserController extends Controller
         $categoryId = $request->input('categoryId'); //カテゴリの値
         
         $data = User::query();
-
+        
+        
+        if(isset($categoryId) && isset($searchWord)){
+            $data = $data->whereHas('category', function($query) use ($categoryId) {
+                $query->where('category_id', $categoryId);
+            });
+            $data = $data->whereHas('category', function($query) use ($categoryId) {
+                $query->where('category_id', $categoryId);
+            })->get();
+        }
+        //カテゴリが選択された場合、Userテーブルからcategory_idが一致する商品を
+        else if (isset($categoryId)) {
+          $data = $data->whereHas('category', function($query) use ($categoryId) {
+                $query->where('category_id', $categoryId);
+            })->get();
+        }
         //キーワードが入力された場合、テーブルから一致する商品を$queryに代入
-        if (isset($searchWord)) {
+        else if (isset($searchWord)) {
             $searchWord = str_replace('　', ' ', $searchWord);  //全角スペースを半角に変換
             $searchWord = preg_replace('/\s(?=\s)/', '', $searchWord); //連続する半角スペースは削除
             $searchWord = trim($searchWord); //文字列の先頭と末尾にあるホワイトスペースを削除
@@ -197,19 +212,8 @@ class UserController extends Controller
                            ->orwhere('email', 'LIKE', '%'.$keyword.'%');
                 })->get();
             }
-            $searchedUsers = $data;
         }
-        
-        //カテゴリが選択された場合、Userテーブルからcategory_idが一致する商品を
-        if (isset($categoryId)) {
-          $data = $data->whereHas('category', function($query) use ($categoryId) {
-                $query->where('category_id', $categoryId);
-            })->get();
-            $searchedUsers = $data;
-        }
-        
-        
-
+        $searchedUsers = $data;
          
         $ranking = new RankingService;
         $results = $ranking->getRankingAll();

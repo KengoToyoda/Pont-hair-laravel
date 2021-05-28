@@ -46,7 +46,7 @@ class ReserveController extends Controller
      }
      
     
-    /**
+    /**l
      * メールの自動送信設定
      **/
     public function send(Request $request, User $user, Menu $menu, Reserve $reserve) 
