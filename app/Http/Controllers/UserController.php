@@ -191,7 +191,7 @@ class UserController extends Controller
             foreach($keywords as $keyword) {
                 //1つのキーワードに対し、名前かメールアドレスのいずれかが一致しているユーザを抽出
                 //キーワードが複数ある場合はAND検索
-                $data->where(function($query) use($keyword){
+                $data = $data->where(function($query) use($keyword){
                     $query->where('name', 'LIKE', '%'.$keyword.'%')
                            ->orwhere('email', 'LIKE', '%'.$keyword.'%');
                 })->get();

@@ -22,20 +22,15 @@
                             <div class="search_container">
                                 <input type="text" name="searchWord" value="{{ $searchWord }}"  placeholder="キーワード検索">
                             </div>
-                            <ul>
-                                <li>カテゴリ</li>
-                                <li>
-                                    <select name="categoryId" class="form-control" value="{{ $categoryId }}" >
-                                        <option value="">未選択</option>
-                                      
-                                        @foreach($categories as $category)
-                                            <option value="{{ $category->id }}"> 
-                                                {{ $category->category }}
-                                            </option>
-                                        @endforeach
-                                    </select>
-                                </li>
-                            </ul>
+                            <select name="categoryId" class="search_container" value="{{ $categoryId }}" >
+                                <option value="">カテゴリを選ぶ</option>
+                              
+                                @foreach($categories as $category)
+                                    <option value="{{ $category->id }}"> 
+                                        {{ $category->category }}
+                                    </option>
+                                @endforeach
+                            </select>
                             <button type="submit" class="fas fa-search search_icon" >検索</button>
                       </form>
                     </div>

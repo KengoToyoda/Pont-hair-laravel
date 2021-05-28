@@ -168,7 +168,6 @@ header .heaer_nav{
   border: none;
   height: 2em;
   width: 100%;
-  padding: 0 15px;
 }
 .search_container input[type="text"]:focus {
   outline: 0;
@@ -180,6 +179,8 @@ header .heaer_nav{
   height: 40px;
   overflow: hidden;
   margin-bottom: 20px;
+  display: block;
+  width: 100%;
 }
 .search_container .search_icon{
   text-align: center;
@@ -237,6 +238,7 @@ header .heaer_nav{
   line-height: 3;
   font-weight: bold;
 }
+
 
 .top_model_reserve ul .cut a{
   background: url(https://pont-storage-heroku.s3-ap-northeast-1.amazonaws.com/images/icon/cut_icon.png) center no-repeat;
