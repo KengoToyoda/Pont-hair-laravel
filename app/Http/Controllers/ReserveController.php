@@ -69,7 +69,6 @@ class ReserveController extends Controller
             return redirect('/reserve/stylists/'. $user->id . '/menu=' . $menu->id)
                 ->withInput($reserves);
         } else {
-            dd($user->email);
             Mail::to($user->email)
                     ->send(new OrderShipped($reserve));
         };
