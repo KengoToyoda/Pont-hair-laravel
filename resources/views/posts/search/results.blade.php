@@ -42,19 +42,20 @@
                   </div>
                 </section>
                 <section class="container">
-                    <h2 class="hg title">Dresser Lists</h2>
+                    <h2 class="hg title">検索結果</h2>
                     <div class='slider'>
-                        @foreach ($users as $user)
+                        <p>全{{ $searchedUsers->count() }}件</p>
+                        @foreach ($searchedUsers as $searchedUser)
                             <div class=slider_item>
-                                <a href="/stylists/{{ $user->id }}" class="stylist_info1" style="background:url('https://pont-storage-heroku.s3-ap-northeast-1.amazonaws.com/stylist/{{ $user->image }}') center no-repeat; height:300px; display:block; background-size:cover;">
-                                    <h2 class='stylist_name'>{{ $user->name }}</h2>
+                                 <a href="/stylists/{{ $searchedUser->id }}" class="stylist_info1" style="background:url('https://pont-storage-heroku.s3-ap-northeast-1.amazonaws.com/stylist/{{ $searchedUser->image }}') center no-repeat; height:300px; display:block; background-size:cover;">
+                                    <h2 class='stylist_name'>{{ $searchedUser->name }}</h2>
                                 </a>
                                 <ul class="stylist_info2">
-                                    <li class="stylist_item">{{ $user->age }}</li>
-                                    <li class="stylist_item">{{ $user->shop }}</li>
-                                    <li class="stylist_item">{{ $user->location }}</li>
-                                    <li class="stylist_item">{{ $user->style }}</li>
-                                    <li><p class="stylist_comment">{{ $user->comment }}</p></li>
+                                    <li class="stylist_item">{{ $searchedUser->name }}</li>
+                                    <li class="stylist_item">{{ $searchedUser->shop }}</li>
+                                    <li class="stylist_item">{{ $searchedUser->location }}</li>
+                                    <li class="stylist_item">{{ $searchedUser->style }}</li>
+                                    <li><p class="stylist_comment">{{ $searchedUser->comment }}</p></li>
                                 </ul>
                             </div>
                         @endforeach
@@ -63,23 +64,9 @@
             </div>
         
             <!-- pc right lock start-->
-            <div class="pc_right_block">
-                <div class="ranking">
-                    <h2 class="title ranking-ttl">Dresser Ranking</h2>
-                    @foreach ($results as $key => $result)
-                        <div class="ranking_content">
-                            <a href="/stylists/{{ $users[array_search($key, array_column(($users->toArray()),'id'))]->id }}" class="stylist_info1 ranking_item" 
-                            style="background:url(https://pont-storage-heroku.s3-ap-northeast-1.amazonaws.com/stylist/{{ $users[array_search($key, array_column(($users->toArray()),'id'))]->image }}) center no-repeat; 
-                                    height:250px;
-                                    display:block;
-                                background-size:cover;">
-                                <h2 class='stylist_name'>{{ $users[array_search($key, array_column(($users->toArray()),'id'))]->name  }}</h2>
-                            </a>
-                            <p class="count_number">閲覧数：{{ $result }}</p>
-                        </div>
-                    @endforeach
-                </di>
-            </div>
+            <!--<div class="pc_right_block">-->
+            <!--   
+            <!--</div>-->
 
             
         </div>

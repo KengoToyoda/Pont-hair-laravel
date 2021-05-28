@@ -128,7 +128,8 @@ Route::get('/stylists/{user}/catalog={catalog}', 'UserController@showCatalogToCu
  /**
   * 検索機能 ルーティング
   */
- Route::get('searchproduct', 'UserController@search')->name('searchproduct');
+ Route::get('searchUser', 'UserController@search')->name('searchUser');
+
 
 
 

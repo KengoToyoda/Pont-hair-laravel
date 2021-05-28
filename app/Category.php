@@ -14,6 +14,7 @@ class Category extends Model
      * Eloquent：リレーション
      * 多対多
      * UserモデルとCategoryモデル
+     * カテゴリを所有するユーザーを取得
      */
     public function users()
     {

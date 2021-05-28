@@ -12,6 +12,8 @@ use App\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\Storage;//画像操作
 use App\Libraries\RankingService;//ランキング機能
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\DB;
+
 
 class UserController extends Controller
 {
@@ -131,8 +133,6 @@ class UserController extends Controller
             $user->category()->sync($request['category']);
         }
        
-        // dd($user);
-        
         //ユーザー処理
         //formのnameが'user[**]'の入力を$inputに格納
         $input_user = $request['user'];
@@ -172,13 +172,63 @@ class UserController extends Controller
     検索メソッド
     ==================================*/
     
-    public function search(Request $request, User $user)
+    public function search(Request $request, User $user, Menu $menu, Catalog $catalog)
     {
         //入力される値nameの中身を定義する
         $searchWord = $request->input('searchWord'); //商品名の値
         $categoryId = $request->input('categoryId'); //カテゴリの値
         
+        $data = User::query();
+
+        //キーワードが入力された場合、テーブルから一致する商品を$queryに代入
+        if (isset($searchWord)) {
+            $searchWord = str_replace('　', ' ', $searchWord);  //全角スペースを半角に変換
+            $searchWord = preg_replace('/\s(?=\s)/', '', $searchWord); //連続する半角スペースは削除
+            $searchWord = trim($searchWord); //文字列の先頭と末尾にあるホワイトスペースを削除
+            $searchWord = str_replace(['\\', '%', '_'], ['\\\\', '\%', '\_'], $searchWord); //円マーク、パーセント、アンダーバーはエスケープ処理
+            $keywords = array_unique(explode(' ', $searchWord)); //キーワードを半角スペースで配列に変換し、重複する値を削除
+            
+            foreach($keywords as $keyword) {
+                //1つのキーワードに対し、名前かメールアドレスのいずれかが一致しているユーザを抽出
+                //キーワードが複数ある場合はAND検索
+                $data->where(function($query) use($keyword){
+                    $query->where('name', 'LIKE', '%'.$keyword.'%')
+                           ->orwhere('email', 'LIKE', '%'.$keyword.'%');
+                })->get();
+            }
+            $searchedUsers = $data;
+        }
+        
+        //カテゴリが選択された場合、Userテーブルからcategory_idが一致する商品を
+        if (isset($categoryId)) {
+          $data = $data->whereHas('category', function($query) use ($categoryId) {
+                $query->where('category_id', $categoryId);
+            })->get();
+            $searchedUsers = $data;
+        }
+        
+        
+
+         
+        $ranking = new RankingService;
+        $ranking->incrementViewRanking($user->id);  //インクリメント]
+        // $user_ranking = $user->getArticleRanking($results);
+    
+        $menus = $user->menus()->get();
+        $catalogs =  $user->catalogs()->get();
+        $categories = Category::all();
+        
+        return view('posts/search/results')->with([
+            'searchedUsers' => $searchedUsers,
+            'user' => $user,
+            'menus' => $menus,
+            'catalogs' => $catalogs,
+            'categories' =>$categories,
+            'searchWord' => $searchWord,
+            'categoryId' => $categoryId,
+            // 'user_ranking' => $user_ranking,
+            // 'results' => $results,
+            ]);
     }
     
-
 }
