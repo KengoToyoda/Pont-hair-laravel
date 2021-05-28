@@ -64,14 +64,14 @@ Route::post('/account/menu/storeMenu', 'StylistController@storeMenu')->where('us
 Route::post('/account/catalog/storeCatalog', 'StylistController@storeCatalog')->where('user', '[0-9]+')->name('user.catalog.store');
 
 
+//美容師情報削除
+Route::delete('/account', 'UserController@delete')->where('user', '[0-9]+')->name('user.delete');
 //カタログ情報削除
 Route::delete('/account/catalog={catalog}', 'StylistController@deleteCatalog')->where('user', '[0-9]+')->name('user.catalog.delete');
-
 //メニュー投稿削除
 Route::delete('/account/menu={menu}', 'StylistController@deleteMenu')->where('user', '[0-9]+')->name('user.menu.delete');
 
-//美容師情報削除
-Route::delete('/account', 'UserController@delete')->where('user', '[0-9]+')->name('user.delete');
+
 
 /**
  * ルーティング２

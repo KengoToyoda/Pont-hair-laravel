@@ -28,6 +28,19 @@
                         @csrf
                     </form>
                 </li>
+                <li>
+                    <!--<a class="sidebar_item" href="" onclick="document.getElementById('delete-form').submit();">-->
+                    <!--    アカウントを削除する-->
+                    <!--</a>-->
+                    <form action="{{ route('user.delete')}}" method="post" id="delete-form" class="sidebar_item">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit">アカウントを削除する</button>
+                    </form>    
+                </li>
+
+                
+
             </ul>
         </div>
         <div class="mypage_content">
@@ -98,14 +111,6 @@
             
         </div>
     </div>
-    
-   
-    
-
-                <div class="card-body">
-                    
-                </div>
-
 </div>
 @endsection
 

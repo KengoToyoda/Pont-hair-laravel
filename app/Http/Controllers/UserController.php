@@ -162,10 +162,10 @@ class UserController extends Controller
         public function delete(User $user)
     {
         // update, destroyでも同様に
-        $this->authorize('edit', $user);
-        
+        // $this->authorize('edit', $user);
+        $user = Auth::user();
         $user->delete();
-        return redirect('/account');
+        return redirect('/');
     }
     
     
