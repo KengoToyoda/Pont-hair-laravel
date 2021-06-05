@@ -17,7 +17,7 @@
         <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCgJa1MRBSDZT4VGZuGyDqywoHMR1-OlAE&callback=initMap">
         </script>
     </head>
-    <bodyss
+    <body>
         <div class="wrap">
             @yield('header')
             <section class="contents">
