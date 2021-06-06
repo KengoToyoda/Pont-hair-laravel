@@ -75,38 +75,40 @@
             <div class="content">
                 <section class="box-menu box-block">
                     <h2 class="box-title hg">{{ $user->name }}のメニュー</h2>
-                    @foreach($menus as $menu)
                         <ul class="menu-list">
-                            <li class="menu-item">
-                                <a class="menu-info" href="/stylists/{{ $menu->user_id }}/menu={{ $menu->id }}">
-                                    <div class="menu-photo" style="background:green; ">
+                            @foreach($menus as $menu)
+                                <li class="menu-item">
+                                    <a class="menu-info" href="/stylists/{{ $menu->user_id }}/menu={{ $menu->id }}">
+                                        <div class="menu-photo" style="background:green; color:#fff; ">写真</div>
+                                        <div class="menu-summary">
+                                            <div class="menu-tag ">{{ $menu->tag }}</div>
+                                            <div class="menu-cource">{{ $menu->course }}</div>
+                                            <div class="menu-price"><span class="">料金</span>{{ $menu->price }}</div>
+                                            <div class="menu-desc">{{ $menu->description }}</div>
+                                        </div>
+                                    </a>
+                                    <div class="menu-reserve">
+                                        <a href="/reserve/stylists/{{ $user->id }}/menu={{ $menu->id }}">予約</a>
                                     </div>
-                                    <div class="menu-summary">
-                                        <div class="menu-tag ">{{ $menu->tag }}</div>
-                                        <div class="menu-cource">{{ $menu->course }}</div>
-                                        <div class="menu-price"><span class="">料金</span>{{ $menu->price }}</div>
-                                        <div class="menu-desc">{{ $menu->description }}</div>
-                                    </div>
-                                </a>
-                                <div class="menu-reserve">
-                                    <a href="/reserve/stylists/{{ $user->id }}/menu={{ $menu->id }}">予約</a>
-                                </div>
-                            </li>
+                                </li>
+                            @endforeach
                         </ul>
-                    @endforeach
                 </section>
             </div>
             <div class="content">
-                <section class="">
-                    <h1>カタログ一覧</h1>
-                    @foreach($catalogs as $catalog)
-                        <ul class="menu_lsit">
-                            <a href="/stylists/{{ $catalog->user_id }}/catalog={{ $catalog->id }}">
-                                <li class="catalog_item"><img src="{{ asset('https://pont-storage-heroku.s3-ap-northeast-1.amazonaws.com/catalog/' . $catalog->catalogImg) }}"></li>
-                                <li class="catalog_item">{{ $catalog->catalogCmt }}</li>
-                            </a>
-                        </ul>
-                    @endforeach
+                <section class="box-block ">
+                    <h2 class="box-title hg">カタログ一覧</h2>
+                    <ul class="catalog-list">
+                        @foreach($catalogs as $catalog)
+                            <li class="catalog-item">
+                                <a href="/stylists/{{ $catalog->user_id }}/catalog={{ $catalog->id }}">
+                                    <div class="catalog-photo" style="background:url('https://pont-storage-heroku.s3-ap-northeast-1.amazonaws.com/catalog/{{ $catalog->catalogImg }}')
+                                    center,no-repeat; display:block; background-size:cover;"></div>
+                                    <div class="catalog-desc">{!! nl2br($catalog->catalogCmt) !!}</div>
+                                </a>
+                            </li>
+                        @endforeach
+                    </ul>
                 </section>
             </div>
             <div class="content">

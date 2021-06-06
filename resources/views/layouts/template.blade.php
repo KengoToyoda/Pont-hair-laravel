@@ -12,7 +12,7 @@
         <link href="{{ asset('css/layout.css') }}" rel="stylesheet" type="text/css">
         <link href="{{ asset('css/app.css') }}" rel="stylesheet" type="text/css">
         <!--style.scssのコンパイル先-->
-        <link href="{{ asset('css/style.css') }}" rel="stylesheet" >
+        <link href="{{ asset('scss/style.css') }}" rel="stylesheet" >
         
         <!--jQuery読み込み-->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>

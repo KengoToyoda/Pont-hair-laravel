@@ -11,11 +11,15 @@
     font-size: 30px;
     color: #444;
     display: block;
-    transition: all ease .6s; }
+    transition: all ease .6s;
+    border-bottom: 4px solid #fff; }
     .box_nav li:hover {
       color: #fff;
       background: #269d66;
-      transition: all ease .6s; }
+      transition: all ease .6s;
+      border-bottom: 4px solid #269d66; }
+  .box_nav li.active {
+    border-bottom: 4px solid #269d66; }
 
 .content-area .content {
   display: none; }

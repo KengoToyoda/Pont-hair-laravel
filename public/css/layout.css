@@ -698,13 +698,35 @@ footer .footer_content{
     border: 2px solid #269d66;
 }
 
-
 .menu-reserve a:hover {
   box-shadow    : none;   
   color         : #269d66;    
   background    : #ffffff;
 }
 
-
-
+.catalog-list{
+  display: flex;
+  flex-wrap: wrap;
+  width:100%;
+}
+.catalog-item{
+  flex-basis:20%;
+}
   
+.catalog-item a{
+  display: block;
+  transition: all ease 0.6s;
+  
+}
+.catalog-item a:hover{
+  opacity: 0.7;
+  transition: all ease 0.7s;
+}
+.catalog-photo{
+  width: 100%;
+  height: 200px;
+}
+.catalog-desc{
+  color: #444;
+  text-align: left;
+}

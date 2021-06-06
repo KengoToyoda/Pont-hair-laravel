@@ -12,18 +12,18 @@
             color:#444;
             display:block;
             transition:all ease .6s;
+            border-bottom: 4px solid #fff;
             
               &:hover{
                   color:#fff;
                   background:#269d66;
                   transition:all ease .6s;
+                  border-bottom: 4px solid #269d66;
               }
         }
-        //   li.active {
-        //     background-color: #ccc;
-        //     color: #222e3e;
-        //     border: none;
-        // }
+          li.active {
+            border-bottom: 4px solid #269d66;
+        }
     }
 .content-area {
     .content {
