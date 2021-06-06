@@ -49,7 +49,7 @@
                                     <li class="stylist_item">{{ $user->shop }}</li>
                                     <li class="stylist_item">{{ $user->location }}</li>
                                     <li class="stylist_item">{{ $user->style }}</li>
-                                    <li><p class="stylist_comment">{{ $user->comment }}</p></li>
+                                    <li><p class="stylist_comment">{!! nl2br(e(Str::limit($user->comment, 50))) !!}</p></li>
                                 </ul>
                             </div>
                         @endforeach

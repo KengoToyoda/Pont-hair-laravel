@@ -1,0 +1,36 @@
+.box_nav{
+        margin-top:10px ;
+        width:100%;
+        background:#fff;
+        display: flex;
+        justify-content:space-between;
+        cursor: pointer;
+          li {
+            width:25%;
+            text-align:center;
+            font-size:30px;
+            color:#444;
+            display:block;
+            transition:all ease .6s;
+            
+            &:hover{
+                color:#fff;
+                background:#269d66;
+                transition:all ease .6s;
+            }
+        }
+        //   li.active {
+        //     background-color: #ccc;
+        //     color: #222e3e;
+        //     border: none;
+        // }
+    }
+.content-area {
+    .content {
+      display: none;
+    }
+    .content.show {
+      // margin-top: 50px;
+      display: block;
+    }
+}

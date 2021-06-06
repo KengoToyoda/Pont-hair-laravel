@@ -62,10 +62,12 @@ class UserController extends Controller
     
         $menus = $user->menus()->get();
         $catalogs =  $user->catalogs()->get();
+        $categories = $user->category()->get();
         
         return view('posts/info/show')->with([
             'user' => $user,
             'menus' => $menus,
+            'categories' =>$categories,
             'catalogs' => $catalogs,
             ]);
     }

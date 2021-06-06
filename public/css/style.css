@@ -1,0 +1,25 @@
+.box_nav {
+  margin-top: 10px;
+  width: 100%;
+  background: #fff;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer; }
+  .box_nav li {
+    width: 25%;
+    text-align: center;
+    font-size: 30px;
+    color: #444;
+    display: block;
+    transition: all ease .6s; }
+    .box_nav li:hover {
+      color: #fff;
+      background: #269d66;
+      transition: all ease .6s; }
+
+.content-area .content {
+  display: none; }
+.content-area .content.show {
+  display: block; }
+
+/*# sourceMappingURL=style.css.map */

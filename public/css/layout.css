@@ -497,36 +497,21 @@ footer .footer_content{
   .ranking_content:last-child{
     border:0;
   }
-  
-  
-  /**
-   * Google Maps API
-   *
-   * Always set the map height explicitly to define the size of the div
-   * element that contains the map
-   */
-   
-  #gmap {
-    height: 500px;
-    width:700px;
-  }
-  
-  
   /**
    *スタイリスト個別ページCSS
    *
    */
    .box-block{
     border-radius: 5px;
-    border:1px solid #fff;
     width:100%;
     background:#fff;
+    margin-top:10px;
+    padding:20px;
    }
    .indi_page{
-     padding:50px 0; 
+     padding:20px 0; 
    }
    .box-basic{
-     padding:20px;
      height: 400px;
      position: relative;
    }
@@ -561,30 +546,83 @@ footer .footer_content{
      font-size: 30px;
      color:#444;
    }
-   
-   .box_nav{
-     margin:20px 0;
-     width:100%;
-     background:#fff;
+   .box-comment{
+    padding-bottom: 50px
    }
-   .box_nav ul{
-     display: flex;
-     justify-content:space-between;
+   .box-title{
+    font-size: 25px;
+    font-weight: bold;
+    padding-bottom: 20px;
    }
-   .box_nav ul li {
-     width:25%;
-     text-align:center;
-   }
-   .box_nav ul li a{
-     font-size:30px;
-     color:#444;
-     display:block;
-   }
-   .box_nav ul li a:hover{
-     color:#fff;
-     background:#269d66;
-    }
-   
-   
+  .box-sub-title{
+    font-size:20px;
+    padding-bottom: 10px
+  }
+  
+  .comment-desc{
+    font-size: 15px;
+  }  
+  .comment-fav{
+    padding-bottom:20px;
+    width:100%;
+  }
+  .comment-fav-list {
+    display: flex;
+    justify-content:space-around;
+  }
+  
+  .comment-fav-list .comment-fav-item {
+    width: 30%;
+    max-width: 400px;
+    position: relative;
+    list-style-type: none!important;
+    padding: 0.5em 0.5em 0.5em 0.5em;
+    margin-bottom: 5px;
+    line-height: 1.5;
+    background: #dbebf8;
+    vertical-align: middle;
+    color: #505050;
+    border-radius: 15px;
+  }
+  
+  .comment-fav-list .comment-fav-item:before{ 
+    display:inline-block; 
+    vertical-align: middle;
+    /*以下白丸つくる*/
+    content:'';
+    width:1em;
+    height: 1em;
+    background: #fff;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+  .box-shop-wrap{
+    width: 100%;
+    display: flex;
+    justify-content:space-between;
+  }
+  /*google map CSS*/
+  #gmap {
+    height: 400px;
+    width:48%;
+  }
+  .shop-map{
+    width: 48%
+  }
+  .shop-map dl{
+    display: table;
+    width: 100%;
+    padding:15px 0;
+    border-bottom:1px solid #f2f2f2;
+  }
+  .shop-map dl dt{
+    display: table-cell;
+    width: 150px;
+  }
+  .shop-map dl dd{
+    display: table-cell;
+    overflow-wrap: break-word;
+  }
   
   
