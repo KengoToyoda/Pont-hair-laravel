@@ -73,14 +73,25 @@
                 </section>
             </div>
             <div class="content">
-                <section class="">
-                    <h1>コース一覧</h1>
+                <section class="box-menu box-block">
+                    <h2 class="box-title hg">{{ $user->name }}のメニュー</h2>
                     @foreach($menus as $menu)
-                        <ul class="menu_lsit">
-                            <li class="menu_item"><a href="/stylists/{{ $menu->user_id }}/menu={{ $menu->id }}"><h2>{{ $menu->course }}</h2></a></li>
-                            <li class="menu_item">{{ $menu->tag }}</li>
-                            <li class="menu_item">{{ $menu->price }}</li>
-                            <li class="menu_item">{{ $menu->description }}</li>
+                        <ul class="menu-list">
+                            <li class="menu-item">
+                                <a class="menu-info" href="/stylists/{{ $menu->user_id }}/menu={{ $menu->id }}">
+                                    <div class="menu-photo" style="background:green; ">
+                                    </div>
+                                    <div class="menu-summary">
+                                        <div class="menu-tag ">{{ $menu->tag }}</div>
+                                        <div class="menu-cource">{{ $menu->course }}</div>
+                                        <div class="menu-price"><span class="">料金</span>{{ $menu->price }}</div>
+                                        <div class="menu-desc">{{ $menu->description }}</div>
+                                    </div>
+                                </a>
+                                <div class="menu-reserve">
+                                    <a href="/reserve/stylists/{{ $user->id }}/menu={{ $menu->id }}">予約</a>
+                                </div>
+                            </li>
                         </ul>
                     @endforeach
                 </section>

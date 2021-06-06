@@ -26,11 +26,14 @@ class UserController extends Controller
      */
     public function index(User $user, Menu  $menu, Catalog $catalog, Request $request)
     {
+        
         $ranking = new RankingService;
         $results = $ranking->getRankingAll();
         $user_ranking = $user->getArticleRanking($results);
         
         $categories = Category::all();
+        
+        
         
         //フォームを機能させるために各情報を取得し、viewに返す
         $searchWord = $request->input('searchWord');
@@ -39,7 +42,7 @@ class UserController extends Controller
         Cache::flush();     
         
         return view('posts/index')->with([
-            'users' => $user->get(),
+            'users' => $user->latest()->get(),
             'user_ranking' => $user_ranking,
             'results' => $results,
             'categories' =>$categories,

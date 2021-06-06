@@ -568,16 +568,16 @@ footer .footer_content{
   }
   .comment-fav-list {
     display: flex;
-    justify-content:space-around;
+    flex-wrap: wrap;
   }
   
   .comment-fav-list .comment-fav-item {
     width: 30%;
-    max-width: 400px;
     position: relative;
     list-style-type: none!important;
     padding: 0.5em 0.5em 0.5em 0.5em;
     margin-bottom: 5px;
+    margin-right:5px;
     line-height: 1.5;
     background: #dbebf8;
     vertical-align: middle;
@@ -625,4 +625,86 @@ footer .footer_content{
     overflow-wrap: break-word;
   }
   
+  .menu-list{
+    text-align: center;
+    margin: 0 auto; 
+    width: 700px;
+  }
+  .menu-item{
+    position: relative;
+    text-align: left;
+    margin-bottom: 8px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px 0 rgb(191 203 222 / 40%);
+    width: 100%;
+    padding:20px;
+
+}
+.menu-info{
+  display: flex;
+  width: 100%;
+}
+.menu-photo{
+  width: 130px;
+  height: 130px;
+}
+.menu-summary{
+  font-size: 15px;
+  color:#444;
+  width : calc(100% - 180px) ;
+  padding: 0 20px;
+}
+
+.menu-tag{
+  display: inline-block;
+  text-align: center;
+  background: #f2f2f2;
+  padding: 2px 4px;
+  border-radius: 2px;
+  margin-bottom: 10px;
+}
+.menu-cource{
+  margzn-bottom: 10px;
+    margin-bottom: 10px;
+}
+.menu-price{
+  color: #fd4a5b;
+  font-size: 15px;
+  font-weight: bold;
+    margin-bottom: 10px;
+}
+.menu-price span{
+  color: #888;
+  font-size: 13px;
+  font-weight: normal;
+  margin-right: 4px;
+}
+
+.menu-reserve{
+  position: absolute;
+  bottom: 10px;
+  right: 10px
+}
+.menu-reserve a{
+    display: block;
+    border-radius: 5%;
+    font-size: 22px;
+    text-align: center;
+    cursor: pointer;
+    background: #269d66;
+    color: #ffffff;
+    transition: .3s;
+    box-shadow: 6px 6px 3px #666666;
+    border: 2px solid #269d66;
+}
+
+
+.menu-reserve a:hover {
+  box-shadow    : none;   
+  color         : #269d66;    
+  background    : #ffffff;
+}
+
+
+
   
