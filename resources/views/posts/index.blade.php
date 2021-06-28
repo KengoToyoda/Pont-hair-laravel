@@ -13,12 +13,15 @@
         </div>
         <div class="pc_flex">
             <div class="pc_left_block">
+                <section class="react_pre">
+                    <div id="root"></div>
+                </section>
                 <!--検索フォーム -->
                  <section class="service_wrap">
                   <div class="top_model_reserve pont">
                     <div class="top_model_reserve_inner">
-                      <h2 class="hg title">施術別で美容師を探す</h2>
-                      <form method="get" action="{{ route('searchUser') }}" >
+                        <h2 class="hg title">施術別で美容師を探す</h2>
+                        <form method="get" action="{{ route('searchUser') }}" >
                             <div class="search_container">
                                 <input type="text" name="searchWord" value="{{ $searchWord }}"  placeholder="キーワード検索">
                             </div>

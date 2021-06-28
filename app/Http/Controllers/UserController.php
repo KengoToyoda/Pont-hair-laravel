@@ -33,8 +33,6 @@ class UserController extends Controller
         
         $categories = Category::all();
         
-        
-        
         //フォームを機能させるために各情報を取得し、viewに返す
         $searchWord = $request->input('searchWord');
         $categoryId = $request->input('categoryId');
@@ -59,7 +57,6 @@ class UserController extends Controller
      */
    public function show(User $user, Menu $menu, Catalog $catalog)
     {
-        // dd($user);
         $ranking = new RankingService;
         $ranking->incrementViewRanking($user->id);  //インクリメント
     
@@ -241,4 +238,13 @@ class UserController extends Controller
             ]);
     }
     
+    /*==================================
+    Reactメソッド
+    ==================================*/
+    /**
+     * テストページ表示
+     */
+     public function showReactPage(){
+         return view('react/try');
+     }
 }

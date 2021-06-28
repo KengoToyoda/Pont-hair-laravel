@@ -3,6 +3,7 @@
         <ul class="heaer_nav circleBehind">
             <!-- Left Side Of Navbar --->
             <li class="nav_item"><a href="/" class="nav-link">Topページへ</a></li>
+            <li class="nav_item"><a href="/react" class="nav-link">React</a></li>
             <!-- Right Side Of Navbar -->
             <li class="navbar-nav nav_item">
                 <!-- Authentication Links -->

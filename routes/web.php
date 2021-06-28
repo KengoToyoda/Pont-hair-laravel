@@ -132,4 +132,12 @@ Route::get('/stylists/{user}/catalog={catalog}', 'UserController@showCatalogToCu
 
 
 
+ /**
+  * React ページ ルーティング
+  */
+ Route::get('/react', 'UserController@showReactPage');
+
+
+
+
 
