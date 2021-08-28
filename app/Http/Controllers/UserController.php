@@ -26,7 +26,6 @@ class UserController extends Controller
      */
     public function index(User $user, Menu  $menu, Catalog $catalog, Request $request)
     {
-        
         $ranking = new RankingService;
         $results = $ranking->getRankingAll();
         $user_ranking = $user->getArticleRanking($results);
@@ -38,6 +37,7 @@ class UserController extends Controller
         $categoryId = $request->input('categoryId');
 
         Cache::flush();     
+        
         
         return view('posts/index')->with([
             'users' => $user->latest()->get(),
@@ -61,7 +61,7 @@ class UserController extends Controller
         $ranking->incrementViewRanking($user->id);  //インクリメント
     
         $menus = $user->menus()->get();
-        $catalogs =  $user->catalogs()->get();
+        $catalogs = $user->catalogs()->get();
         $categories = $user->category()->get();
         
         return view('posts/info/show')->with([

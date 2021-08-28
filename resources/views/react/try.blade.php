@@ -1,7 +1,3 @@
-
-
-
-
 @extends('layouts.template')
 
 @section('title', 'pont')
@@ -16,7 +12,6 @@
             <div class="pc_left_block">
                 <section class="react_pre">
                     <div id="tryReact"></div>
-                    <!--<script src="./bundle.js"></script>-->
                 </section>
             <!-- pc right lock start-->
             <div class="pc_right_block"></div>

@@ -17,10 +17,14 @@
         <!--jQuery読み込み-->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         
+        <!--Material UI-->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+
+        
         <!-- Js -->
         <script src="{{ asset('js/app.js') }}" defer></script>
         <script src="{{ asset('js/sample.js') }}" type="text/javascript"></script>
-        <script src="{{ asset('js/tryReact.js') }}" type="text/javascript"></script>
         <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCgJa1MRBSDZT4VGZuGyDqywoHMR1-OlAE&callback=initMap">
         </script>
     </head>

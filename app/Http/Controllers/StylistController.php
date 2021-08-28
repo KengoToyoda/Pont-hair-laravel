@@ -44,6 +44,7 @@ class StylistController extends Controller
         $user = Auth::user();
         $input_menu = $request['menu'];
         $input_menu['user_id']=$user->id;
+        $input_2['rank_id']=$rank->id;
         $menu->fill($input_menu)->save();
         return redirect('/account/' . 'menu=' . $menu->id);
     }
