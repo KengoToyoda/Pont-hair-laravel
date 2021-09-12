@@ -19,10 +19,19 @@
                 center no-repeat; display:block; background-size:cover;">
                 </div>
                 <div class="profile-content">
-                   <h1 class="profile-name hg">{{ $user->name }}</h1>
-                   <div class="profile-detail">
+                    <h1 class="profile-name hg">{{ $user->name }}</h1>
+                    <div class="profile-detail">
                        <div class="profile-shop">ショップ：{{ $user->shop }}</div>
-                   </div>
+                    </div>
+                    <div id="app">
+                        @if(!($user->id === Auth::id()))
+                            <follow-component
+                            v-bind:user-Id='{{ json_encode($user->id) }}'
+                            v-bind:default-Followed='{{ json_encode($defaultFollowed) }}'
+                            v-bind:default-Count='{{ json_encode($defaultCount) }}'
+                            ></follow-component>
+                        @endif
+                    </div>
                 </div>
             </div>
         </section>
@@ -89,6 +98,19 @@
                                     </a>
                                     <div class="menu-reserve">
                                         <a href="/reserve/stylists/{{ $user->id }}/menu={{ $menu->id }}">予約</a>
+                                    </div>
+                                    <div class"menu-likes">
+                                        @if($like_model->like_exist(Auth::user()->id,$menu->id))
+                                            <p class="favorite-marke">
+                                              <a class="js-like-toggle loved" href="" data-menuid="{{ $menu->id }}"><i class="fas fa-heart" value="&#xf164;いいね">いいね</i></a>
+                                              <span class="likesCount">{{$menu->likes_count}}</span>
+                                            </p>
+                                            @else
+                                            <p class="favorite-marke">
+                                              <a class="js-like-toggle" href="" data-menuid="{{ $menu->id }}"><i class="fas fa-heart" value="&#xf164;いいね">いいね</i></a>
+                                              <span class="likesCount">{{$menu->likes_count}}</span>
+                                            </p>
+                                        @endif​
                                     </div>
                                 </li>
                             @endforeach

@@ -132,12 +132,21 @@ Route::get('/stylists/{user}/catalog={catalog}', 'UserController@showCatalogToCu
 
 
 
- /**
-  * React ページ ルーティング
-  */
- Route::get('/react', 'UserController@showReactPage');
+//ログイン中のユーザーのみアクセス可能
+Route::group(['middleware' => ['auth']], function () {
+    //「ajaxlike.jsファイルのurl:'ルーティング'」に書くものと合わせる。
+    Route::post('/ajaxlike', 'UserController@ajaxlike')->name('menus.ajaxlike');
+    
+    //フォロー&アンフォロー
+     Route::post('stylists/{user}/follow', 'FollowController@follow');
+     Route::post('stylists/{user}/unfollow', 'FollowController@unfollow');
+});
 
 
 
 
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

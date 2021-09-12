@@ -6,6 +6,8 @@ use App\User;
 use App\Menu;
 use App\Catalog;
 use App\Category;
+use App\Like;
+use App\FollowUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\UserRequest; 
@@ -36,8 +38,7 @@ class UserController extends Controller
         $searchWord = $request->input('searchWord');
         $categoryId = $request->input('categoryId');
 
-        Cache::flush();     
-        
+        Cache::flush();
         
         return view('posts/index')->with([
             'users' => $user->latest()->get(),
@@ -60,15 +61,33 @@ class UserController extends Controller
         $ranking = new RankingService;
         $ranking->incrementViewRanking($user->id);  //インクリメント
     
-        $menus = $user->menus()->get();
         $catalogs = $user->catalogs()->get();
         $categories = $user->category()->get();
+        
+        //いいね機能に関するデータ取得
+        $menus = $user->menus()->withCount('likes')->get();
+        $like_model = new Like;
+        
+        //フォロワー数をカウント
+        $defaultCount = count(FollowUser::where('followed_user_id', $user->id)->get());
+        
+        $follow = FollowUser::where('following_user_id', Auth::user()->id)
+                            ->where('followed_user_id', $user->id)
+                            ->first();
+        if ($follow) {
+            $defaultFollowed = true;
+        }else{
+            $defaultFollowed = false;
+        }
         
         return view('posts/info/show')->with([
             'user' => $user,
             'menus' => $menus,
+            'like_model' => $like_model,
             'categories' =>$categories,
             'catalogs' => $catalogs,
+            'defaultCount' => $defaultCount,
+            'defaultFollowed' => $defaultFollowed
             ]);
     }
     
@@ -94,6 +113,44 @@ class UserController extends Controller
                 'catalog' => $catalog,
                 ]);
     }
+    
+    /**
+     * いいね機能関連メソッド
+     */
+     
+     public function ajaxlike(Request $request)
+    {
+        $id = Auth::user()->id;
+        $menu_id = $request->menu_id;
+        $like = new Like;
+        $menu = Menu::findOrFail($menu_id);
+
+        // 空でない（既にいいねしている）なら
+        if ($like->like_exist($id, $menu_id)) {
+            //likesテーブルのレコードを削除
+            $like = Like::where('menu_id', $menu_id)->where('user_id', $id)->delete();
+        } else {
+            //空（まだ「いいね」していない）ならlikesテーブルに新しいレコードを作成する
+            //ここが多対多でいうattachの部分！
+            $like = new Like;
+            $like->menu_id = $request->menu_id;
+            $like->user_id = Auth::user()->id;
+            $like->save();
+        }
+
+        //loadCountとすればリレーションの数を○○_countという形で取得できる（今回の場合はいいねの総数）
+        $menuLikesCount = $menu->loadCount('likes')->likes_count;
+
+        //一つの変数にajaxに渡す値をまとめる
+        //今回ぐらい少ない時は別にまとめなくてもいいけど一応。笑
+        $json = [
+            'menuLikesCount' => $menuLikesCount,
+        ];
+        //下記の記述でajaxに引数の値を返す
+        return response()->json($json);
+    }
+    
+    
     
        /**
      * ------------------------美容師情報関連------------------------
@@ -172,7 +229,7 @@ class UserController extends Controller
     
     
     /*==================================
-    検索メソッド
+        検索メソッド
     ==================================*/
     
     public function search(Request $request, User $user, Menu $menu, Catalog $catalog)
@@ -237,14 +294,4 @@ class UserController extends Controller
             'results' => $results,
             ]);
     }
-    
-    /*==================================
-    Reactメソッド
-    ==================================*/
-    /**
-     * テストページ表示
-     */
-     public function showReactPage(){
-         return view('react/try');
-     }
 }

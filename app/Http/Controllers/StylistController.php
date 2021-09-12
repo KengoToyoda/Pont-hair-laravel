@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Menu;
 use App\User;
 use App\Catalog;
+use App\Like;
 use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest; 
 use Illuminate\Support\Facades\Storage;//画像操作
@@ -13,16 +14,6 @@ use Illuminate\Support\Facades\Hash;
 
 class StylistController extends Controller
 {
-     /**
-     * 美容師用管理画面を表示
-     */
-    public function transStylistPage()
-    {
-        return view('stylist/homeStylist');
-    }
-    
- 
-    
     /**
      * ------------------------メニュー情報関連(menus)------------------------
      */
@@ -44,7 +35,7 @@ class StylistController extends Controller
         $user = Auth::user();
         $input_menu = $request['menu'];
         $input_menu['user_id']=$user->id;
-        $input_2['rank_id']=$rank->id;
+        // $input_2['rank_id']=$rank->id;
         $menu->fill($input_menu)->save();
         return redirect('/account/' . 'menu=' . $menu->id);
     }
@@ -198,5 +189,8 @@ class StylistController extends Controller
         $catalog->delete();
         return redirect('/account/');
     }
+    
+
+    
     
 }

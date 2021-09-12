@@ -17,6 +17,5 @@ class UsersTableSeeder extends Seeder
             'name' => 'OriginUser',
             'email' => 'origin@gmail.com',
         ]);
-        
     }
 }

@@ -24,10 +24,16 @@ class Menu extends Model
      * PostモデルとMenuモデル
      */
     
-    public function menu()
+    public function user()
     {
         return $this->belongTo('App\User');
     }
+    
+    public function likes()
+    {
+        return $this->hasMany('App\Like');
+    }
+    
     
     
 }

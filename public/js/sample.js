@@ -42,7 +42,7 @@ function initMap() {
         
         }else{ 
         //ステータスが OK 以外の場合や results[0] が存在しなければ、アラートを表示して処理を中断
-        alert('失敗しました。理由: ' + status);
+        // alert('失敗しました。理由: ' + status);
         return;
         }
     });

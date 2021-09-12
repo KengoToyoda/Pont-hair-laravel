@@ -22,10 +22,6 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
 
         
-        <!-- Js -->
-        <script src="{{ asset('js/app.js') }}" defer></script>
-        <script src="{{ asset('js/sample.js') }}" type="text/javascript"></script>
-        <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCgJa1MRBSDZT4VGZuGyDqywoHMR1-OlAE&callback=initMap">
         </script>
     </head>
     <body>
@@ -37,6 +33,10 @@
             </section>
             @yield('footer')
         </div>
+        <!-- Js -->
+        <script src="{{ asset('js/app.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('js/sample.js') }}" type="text/javascript"></script>
+        <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCgJa1MRBSDZT4VGZuGyDqywoHMR1-OlAE&callback=initMap">
     </body>
 </html>
 

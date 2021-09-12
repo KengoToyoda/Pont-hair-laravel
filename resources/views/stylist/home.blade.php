@@ -35,9 +35,6 @@
                         <button type="submit">アカウントを削除する</button>
                     </form>    
                 </li>
-
-                
-
             </ul>
         </div>
         <div class="mypage_content">
@@ -91,6 +88,47 @@
                         <ul class="catalog_lsit">
                                 <li class="catalog_item">{{ $category->category }}</li>
                         </ul>
+                    @endforeach
+                </div>
+                <div class="">
+                    <h1 class="bold">いいねした投稿</h1>
+                    @foreach($likes as $like)
+                        <ul class="catalog_lsit">
+                                <li class="catalog_item">{{ $like->course }}</li>
+                                <li class="catalog_item">{{ $like->tag }}</li>
+                                <li class="catalog_item">{{ $like->price }}</li>
+                                <li class="catalog_item">{{ $like->description }}</li>
+                        </ul>
+                    @endforeach
+                </div>
+                <div class="">
+                    <h1 class="bold">相互フォロワー</h1>
+                    @foreach ($users as $user)
+                    <ul class="follow_user">
+                        @if(in_array($user->id,Auth::user()->follow_each()))
+                        　  <li>{{ $user->name }}</li>
+                        @endif
+                    </ul>
+                    @endforeach
+                </div>
+                <div class="">
+                    <h1 class="bold">フォロー中</h1>
+                    @foreach ($users as $user)
+                    <ul class="follow_user">
+                        @if(in_array($user->id,Auth::user()->following_user()))
+                        　  <li>{{ $user->name }}</li>
+                        @endif
+                    </ul>
+                    @endforeach
+                </div>
+                <div class="">
+                    <h1 class="bold">フォロワー</h1>
+                    @foreach ($users as $user)
+                    <ul class="follow_user">
+                        @if(in_array($user->id,Auth::user()->followed_user()))
+                        　  <li>{{ $user->name }}</li>
+                        @endif
+                    </ul>
                     @endforeach
                 </div>
             </section>

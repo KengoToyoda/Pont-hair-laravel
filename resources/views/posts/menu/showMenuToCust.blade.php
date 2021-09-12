@@ -8,9 +8,6 @@
     
     @section('content')
     <section>
-        <h1 class="title">
-            新規作成メニュー
-        </h1>
         <div class="content">
             <div class="content__menu">
                 <h2 class="menu_title">{{ $menu->course }}</h2>

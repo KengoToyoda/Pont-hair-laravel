@@ -777,3 +777,8 @@ footer .footer_content{
 .game-info {
   margin-left: 20px;
 }
+
+
+.loved i {
+  color: red !important;
+}

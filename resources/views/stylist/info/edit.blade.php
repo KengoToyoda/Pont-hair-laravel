@@ -61,7 +61,7 @@
                     <!--ラジオボタンで変更するorしないの前処理が必要-->
                     <!--する→jsで選択肢表示-->
                     @foreach($categories as $category)
-                        <input type="checkbox" name="category[]"  value="{{ $category->id }}"/>{{ $category->category }}
+                        <input type="checkbox" name="category[]" value="{{ $category->id }}"/>{{ $category->category }}
                     @endforeach
                 </li>
             </ul>
