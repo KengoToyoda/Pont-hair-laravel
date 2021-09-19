@@ -139,7 +139,7 @@ Route::group(['middleware' => ['auth']], function () {
     
     //フォロー&アンフォロー
      Route::post('stylists/{user}/follow', 'FollowController@follow');
-     Route::post('stylists/{user}/unfollow', 'FollowController@unfollow');
+     Route::post('stylists/{user}/unfollow', 'FollowController@follow');
 });
 
 

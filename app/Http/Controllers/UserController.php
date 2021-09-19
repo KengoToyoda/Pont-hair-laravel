@@ -84,7 +84,7 @@ class UserController extends Controller
             'user' => $user,
             'menus' => $menus,
             'like_model' => $like_model,
-            'categories' =>$categories,
+            'categories' => $categories,
             'catalogs' => $catalogs,
             'defaultCount' => $defaultCount,
             'defaultFollowed' => $defaultFollowed
@@ -293,5 +293,14 @@ class UserController extends Controller
             'user_ranking' => $user_ranking,
             'results' => $results,
             ]);
+    }
+    
+    
+
+    
+    public function index(Post $post)
+    {
+        $post = $post->get();
+        return view('index')->with(['posts' => $post]);  
     }
 }

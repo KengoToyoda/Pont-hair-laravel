@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-             $table->text('style')->nullable();
+            $table->text('style')->nullable();
             $table->string('shop')->nullable();//追加
             $table->integer('postal_code')->nullable();//追加
             $table->string('address')->nullable();//追加
