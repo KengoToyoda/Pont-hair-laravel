@@ -14,9 +14,9 @@ class CreateCategoryUserTable extends Migration
     public function up()
     {
         Schema::create('category_user', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('user_id')->nullable(true);
-            $table->unsignedBigInteger('category_id')->nullable(true);
+            $table->increments('id');
+            $table->integer('user_id')->unsigned()->nullable(true);
+            $table->integer('category_id')->unsigned()->nullable(true);
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->timestamps();

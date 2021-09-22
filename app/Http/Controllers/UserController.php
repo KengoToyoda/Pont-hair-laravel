@@ -294,13 +294,5 @@ class UserController extends Controller
             'results' => $results,
             ]);
     }
-    
-    
 
-    
-    public function index(Post $post)
-    {
-        $post = $post->get();
-        return view('index')->with(['posts' => $post]);  
-    }
 }

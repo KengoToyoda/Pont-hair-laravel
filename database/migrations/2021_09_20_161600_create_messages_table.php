@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCategoriesTeble extends Migration
+class CreateMessagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,13 @@ class CreateCategoriesTeble extends Migration
      */
     public function up()
     {
-        Schema::create('categories', function (Blueprint $table) {
+        Schema::create('messages', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('category');
+            $table->text('message');
+            $table->unsignedInteger('sender');
+            $table->foreign('sender')->references('id')->on('users');
+            $table->unsignedInteger('receiver');
+            $table->foreign('receiver')->references('id')->on('users');
             $table->timestamps();
         });
     }
@@ -27,6 +31,6 @@ class CreateCategoriesTeble extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('categories');
+        Schema::dropIfExists('messages');
     }
 }

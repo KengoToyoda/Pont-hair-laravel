@@ -23,43 +23,31 @@ use Illuminate\Support\Facades\Route;
  
 //カタログ情報編集
 Route::get('/account/edit/catalog={catalog}', 'StylistController@editCatalog')->name('user.catalog.edit');
-
 //メニュー情報編集
 Route::get('/account/edit/menu={menu}','StylistController@editMenu')->name('user.menu.edit');
-
  //美容師情報編集
 Route::get('/account/edit/{user}', 'UserController@edit')->where('user', '[0-9]+')->name('user.edit');
-
 //メニュー個別ページ表示
 Route::get('/account/menu={menu}', 'StylistController@showMenu')->where('user', '[0-9]+')->name('user.menu.show');
-
 //カタログ個別ページ表示
 Route::get('/account/catalog={catalog}', 'StylistController@showCatalog')->where('user', '[0-9]+')->name('user.catalog.show');
-
 //メニュー新規登録
 Route::get('/account/menu', 'StylistController@createMenu')->name("user.menu.create");
-
 //カタログ新規登録
 Route::get('/account/catalog', 'StylistController@createCatelog')->name('user.catalog.create');
-
 //美容師登録トップページ
 Route::get('/account', 'HomeController@index');
 
-
-
 //メニュー情報更新
 Route::put('/account/menu={menu}','StylistController@updateMenu')->name('user.menu.update');
-
 //カタログ情報更新
 Route::put('/account/catalog={catalog}','StylistController@updateCatalog')->name('user.catalog.update');
-
 //美容師情報更新
 Route::put('/account/{user}', 'UserController@update')->where('user', '[0-9]+')->name("user.update");
 
 
 //メニューDB登録
 Route::post('/account/menu/storeMenu', 'StylistController@storeMenu')->where('user', '[0-9]+')->name('user.menu.store');
-
 //カタログ情報DB登録
 Route::post('/account/catalog/storeCatalog', 'StylistController@storeCatalog')->where('user', '[0-9]+')->name('user.catalog.store');
 
@@ -82,14 +70,11 @@ Route::delete('/account/menu={menu}', 'StylistController@deleteMenu')->where('us
  */
  
 //スタイリスト一覧
-Route::get('/', 'UserController@index');
-
+Route::get('/', 'UserController@index')->middleware('auth');
 //スタイリスト情報詳細表示
 Route::get('/stylists/{user}', 'UserController@show')->where('user', '[0-9]+');
-
 //スタイリストメニュー詳細表示
 Route::get('/stylists/{user}/menu={menu}', 'UserController@showMenuToCust');
-
 //スタイリストカタログ詳細表示
 Route::get('/stylists/{user}/catalog={catalog}', 'UserController@showCatalogToCust');
 
@@ -105,26 +90,17 @@ Route::get('/stylists/{user}/catalog={catalog}', 'UserController@showCatalogToCu
  
   //予約フォーム確認
  Route::post('reserve/confirm/stylists/{user}/menu={menu}', 'ReserveController@confirm');
- // ->name('reserve.confrim');
- 
  //予約フォーム送信
  Route::post('reserve/thanks/stylists/{user}/menu={menu}', 'ReserveController@send');
  // ->name('reserve.send');
- 
  //予約フォーム表示
  Route::get('reserve/stylists/{user}/menu={menu}', 'ReserveController@showReserve');
- // ->name('reserve.form');
-
-
-
 
 /**
  * Authメソッド ルーティング
  */ 
  
  Auth::routes();
- 
- 
  /**
   * 検索機能 ルーティング
   */
@@ -136,17 +112,17 @@ Route::get('/stylists/{user}/catalog={catalog}', 'UserController@showCatalogToCu
 Route::group(['middleware' => ['auth']], function () {
     //「ajaxlike.jsファイルのurl:'ルーティング'」に書くものと合わせる。
     Route::post('/ajaxlike', 'UserController@ajaxlike')->name('menus.ajaxlike');
-    
     //フォロー&アンフォロー
      Route::post('stylists/{user}/follow', 'FollowController@follow');
-     Route::post('stylists/{user}/unfollow', 'FollowController@follow');
+     Route::post('stylists/{user}/unfollow', 'FollowController@unfollow');
 });
 
-
-
-
+//チャット用ルーティング
+Route::get('/chats', 'MessageController@index');
+Route::get('/chats/{receiver}', 'MessageController@show');
+Route::get('/chats/{receiver}/fetch', 'MessageController@get');
+Route::post('/chats/{receiver}/send', 'MessageController@create');
 
 
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
