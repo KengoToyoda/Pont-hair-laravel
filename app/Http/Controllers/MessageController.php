@@ -32,7 +32,7 @@ class MessageController extends Controller
     
     public function create(Request $request){
         $message = Message::create($request->all());
-        event(new MessageCreated($message));->toOthers();
+        event(new MessageCreated($message))->toOthers();
         // broadcast(new MessageCreated($message))->toOthers();
         return $message;
     }
