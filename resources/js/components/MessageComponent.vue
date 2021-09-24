@@ -46,8 +46,8 @@
         mounted(){
             this.getMessages();
             window.Echo.channel('chat' + this.receiverId + this.senderId)
-            .listen('MessageCreated', (e) => {
-                this.getMessages();
+            .listen('MessageCreated', response => {
+                this.messages.push(response.data);
             });
         }
     }

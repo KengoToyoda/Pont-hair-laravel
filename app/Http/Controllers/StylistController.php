@@ -169,7 +169,6 @@ class StylistController extends Controller
             
             $catalog->fill($input)->save();
         }else{
-            
             //画像ファイルを変更しない時
             $catalog->fill($input)->save(); //image以外を保存☆☆
         }

@@ -2023,8 +2023,8 @@ __webpack_require__.r(__webpack_exports__);
     var _this3 = this;
 
     this.getMessages();
-    window.Echo.channel('chat' + this.receiverId + this.senderId).listen('MessageCreated', function (e) {
-      _this3.getMessages();
+    window.Echo.channel('chat' + this.receiverId + this.senderId).listen('MessageCreated', function (response) {
+      _this3.messages.push(response.data);
     });
   }
 });

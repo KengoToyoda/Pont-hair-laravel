@@ -20,7 +20,6 @@ class MessageController extends Controller
         return view('message/show', compact('receiver'));
     }
     
-    
     public function get(User $receiver) 
     {
         $query = Message::where('sender', Auth::id())->where('receiver', $receiver->id)->orWhere(function($query) use($receiver){
@@ -32,8 +31,8 @@ class MessageController extends Controller
     
     public function create(Request $request){
         $message = Message::create($request->all());
-        event(new MessageCreated($message))->toOthers();
-        // broadcast(new MessageCreated($message))->toOthers();
+        // event(new MessageCreated($message))->toOthers();
+        broadcast(new MessageCreated($message))->toOthers();
         return $message;
     }
 }
