@@ -123,6 +123,10 @@ Route::get('/chats/{receiver}', 'MessageController@show');
 Route::get('/chats/{receiver}/fetch', 'MessageController@get');
 Route::post('/chats/{receiver}/send', 'MessageController@create');
 
+//カレンダールーティング
+Route::get('/calendar', 'EventController@index');
+Route::get('/calendar/load', 'EventController@loadEvents');
+Route::post('/calendar/store','EventController@store');
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');

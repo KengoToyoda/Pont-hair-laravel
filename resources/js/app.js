@@ -4,6 +4,10 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
+import Vue from 'vue'
+import Vuetify from 'vuetify';
+import Vuex from "vuex";
+
 require('./bootstrap');
 require('./_ajaxlike.js')
 
@@ -21,7 +25,9 @@ window.Vue = require('vue');
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 Vue.component('follow-component', require('./components/FollowComponent.vue').default);
 Vue.component('message-component', require('./components/MessageComponent.vue').default);
-
+Vue.component('calendar-component', require('./components/CalendarComponent.vue').default);
+Vue.use(Vuetify);
+Vue.use(Vuex); 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -30,4 +36,5 @@ Vue.component('message-component', require('./components/MessageComponent.vue').
 
 const app = new Vue({
     el: '#app',
+    vuetify: new Vuetify(),
 });

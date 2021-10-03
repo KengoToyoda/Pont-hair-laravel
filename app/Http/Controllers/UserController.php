@@ -19,7 +19,6 @@ use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
-
     /**
      * stylist一覧を表示する
      * 
@@ -240,11 +239,7 @@ class UserController extends Controller
         
         $data = User::query();
         
-        
         if(isset($categoryId) && isset($searchWord)){
-            $data = $data->whereHas('category', function($query) use ($categoryId) {
-                $query->where('category_id', $categoryId);
-            });
             $data = $data->whereHas('category', function($query) use ($categoryId) {
                 $query->where('category_id', $categoryId);
             })->get();
