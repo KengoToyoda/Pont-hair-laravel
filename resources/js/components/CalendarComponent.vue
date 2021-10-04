@@ -5,15 +5,22 @@ import dayGridPlugin from '@fullcalendar/daygrid'
 import timeGridPlugin from '@fullcalendar/timegrid'
 import interactionPlugin from '@fullcalendar/interaction'
 import axios from 'axios'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
   components: {
     FullCalendar // make the <FullCalendar> tag available
   },
-  data() {
-    return {
-      calendarOptions: {
-         plugins: [
+  computed: {
+    ...mapGetters(['events']),
+    config () {
+        return {
+          ... this.calendarOptions,
+        }
+      },
+    calendarOptions() {
+      return {
+        plugins: [
           dayGridPlugin,
           timeGridPlugin,
           interactionPlugin // needed for dateClick
@@ -37,55 +44,27 @@ export default {
             window.open(arg.event.url, 'google-calendar-event', 'width=700,height=600');
             arg.jsEvent.preventDefault() 
         }
-      },
-      newEvent: {
-        title: '',
-        start: '',
-        end: '',
-        content: '',
-        textColor:''
-      },
-    }
+      }
+    },
   },
   methods:{
-    addEvent: function() {
-      axios.post('/calendar/store', this.newEvent,)
-      .then((response) => {
-        console.log("post success");
-        console.log(response);
-      }).catch((error) =>{
-        console.log('post failed');
-      });
-    },
-  getEvents(){
-    axios.get('/calendar/load')
-    .then((response) => {
-      this.calendarOptions.events = response.data;
-      console.log(this.events);
-    })
-  }
+    // addEvent: function() {
+    //   axios.post('/calendar/store', this.newEvent,)
+    //   .then((response) => {
+    //     console.log("post success");
+    //     console.log(response);
+    //   }).catch((error) =>{
+    //     console.log('post failed');
+    //   });
+    // },
+    ...mapActions('events',['fetchEvents'])
   },
-   mounted(){
-      this.getEvents();
-  }
 }
 </script>
 
 <template>
   <div>
-    <form @submit.prevent="addEvent">
-      <label>タイトル</label>
-      <input v-model="newEvent.title" type="text">
-      <label>開始日時</label>
-      <input v-model="newEvent.start" type="datetime-local">
-      <label>終了日時</label>
-      <input v-model="newEvent.end" type="datetime-local">
-      <label>コメント</label>
-      <input type="textarea"v-model="newEvent.content">
-      <label>カラー</label>
-      <input v-model="newEvent.textColor" type="color">
-      <input type="submit" value="イベント作成">
-    </form>
-  <FullCalendar :options="calendarOptions" />
+
+  <FullCalendar :options="config" />
   </div>
 </template>
