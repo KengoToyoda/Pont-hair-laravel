@@ -13,10 +13,10 @@ class Like extends Model
      * UserモデルとLikeモデル
      * いいねしているユーザー
      */
-     public function user()
-    {
-        return $this->belongsTo('App\User');
-    }
+    //  public function user()
+    // {
+    //     return $this->belongsTo('App\User');
+    // }
     
     /**
      * Eloquent：リレーション
@@ -24,10 +24,10 @@ class Like extends Model
      * MenuモデルとLikeモデル
      * いいねしている投稿
      */
-     public function menu()
-    {
-        return $this->belongsTo('App\Menu');
-    }
+    //  public function menu()
+    // {
+    //     return $this->belongsTo('App\Menu');
+    // }
     
     /**
      * メソッド：いいねが既にされているかを確認

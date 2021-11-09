@@ -17,7 +17,6 @@ class EventController extends Controller
     public function store(Request $request)
     {
         $event = new Event;
-
         $event->title = $request->input('title');
         $event->content = $request->input('content');
         $event->start = $request->input('start');
@@ -25,11 +24,7 @@ class EventController extends Controller
         $event->textColor = $request->input('textColor');
         $event->save();
         
-        $data = Event::all();
-        // return response()->json([
-        //     'data' => $data,
-        // ]);
-
-        return redirect('/calendar');
+        $events = Event::all();
+        return response()->json($events);
     }
 }

@@ -43,14 +43,8 @@ class HomeController extends Controller
         
         //ユーザーいいねした全投稿を取得
         $user_id = $user->id;
-        // $likes = Like::where('user_id', $user_id)->get();
-        $likes = Like::where('user_id', $user_id)->get();
-        // dd($likes);
-        
-        foreach($likes as $like){
-            //menu()リレーションメソッドだと毎回クエリを発行してデータを取りに行ってしまう。
-            $likes[] = $like->menu;
-        }
+        //いいねしたメニューをとってくる
+        $likedMenus = $user->likedMenus()->get();
         
         return view('stylist/home')->with([
             'user' => $user,
@@ -58,7 +52,7 @@ class HomeController extends Controller
             'menus' => $menus,
             'catalogs' => $catalogs,
             'categories' => $categories,
-            'likes' => $likes,
+            'likedMenus' => $likedMenus,
             ]);
     }
 }

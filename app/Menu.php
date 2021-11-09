@@ -29,9 +29,9 @@ class Menu extends Model
         return $this->belongTo('App\User');
     }
     
-    public function likes()
+    public function likesUser()
     {
-        return $this->hasMany('App\Like');
+        return $this->belongsToMany('App\User', 'likes');
     }
     
     

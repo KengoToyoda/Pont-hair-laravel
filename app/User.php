@@ -97,9 +97,9 @@ class User extends Authenticatable
      * UserモデルとLikeモデル
      * ユーザーがいいねしている投稿を取得
      */
-     public function likes()
+     public function likedMenus()
     {
-        return $this->hasMany('App\Like');
+        return $this->belongsToMany('App\Menu', 'likes');
     }
     
     /**

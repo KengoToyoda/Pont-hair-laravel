@@ -92,12 +92,12 @@
                 </div>
                 <div class="">
                     <h1 class="bold">いいねした投稿</h1>
-                    @foreach($likes as $like)
+                    @foreach($likedMenus as $likedMenu)
                         <ul class="catalog_lsit">
-                                <li class="catalog_item">{{ $like->course }}</li>
-                                <li class="catalog_item">{{ $like->tag }}</li>
-                                <li class="catalog_item">{{ $like->price }}</li>
-                                <li class="catalog_item">{{ $like->description }}</li>
+                                <li class="catalog_item">{{ $likedMenu->course }}</li>
+                                <li class="catalog_item">{{ $likedMenu->tag }}</li>
+                                <li class="catalog_item">{{ $likedMenu->price }}</li>
+                                <li class="catalog_item">{{ $likedMenu->description }}</li>
                         </ul>
                     @endforeach
                 </div>

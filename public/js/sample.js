@@ -1,9 +1,5 @@
 function alertFunction(e){
-   if(!window.confirm('本当に削除しますか？')){
-      window.alert('キャンセルされました'); 
-      return false;
-   }
-   document.deleteform.submit();
+   window.confirm('本当に削除しますか？');
 };
 
 function initMap() {
@@ -14,12 +10,12 @@ function initMap() {
         
         //geocoder.geocode() にアドレスを渡して、コールバック関数を記述して処理
         geocoder.geocode({ address: address }, function(results, status){
-        //ステータスが OK で results[0] が存在すれば、地図を生成
-        if (status === 'OK' && results[0]){  
-        //マップのインスタンスを変数に代入
-        var map = new google.maps.Map(target, {  
-        center: results[0].geometry.location,
-        zoom: 14
+          //ステータスが OK で results[0] が存在すれば、地図を生成
+          if (status === 'OK' && results[0]){  
+          //マップのインスタンスを変数に代入
+          var map = new google.maps.Map(target, {  
+          center: results[0].geometry.location,
+          zoom: 14
         });
         
         //マーカーの生成
