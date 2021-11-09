@@ -7,6 +7,7 @@
 import Vue from 'vue'
 import Vuetify from 'vuetify';
 import Vuex from "vuex";
+import store from "./store/index"; 
 
 require('./bootstrap');
 require('./_ajaxlike.js')
@@ -37,4 +38,5 @@ Vue.use(Vuex);
 const app = new Vue({
     el: '#app',
     vuetify: new Vuetify(),
+    store: store,
 });
