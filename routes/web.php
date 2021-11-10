@@ -70,7 +70,7 @@ Route::delete('/account/menu={menu}', 'StylistController@deleteMenu')->where('us
  */
  
 //スタイリスト一覧
-Route::get('/', 'UserController@index');
+Route::get('/', 'UserController@index')->middleware('auth');
 //スタイリスト情報詳細表示
 Route::get('/stylists/{user}', 'UserController@show')->where('user', '[0-9]+');
 //スタイリストメニュー詳細表示

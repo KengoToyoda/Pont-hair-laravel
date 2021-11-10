@@ -27,8 +27,8 @@ window.Vue = require('vue');
 Vue.component('follow-component', require('./components/FollowComponent.vue').default);
 Vue.component('message-component', require('./components/MessageComponent.vue').default);
 Vue.component('calendar-component', require('./components/CalendarComponent.vue').default);
-Vue.use(Vuetify);
-Vue.use(Vuex); 
+// Vue.use(Vuetify);
+// Vue.use(Vuex); 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -37,6 +37,4 @@ Vue.use(Vuex);
 
 const app = new Vue({
     el: '#app',
-    vuetify: new Vuetify(),
-    store: store,
 });

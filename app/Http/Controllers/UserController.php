@@ -54,6 +54,7 @@ class UserController extends Controller
      * 
      * @params Object user // 引数の$userはid=1のuserインスタンス
      * @return Reposnse user view
+     * 
      */
    public function show(User $user, Menu $menu, Catalog $catalog)
     {
@@ -64,7 +65,7 @@ class UserController extends Controller
         $categories = $user->category()->get();
         
         //いいね機能に関するデータ取得
-        $menus = $user->menus()->withCount('likes')->get();
+        $menus = $user->menus()->get();
         $like_model = new Like;
         
         //フォロワー数をカウント
